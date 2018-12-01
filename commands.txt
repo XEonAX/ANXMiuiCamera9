@@ -30,43 +30,5 @@ adb install -g .\out\ANXCamera.apk
 Reinstall
 adb uninstall com.aeonax.camera && adb install -g .\out\ANXCamera.apk
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Jadx
+.\tools\jadx\bin\jadx -d .\src\ANXCamera -r .\out\ANXCamera.apk
