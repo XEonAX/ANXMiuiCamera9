@@ -99,8 +99,8 @@ public class FeatureParser {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:57:0x015a A:{ExcHandler: org.xmlpull.v1.XmlPullParserException (e org.xmlpull.v1.XmlPullParserException), PHI: r6 , Splitter: B:1:0x0002} */
-    /* JADX WARNING: Removed duplicated region for block: B:66:0x0177 A:{ExcHandler: all (th java.lang.Throwable), PHI: r6 , Splitter: B:1:0x0002} */
+    /* JADX WARNING: Removed duplicated region for block: B:57:0x015a A:{PHI: r6 , ExcHandler: org.xmlpull.v1.XmlPullParserException (e org.xmlpull.v1.XmlPullParserException), Splitter: B:1:0x0002} */
+    /* JADX WARNING: Removed duplicated region for block: B:66:0x0177 A:{PHI: r6 , ExcHandler: all (th java.lang.Throwable), Splitter: B:1:0x0002} */
     /* JADX WARNING: Removed duplicated region for block: B:50:0x013e A:{SYNTHETIC, Splitter: B:50:0x013e} */
     /* JADX WARNING: Removed duplicated region for block: B:59:0x015d A:{SYNTHETIC, Splitter: B:59:0x015d} */
     /* JADX WARNING: Removed duplicated region for block: B:68:0x017a A:{SYNTHETIC, Splitter: B:68:0x017a} */

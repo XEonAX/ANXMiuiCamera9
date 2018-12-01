@@ -2,11 +2,9 @@ package com.android.camera.data.cloud;
 
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import android.provider.MiuiSettings.SettingsCloudData;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
-import com.android.camera.CameraAppImpl;
 import com.android.camera.data.DataRepository;
 import com.android.camera.module.loader.camera2.Camera2DataContainer;
 import io.reactivex.Completable;
@@ -164,7 +162,8 @@ public class DataCloudMgr implements DataCloud$CloudManager {
     }
 
     private static final String getCloudDataString(String moduleName, String key, String defValue) {
-        return SettingsCloudData.getCloudDataString(CameraAppImpl.getAndroidContext().getContentResolver(), moduleName, key, defValue);
+        Log.w("getCloudDataString", key);
+        return defValue;
     }
 
     private static String getCloudDataCommonVersion() {
