@@ -25,6 +25,7 @@
     <uses-permission android:name="com.android.SystemUI.permission.TIGGER_TOGGLE"/>
     <uses-permission android:name="com.xiaomi.permission.CLOUD_MANAGER"/>
     <uses-permission android:name="android.permission.DEVICE_POWER"/>
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
     <application android:allowBackup="true" android:backupAgent="miui.app.backup.FullBackupAgent" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_camera" android:label="@string/camera_label" android:name="com.android.camera.CameraAppImpl" android:supportsRtl="true" android:theme="@style/ThemeCamera">
         <meta-data android:name="android.max_aspect" android:value="2.2"/>
         <uses-library android:name="zxing.jar" android:required="false"/>
