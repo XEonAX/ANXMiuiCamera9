@@ -246,14 +246,14 @@ public class CameraBrightness {
 
     private boolean getAndroidBoolRes(String key, boolean defaultValue) {
         try {
-            return CameraAppImpl.getAndroidContext().getResources().getBoolean(Field.of(bool.class, key, "I").getInt(null));
+            return CameraAppImpl.getAndroidContext().getResources().getBoolean(Field.of(bool.class, key, Field.INT_SIGNATURE_PRIMITIVE).getInt(null));
         } catch (NoSuchFieldException e) {
             Log.e("CameraBrightness", e.getMessage());
         } catch (IllegalArgumentException e2) {
             Log.e("CameraBrightness", e2.getMessage());
         }
         try {
-            return CameraAppImpl.getAndroidContext().getResources().getBoolean(Field.of(R.bool.class, key, "I").getInt(null));
+            return CameraAppImpl.getAndroidContext().getResources().getBoolean(Field.of(R.bool.class, key, Field.INT_SIGNATURE_PRIMITIVE).getInt(null));
         } catch (NoSuchFieldException e3) {
             Log.e("CameraBrightness", e3.getMessage());
         } catch (IllegalArgumentException e22) {
@@ -264,14 +264,14 @@ public class CameraBrightness {
 
     private int[] getAndroidArrayRes(String key) {
         try {
-            return CameraAppImpl.getAndroidContext().getResources().getIntArray(Field.of(array.class, key, "I").getInt(null));
+            return CameraAppImpl.getAndroidContext().getResources().getIntArray(Field.of(array.class, key, Field.INT_SIGNATURE_PRIMITIVE).getInt(null));
         } catch (NoSuchFieldException e) {
             Log.e("CameraBrightness", e.getMessage());
         } catch (IllegalArgumentException e2) {
             Log.e("CameraBrightness", e2.getMessage());
         }
         try {
-            return CameraAppImpl.getAndroidContext().getResources().getIntArray(Field.of(R.array.class, key, "I").getInt(null));
+            return CameraAppImpl.getAndroidContext().getResources().getIntArray(Field.of(R.array.class, key, Field.INT_SIGNATURE_PRIMITIVE).getInt(null));
         } catch (NoSuchFieldException e3) {
             Log.e("CameraBrightness", e3.getMessage());
         } catch (IllegalArgumentException e22) {
@@ -282,7 +282,7 @@ public class CameraBrightness {
 
     private int getAndroidIntResource(String key) {
         try {
-            return CameraAppImpl.getAndroidContext().getResources().getInteger(Field.of(integer.class, key, "I").getInt(null));
+            return CameraAppImpl.getAndroidContext().getResources().getInteger(Field.of(integer.class, key, Field.INT_SIGNATURE_PRIMITIVE).getInt(null));
         } catch (NoSuchFieldException e) {
             Log.e("CameraBrightness", e.getMessage());
         } catch (IllegalArgumentException e2) {
@@ -293,7 +293,7 @@ public class CameraBrightness {
 
     private int getMiuiIntResource(String key) {
         try {
-            return CameraAppImpl.getAndroidContext().getResources().getInteger(Field.of(R.integer.class, key, "I").getInt(null));
+            return CameraAppImpl.getAndroidContext().getResources().getInteger(Field.of(R.integer.class, key, Field.INT_SIGNATURE_PRIMITIVE).getInt(null));
         } catch (NoSuchFieldException e) {
             Log.e("CameraBrightness", e.getMessage());
         } catch (IllegalArgumentException e2) {

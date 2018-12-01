@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
+import miui.reflect.Field;
 
 public class ExifHelper {
     private static DateFormat mDateTimeStampFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
@@ -41,7 +42,7 @@ public class ExifHelper {
                 if (latValue > 0.0d) {
                     exif.setAttribute("GPSLatitudeRef", "N");
                 } else {
-                    exif.setAttribute("GPSLatitudeRef", "S");
+                    exif.setAttribute("GPSLatitudeRef", Field.SHORT_SIGNATURE_PRIMITIVE);
                 }
                 if (longValue > 0.0d) {
                     exif.setAttribute("GPSLongitudeRef", "E");

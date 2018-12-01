@@ -79,6 +79,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import miui.hardware.display.DisplayFeatureManager;
+import miui.reflect.Field;
 import miui.reflect.Method;
 import miui.reflect.NoSuchMethodException;
 import miui.security.SecurityManager;
@@ -1122,7 +1123,7 @@ public class Util {
                     }
                 }
             };
-            Class<?> clazz = Class.forName("miui.content.pm.PreloadedAppPolicy");
+            Class clazz = Class.forName("miui.content.pm.PreloadedAppPolicy");
             Method method = Method.of(clazz, "installPreloadedDataApp", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/pm/IPackageInstallObserver;I)Z");
             int flags = 0;
             if (needConfirm) {
@@ -1130,7 +1131,7 @@ public class Util {
             } else if (showToast) {
                 flags = 2;
             }
-            Log.d("CameraUtil", "installPackage: result=" + method.invokeBoolean(clazz, null, new Object[]{context, pkgName, observer, Integer.valueOf(flags)}));
+            Log.d("CameraUtil", "installPackage: result=" + method.invokeBoolean(clazz, null, context, pkgName, observer, Integer.valueOf(flags)));
         } catch (Exception e) {
             Log.e("CameraUtil", e.getMessage(), e);
             if (installedListener != null) {
@@ -1296,7 +1297,7 @@ public class Util {
                                     int cct = parser.getAttributeIntValue(null, "CCT", 0);
                                     int r = parser.getAttributeIntValue(null, "R", 0);
                                     int g = parser.getAttributeIntValue(null, "G", 0);
-                                    int b = parser.getAttributeIntValue(null, "B", 0);
+                                    int b = parser.getAttributeIntValue(null, Field.BYTE_SIGNATURE_PRIMITIVE, 0);
                                     COLOR_TEMPERATURE_LIST.add(Integer.valueOf(cct));
                                     COLOR_TEMPERATURE_MAP.add(Integer.valueOf(Color.rgb(r, g, b)));
                                 }

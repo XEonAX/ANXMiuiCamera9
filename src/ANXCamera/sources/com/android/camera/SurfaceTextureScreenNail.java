@@ -112,7 +112,7 @@ public abstract class SurfaceTextureScreenNail implements OnFrameAvailableListen
             }
             if (VERSION.SDK_INT < 21) {
                 try {
-                    this.mSurfaceTexture = (SurfaceTexture) Constructor.of(SurfaceTexture.class, "(ILandroid/os/Looper;)V").newInstance(new Object[]{Integer.valueOf(this.mExtTexture.getId()), sFrameListener.getLooper()});
+                    this.mSurfaceTexture = (SurfaceTexture) Constructor.of(SurfaceTexture.class, "(ILandroid/os/Looper;)V").newInstance(Integer.valueOf(this.mExtTexture.getId()), sFrameListener.getLooper());
                     Log.i("STScreenNail", "fullHandlerCapacity:set urgent display");
                     Process.setThreadPriority(sFrameListener.getThreadId(), -8);
                     this.currentFrameCount = 0;

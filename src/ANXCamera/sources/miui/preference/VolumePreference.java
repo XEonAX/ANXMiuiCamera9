@@ -267,7 +267,7 @@ public class VolumePreference extends SeekBarDialogPreference implements OnActiv
 
     private static int eu() {
         try {
-            return Field.of("android.R.styleable", "VolumePreference_streamType", "I").getInt(null);
+            return Field.of("android.R.styleable", "VolumePreference_streamType", Field.INT_SIGNATURE_PRIMITIVE).getInt(null);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -288,7 +288,7 @@ public class VolumePreference extends SeekBarDialogPreference implements OnActiv
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
         this.iA = new SeekBarVolumizer(this, getContext(), (SeekBar) view.findViewById(R.id.seekbar), this.iB);
-        ix.invoke(PreferenceManager.class, getPreferenceManager(), new Object[]{this});
+        ix.invoke(PreferenceManager.class, getPreferenceManager(), this);
         view.setOnKeyListener(this);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -335,7 +335,7 @@ public class VolumePreference extends SeekBarDialogPreference implements OnActiv
     }
 
     private void et() {
-        iy.invoke(PreferenceManager.class, getPreferenceManager(), new Object[]{this});
+        iy.invoke(PreferenceManager.class, getPreferenceManager(), this);
         if (this.iA != null) {
             Dialog dialog = getDialog();
             if (dialog != null && dialog.isShowing()) {

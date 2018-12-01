@@ -26,6 +26,7 @@ import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
+import miui.reflect.Field;
 
 public class V6CameraGLSurfaceView extends GLSurfaceView implements Renderer {
     private final Camera mActivity;
@@ -81,7 +82,7 @@ public class V6CameraGLSurfaceView extends GLSurfaceView implements Renderer {
             iArr[10] = 12344;
             this.mConfigSpec = iArr;
             this.ATTR_ID = new int[]{12324, 12323, 12322, 12321, 12325, 12326, 12328, 12327};
-            this.ATTR_NAME = new String[]{"R", "G", "B", "A", "D", "S", "ID", "CAVEAT"};
+            this.ATTR_NAME = new String[]{"R", "G", Field.BYTE_SIGNATURE_PRIMITIVE, "A", Field.DOUBLE_SIGNATURE_PRIMITIVE, Field.SHORT_SIGNATURE_PRIMITIVE, "ID", "CAVEAT"};
         }
 
         public EGLConfig chooseConfig(EGL10 egl, EGLDisplay display) {
