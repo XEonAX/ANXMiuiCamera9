@@ -10,12 +10,12 @@ import java.util.Collections;
 
 public class BeautyInfoFactory {
     /* renamed from: -com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues */
-    private static final /* synthetic */ int[] f4-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f3-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = null;
 
     /* renamed from: -getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues */
-    private static /* synthetic */ int[] m3-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues() {
-        if (f4-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues != null) {
-            return f4-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues;
+    private static /* synthetic */ int[] m2-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues() {
+        if (f3-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues != null) {
+            return f3-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues;
         }
         int[] iArr = new int[FilterType.values().length];
         try {
@@ -310,7 +310,7 @@ public class BeautyInfoFactory {
             iArr[FilterType.S_YEARS.ordinal()] = 73;
         } catch (NoSuchFieldError e73) {
         }
-        f4-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = iArr;
+        f3-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = iArr;
         return iArr;
     }
 
@@ -321,7 +321,7 @@ public class BeautyInfoFactory {
         int nameResId = 0;
         int iconResId = 0;
         for (FilterType type : FilterFactory.getFiltersByScene(FilterScene.BEAUTY)) {
-            switch (m3-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
+            switch (m2-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
                 case 12:
                     order = 50;
                     nameResId = R.string.portait_effect_entry_fairytale;
@@ -400,7 +400,7 @@ public class BeautyInfoFactory {
         int nameResId = 0;
         int iconResId = 0;
         for (FilterType type : FilterFactory.getFiltersByScene(FilterScene.BEAUTY_INDIA)) {
-            switch (m3-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
+            switch (m2-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
                 case 1:
                     order = 30;
                     nameResId = R.string.portrait_india_effect_entry_memory;
