@@ -1,2 +1,2 @@
-*.apkunsign
 src/ANXCamera/build/
+out/ANXCamera.apkunsign

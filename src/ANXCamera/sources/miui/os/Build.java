@@ -2,6 +2,7 @@ package miui.os;
 
 import android.content.Context;
 import android.os.Build.VERSION;
+import android.os.SystemProperties;
 import android.text.TextUtils;
 import com.miui.internal.cust.PrivateConfig;
 import miui.util.FeatureParser;
