@@ -245,7 +245,7 @@ public class SnapCamera implements OnErrorListener, OnInfoListener {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:12:0x0057 A:{Splitter: B:4:0x0024, ExcHandler: android.hardware.camera2.CameraAccessException (r3_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:12:0x0057 A:{ExcHandler: android.hardware.camera2.CameraAccessException (r3_0 'e' java.lang.Exception), Splitter: B:4:0x0024} */
     /* JADX WARNING: Missing block: B:12:0x0057, code:
             r3 = move-exception;
      */

@@ -1685,7 +1685,7 @@ public class MiCamera2 extends Camera2Proxy {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:3:0x002f A:{Splitter: B:1:0x0008, ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:3:0x002f A:{ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception), Splitter: B:1:0x0008} */
     /* JADX WARNING: Missing block: B:3:0x002f, code:
             r1 = move-exception;
      */
@@ -1834,7 +1834,7 @@ public class MiCamera2 extends Camera2Proxy {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:9:0x0050 A:{Splitter: B:4:0x0012, ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:9:0x0050 A:{ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception), Splitter: B:4:0x0012} */
     /* JADX WARNING: Missing block: B:9:0x0050, code:
             r1 = move-exception;
      */
