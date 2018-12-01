@@ -3,6 +3,7 @@ package com.android.camera2.compat;
 import android.annotation.TargetApi;
 import android.hardware.camera2.CaptureRequest.Builder;
 import android.hardware.camera2.CaptureRequest.Key;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import com.android.camera.constant.MiCameraCharacteristics;
 import com.android.camera.log.Log;
 import java.util.HashSet;
@@ -36,7 +37,7 @@ class MiCameraCompatQcomImpl extends MiCameraCompatBaseImpl {
             case 100:
                 request.set(ISO_EXP, Long.valueOf(2));
                 return;
-            case 200:
+            case Callback.DEFAULT_DRAG_ANIMATION_DURATION /*200*/:
                 request.set(ISO_EXP, Long.valueOf(3));
                 return;
             case 400:

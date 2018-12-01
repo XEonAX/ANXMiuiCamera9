@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import com.android.camera.Camera;
@@ -314,7 +315,7 @@ public class BaseFragmentDelegate implements ModeProtocol$BaseDelegate {
             case 249:
                 baseFragment = new FragmentPopupBeauty();
                 break;
-            case 250:
+            case Callback.DEFAULT_SWIPE_ANIMATION_DURATION /*250*/:
                 baseFragment = new FragmentFilter();
                 break;
             case 251:
@@ -359,8 +360,8 @@ public class BaseFragmentDelegate implements ModeProtocol$BaseDelegate {
         List<BaseFragmentOperation> replaceInfoList = new ArrayList();
         switch (event) {
             case 1:
-                if (getActiveFragment(R.id.bottom_action) != 250) {
-                    replaceInfoList.add(BaseFragmentOperation.create(R.id.bottom_action).push(250));
+                if (getActiveFragment(R.id.bottom_action) != Callback.DEFAULT_SWIPE_ANIMATION_DURATION) {
+                    replaceInfoList.add(BaseFragmentOperation.create(R.id.bottom_action).push(Callback.DEFAULT_SWIPE_ANIMATION_DURATION));
                 } else {
                     replaceInfoList.add(BaseFragmentOperation.create(R.id.bottom_action).popAndClearOthers(241));
                 }

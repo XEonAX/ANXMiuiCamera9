@@ -8,6 +8,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.recyclerview.R;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -170,12 +171,12 @@ public class FragmentTopConfig extends BaseFragment implements OnClickListener, 
                             configChanges.onConfigChanged(199);
                             ((ImageView) v).setImageResource(getFocusPeakImageResource());
                             break;
-                        case 200:
+                        case Callback.DEFAULT_DRAG_ANIMATION_DURATION /*200*/:
                             DataItemConfig dataItemConfig = (DataItemConfig) DataRepository.provider().dataConfig();
                             dataItemConfig.getComponentBokeh().toggle(this.mCurrentMode);
                             String newValue = dataItemConfig.getComponentBokeh().getComponentValue(this.mCurrentMode);
                             CameraStatUtil.trackBokehChanged(this.mCurrentMode, newValue);
-                            updateConfigItem(200);
+                            updateConfigItem(Callback.DEFAULT_DRAG_ANIMATION_DURATION);
                             if (dataItemConfig.reConfigHdrIfBokehChanged(this.mCurrentMode, newValue)) {
                                 updateConfigItem(194);
                             }
@@ -216,7 +217,7 @@ public class FragmentTopConfig extends BaseFragment implements OnClickListener, 
                         updateConfigItem(193);
                     }
                     if (dataItemConfig.reConfigBokehIfHdrChanged(this.mCurrentMode, newValue)) {
-                        updateConfigItem(200);
+                        updateConfigItem(Callback.DEFAULT_DRAG_ANIMATION_DURATION);
                     }
                     configChanges.configHdr(newValue);
                     break;
@@ -391,11 +392,11 @@ public class FragmentTopConfig extends BaseFragment implements OnClickListener, 
             case 1:
             case 2:
                 fragmentTopConfigExtra.animateOut();
-                Completable.create(new AlphaInOnSubscribe(this.mTopConfigMenu).setStartDelayTime(200)).subscribe();
+                Completable.create(new AlphaInOnSubscribe(this.mTopConfigMenu).setStartDelayTime(Callback.DEFAULT_DRAG_ANIMATION_DURATION)).subscribe();
                 break;
             case 6:
                 fragmentTopConfigExtra.animateOut();
-                Completable.create(new AlphaInOnSubscribe(this.mTopConfigMenu).setStartDelayTime(200)).subscribe();
+                Completable.create(new AlphaInOnSubscribe(this.mTopConfigMenu).setStartDelayTime(Callback.DEFAULT_DRAG_ANIMATION_DURATION)).subscribe();
                 break;
             default:
                 FragmentUtils.removeFragmentByTag(getChildFragmentManager(), String.valueOf(245));
@@ -494,7 +495,7 @@ public class FragmentTopConfig extends BaseFragment implements OnClickListener, 
                 newImageResourceId = getFocusPeakImageResource();
                 contentDescriptionStringId = R.string.accessibility_foucs_peak;
                 break;
-            case 200:
+            case Callback.DEFAULT_DRAG_ANIMATION_DURATION /*200*/:
                 newImageResourceId = dataItemConfig.getComponentBokeh().getValueSelectedDrawable(newMode);
                 if (!"on".equals(dataItemConfig.getComponentBokeh().getComponentValue(newMode))) {
                     contentDescriptionStringId = R.string.accessibility_bokeh_normal;

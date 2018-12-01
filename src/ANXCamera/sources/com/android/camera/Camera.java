@@ -16,7 +16,6 @@ import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -389,7 +388,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
         if (Util.checkDeviceHasNavigationBar(this)) {
             Window win = getWindow();
             win.getDecorView().setSystemUiVisibility(768);
-            win.addFlags(ExploreByTouchHelper.INVALID_ID);
+            win.addFlags(Integer.MIN_VALUE);
         }
     }
 

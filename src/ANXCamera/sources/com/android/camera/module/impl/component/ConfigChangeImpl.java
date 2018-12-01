@@ -3,6 +3,7 @@ package com.android.camera.module.impl.component;
 import android.content.Intent;
 import android.support.annotation.StringRes;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import com.android.camera.ActivityBase;
 import com.android.camera.CameraPreferenceActivity;
 import com.android.camera.CameraSettings;
@@ -540,7 +541,7 @@ public class ConfigChangeImpl implements ModeProtocol$ConfigChanges {
                     updateComponentFilter(true);
                     updateTypes[i] = 2;
                     break;
-                case 200:
+                case Callback.DEFAULT_DRAG_ANIMATION_DURATION /*200*/:
                     updateBokeh(true);
                     updateTypes[i] = 37;
                     break;
@@ -578,7 +579,7 @@ public class ConfigChangeImpl implements ModeProtocol$ConfigChanges {
                         updateComponentFilter(false);
                         updateTypes[i] = 2;
                         break;
-                    case 200:
+                    case Callback.DEFAULT_DRAG_ANIMATION_DURATION /*200*/:
                         updateBokeh(false);
                         updateTypes[i] = 37;
                         break;
@@ -641,7 +642,7 @@ public class ConfigChangeImpl implements ModeProtocol$ConfigChanges {
         DataItemConfig dataItemConfig = DataRepository.dataItemConfig();
         if (!dataItemConfig.getComponentBokeh().isEmpty() && dataItemConfig.getComponentBokeh().isClosed() != close) {
             dataItemConfig.getComponentBokeh().setClosed(close);
-            ((ModeProtocol$TopAlert) ModeCoordinatorImpl.getInstance().getAttachProtocol(172)).updateConfigItem(200);
+            ((ModeProtocol$TopAlert) ModeCoordinatorImpl.getInstance().getAttachProtocol(172)).updateConfigItem(Callback.DEFAULT_DRAG_ANIMATION_DURATION);
         }
     }
 

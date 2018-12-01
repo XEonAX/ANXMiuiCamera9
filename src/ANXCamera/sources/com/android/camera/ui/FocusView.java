@@ -12,6 +12,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.StringRes;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.util.AttributeSet;
 import android.util.Range;
 import android.util.Rational;
@@ -172,7 +173,7 @@ public class FocusView extends View implements FocusIndicator {
                 return false;
             }
             int gestureOri = V6GestureRecognizer.getInstance(FocusView.this.mActivity).getGestureOrientation();
-            if ((gestureOri != 200 || (FocusView.this.mRotation / 90) % 2 != 0) && (gestureOri != 100 || (FocusView.this.mRotation / 90) % 2 == 0)) {
+            if ((gestureOri != Callback.DEFAULT_DRAG_ANIMATION_DURATION || (FocusView.this.mRotation / 90) % 2 != 0) && (gestureOri != 100 || (FocusView.this.mRotation / 90) % 2 == 0)) {
                 return false;
             }
             int newScrollY = FocusView.this.mScrollDistanceY;

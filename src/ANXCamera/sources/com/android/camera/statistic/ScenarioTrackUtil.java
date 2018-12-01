@@ -2,6 +2,7 @@ package com.android.camera.statistic;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import com.android.camera.log.Log;
 import com.android.camera.statistic.E2EScenarioPerfTracerInterface.E2EScenario;
 import com.android.camera.statistic.E2EScenarioPerfTracerInterface.E2EScenarioPayload;
@@ -126,7 +127,7 @@ public class ScenarioTrackUtil {
             E2EScenarioSettings scenarioSettings = E2EScenarioPerfTracerInterface.createE2EScenarioSettings();
             if (scenarioSettings != null) {
                 scenarioSettings.setStatisticsMode(3);
-                scenarioSettings.setHistoryLimitPerDay(200);
+                scenarioSettings.setHistoryLimitPerDay(Callback.DEFAULT_DRAG_ANIMATION_DURATION);
             }
             if (payLoadMap != null) {
                 E2EScenarioPayload payload = E2EScenarioPerfTracerInterface.createE2EScenarioPayload();

@@ -20,7 +20,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.util.Range;
@@ -3338,7 +3337,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
     }
 
     private int parseAiSceneResult(CaptureResult captureResult) {
-        int scene = ExploreByTouchHelper.INVALID_ID;
+        int scene = Integer.MIN_VALUE;
         Face[] faces = (Face[]) captureResult.get(CaptureResult.STATISTICS_FACES);
         if (faces != null && faces.length > 0) {
             for (Face face : faces) {
@@ -3355,7 +3354,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
         }
         int sceneResult = CaptureResultParser.getAsdDetectedModes(captureResult);
         if (faceSceneFiltering(scene)) {
-            if (scene != ExploreByTouchHelper.INVALID_ID && sceneResult != 27) {
+            if (scene != Integer.MIN_VALUE && sceneResult != 27) {
                 this.mParsedAiScene = scene;
             } else if (sceneResult < 0) {
                 Log.e(TAG, "parseAiSceneResult: parse a error result: " + sceneResult);

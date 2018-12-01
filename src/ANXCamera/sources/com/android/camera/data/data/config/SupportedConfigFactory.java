@@ -1,5 +1,6 @@
 package com.android.camera.data.data.config;
 
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import com.android.camera.CameraAppImpl;
 import com.android.camera.CameraSettings;
 import com.android.camera.Device;
@@ -95,7 +96,7 @@ public class SupportedConfigFactory {
                     supports.add(Integer.valueOf(201));
                 }
                 if (dataItemConfig.supportBokeh()) {
-                    supports.add(Integer.valueOf(200));
+                    supports.add(Integer.valueOf(Callback.DEFAULT_DRAG_ANIMATION_DURATION));
                 }
                 supports.add(Integer.valueOf(196));
                 supports.add(Integer.valueOf(197));
@@ -124,7 +125,7 @@ public class SupportedConfigFactory {
                     supports.add(Integer.valueOf(201));
                 }
                 if (dataItemConfig.supportBokeh()) {
-                    supports.add(Integer.valueOf(200));
+                    supports.add(Integer.valueOf(Callback.DEFAULT_DRAG_ANIMATION_DURATION));
                 }
                 supports.add(Integer.valueOf(196));
                 supports.add(Integer.valueOf(197));

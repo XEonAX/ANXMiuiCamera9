@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Vibrator;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.ViewConfiguration;
 import com.android.camera.ProximitySensorLock;
 import com.android.camera.Util;
@@ -33,7 +34,7 @@ public class SnapTrigger implements SnapStatusListener {
             if (SnapTrigger.this.mHandler == null || !SnapTrigger.this.mCameraOpened) {
                 Log.d(SnapTrigger.TAG, "wait camera");
             } else {
-                SnapTrigger.this.mHandler.postDelayed(SnapTrigger.this.mSnapRunnable, (long) (SnapTrigger.this.mCamera.isCamcorder() ? 100 : 200));
+                SnapTrigger.this.mHandler.postDelayed(SnapTrigger.this.mSnapRunnable, (long) (SnapTrigger.this.mCamera.isCamcorder() ? 100 : Callback.DEFAULT_DRAG_ANIMATION_DURATION));
             }
         }
     };

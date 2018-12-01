@@ -3,7 +3,6 @@ package com.android.camera.ui;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Rect;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -258,7 +257,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
             params = new LayoutParams(-1, -1);
         }
         addViewInLayout(child, viewPos, params, true);
-        child.measure(MeasureSpec.makeMeasureSpec(getWidth(), ExploreByTouchHelper.INVALID_ID), MeasureSpec.makeMeasureSpec(getHeight(), ExploreByTouchHelper.INVALID_ID));
+        child.measure(MeasureSpec.makeMeasureSpec(getWidth(), Integer.MIN_VALUE), MeasureSpec.makeMeasureSpec(getHeight(), Integer.MIN_VALUE));
     }
 
     /* JADX WARNING: Missing block: B:25:0x0070, code:

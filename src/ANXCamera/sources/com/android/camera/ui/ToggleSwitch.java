@@ -14,7 +14,6 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.Checkable;
@@ -149,10 +148,10 @@ public class ToggleSwitch extends CompoundButton implements Checkable {
         int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
         int width = (((dp2px(54.0f) + this.mTextOnWidth) + this.mTextOffWidth) + getPaddingLeft()) + getPaddingRight();
         int height = (dp2px(28.0f) + getPaddingTop()) + getPaddingBottom();
-        if (widthSpecMode != ExploreByTouchHelper.INVALID_ID) {
+        if (widthSpecMode != Integer.MIN_VALUE) {
             width = Math.max(width, widthSpecSize);
         }
-        if (heightSpecMode != ExploreByTouchHelper.INVALID_ID) {
+        if (heightSpecMode != Integer.MIN_VALUE) {
             height = Math.max(height, heightSpecSize);
         }
         setMeasuredDimension(width, height);

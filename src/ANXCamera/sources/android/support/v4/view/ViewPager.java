@@ -19,7 +19,6 @@ import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
 import android.support.v4.widget.EdgeEffectCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.FocusFinder;
@@ -1633,8 +1632,8 @@ public class ViewPager extends ViewGroup {
                 if (lp != null && lp.isDecor) {
                     int hgrav = lp.gravity & 7;
                     int vgrav = lp.gravity & 112;
-                    int widthMode = ExploreByTouchHelper.INVALID_ID;
-                    int heightMode = ExploreByTouchHelper.INVALID_ID;
+                    int widthMode = Integer.MIN_VALUE;
+                    int heightMode = Integer.MIN_VALUE;
                     boolean consumeVertical = vgrav == 48 || vgrav == 80;
                     boolean consumeHorizontal = hgrav == 3 || hgrav == 5;
                     if (consumeVertical) {

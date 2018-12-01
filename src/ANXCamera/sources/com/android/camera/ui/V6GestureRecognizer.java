@@ -3,6 +3,7 @@ package com.android.camera.ui;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -57,7 +58,7 @@ public class V6GestureRecognizer {
                         Log.v("CameraGestureRecognizer", "mGesture=" + V6GestureRecognizer.this.mGesture + " orientation=" + (Math.abs(point.x) > Math.abs(point.y) ? "h" : "v") + " dx=" + point.x + " dy=" + point.y);
                         if (V6GestureRecognizer.this.MIN_DETECT_DISTANCE <= (point.x * point.x) + (point.y * point.y)) {
                             V6GestureRecognizer v6GestureRecognizer = V6GestureRecognizer.this;
-                            v6GestureRecognizer.mGesture = (Math.abs(point.x) > Math.abs(point.y) ? 100 : 200) + v6GestureRecognizer.mGesture;
+                            v6GestureRecognizer.mGesture = (Math.abs(point.x) > Math.abs(point.y) ? 100 : Callback.DEFAULT_DRAG_ANIMATION_DURATION) + v6GestureRecognizer.mGesture;
                         }
                     }
                     Log.v("GESTURE_", "CameraGestureDetector ACTION_MOVE end mGesture=" + V6GestureRecognizer.this.mGesture);
@@ -194,7 +195,7 @@ public class V6GestureRecognizer {
             v6GestureRecognizer = V6GestureRecognizer.this;
             v6GestureRecognizer.mDistanceX = v6GestureRecognizer.mDistanceX + (-distanceX);
             if (V6GestureRecognizer.this.mScrollDirection == 0 && ((float) V6GestureRecognizer.this.MIN_DETECT_DISTANCE) <= (V6GestureRecognizer.this.mDistanceX * V6GestureRecognizer.this.mDistanceX) + (V6GestureRecognizer.this.mDistanceY * V6GestureRecognizer.this.mDistanceY)) {
-                V6GestureRecognizer.this.mScrollDirection = Math.abs(V6GestureRecognizer.this.mDistanceX) > Math.abs(V6GestureRecognizer.this.mDistanceY) ? 100 : 200;
+                V6GestureRecognizer.this.mScrollDirection = Math.abs(V6GestureRecognizer.this.mDistanceX) > Math.abs(V6GestureRecognizer.this.mDistanceY) ? 100 : Callback.DEFAULT_DRAG_ANIMATION_DURATION;
             }
             if (V6GestureRecognizer.this.mScrollDirection != 100) {
                 return false;

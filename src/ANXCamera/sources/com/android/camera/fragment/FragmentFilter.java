@@ -22,6 +22,7 @@ import android.support.v7.widget.RecyclerView.ItemDecoration;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -430,7 +431,7 @@ public class FragmentFilter extends BaseFragment implements OnClickListener {
     }
 
     public int getFragmentInto() {
-        return 250;
+        return Callback.DEFAULT_SWIPE_ANIMATION_DURATION;
     }
 
     public void provideAnimateElement(int newMode, List<Completable> animateInElements, boolean timeOut) {

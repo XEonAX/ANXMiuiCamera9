@@ -1,6 +1,7 @@
 package com.google.protobuf.nano;
 
 import android.support.v4.media.TransportMediator;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -124,8 +125,8 @@ public final class MessageNanoPrinter {
     }
 
     private static String sanitizeString(String str) {
-        if (!str.startsWith("http") && str.length() > 200) {
-            str = String.valueOf(str.substring(0, 200)).concat("[...]");
+        if (!str.startsWith("http") && str.length() > Callback.DEFAULT_DRAG_ANIMATION_DURATION) {
+            str = String.valueOf(str.substring(0, Callback.DEFAULT_DRAG_ANIMATION_DURATION)).concat("[...]");
         }
         return escapeString(str);
     }

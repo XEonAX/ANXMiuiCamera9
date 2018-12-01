@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.util.AttributeSet;
 import com.android.camera.ActivityBase;
 import com.android.camera.CameraAppImpl;
@@ -212,7 +213,7 @@ public class FaceView extends FrameView {
             this.mRectState = 4;
             this.mHandler.removeMessages(1);
             if (this.mNormalRectPaint.getAlpha() > 0) {
-                setFaceRectVisible(8, 200);
+                setFaceRectVisible(8, Callback.DEFAULT_DRAG_ANIMATION_DURATION);
             }
         }
     }

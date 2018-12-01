@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.recyclerview.R;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.text.SpannableStringBuilder;
 import android.text.style.TextAppearanceSpan;
 import android.view.MotionEvent;
@@ -162,8 +163,8 @@ public class FragmentMainContent extends BaseFragment implements ModeProtocol$Ma
                 SlideOutOnSubscribe.directSetResult(this.mTopCover, 48);
                 SlideOutOnSubscribe.directSetResult(this.mBottomCover, 80);
             } else {
-                animateInElements.add(Completable.create(new SlideOutOnSubscribe(this.mTopCover, 48).setDurationTime(200)));
-                animateInElements.add(Completable.create(new SlideOutOnSubscribe(this.mBottomCover, 80).setDurationTime(200)));
+                animateInElements.add(Completable.create(new SlideOutOnSubscribe(this.mTopCover, 48).setDurationTime(Callback.DEFAULT_DRAG_ANIMATION_DURATION)));
+                animateInElements.add(Completable.create(new SlideOutOnSubscribe(this.mBottomCover, 80).setDurationTime(Callback.DEFAULT_DRAG_ANIMATION_DURATION)));
             }
         }
     }

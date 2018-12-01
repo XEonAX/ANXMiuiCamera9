@@ -1,6 +1,7 @@
 package com.android.camera.network.download;
 
 import android.os.AsyncTask;
+import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import com.android.camera.log.Log;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -312,7 +313,7 @@ class DownloadTask {
     }
 
     private static int translateResponseCode(int code) {
-        if (code != 200) {
+        if (code != Callback.DEFAULT_DRAG_ANIMATION_DURATION) {
             Log.d("DownloadTask", String.format("processing http code %d", new Object[]{Integer.valueOf(code)}));
             int cat = code / 100;
             if (cat == 3) {

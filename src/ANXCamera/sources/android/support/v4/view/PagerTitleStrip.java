@@ -8,7 +8,6 @@ import android.os.Build.VERSION;
 import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.view.View;
@@ -259,8 +258,8 @@ public class PagerTitleStrip extends ViewGroup implements Decor {
             text = adapter.getPageTitle(currentItem + 1);
         }
         this.mNextText.setText(text);
-        int childWidthSpec = MeasureSpec.makeMeasureSpec(Math.max(0, (int) (((float) ((getWidth() - getPaddingLeft()) - getPaddingRight())) * 0.8f)), ExploreByTouchHelper.INVALID_ID);
-        int childHeightSpec = MeasureSpec.makeMeasureSpec(Math.max(0, (getHeight() - getPaddingTop()) - getPaddingBottom()), ExploreByTouchHelper.INVALID_ID);
+        int childWidthSpec = MeasureSpec.makeMeasureSpec(Math.max(0, (int) (((float) ((getWidth() - getPaddingLeft()) - getPaddingRight())) * 0.8f)), Integer.MIN_VALUE);
+        int childHeightSpec = MeasureSpec.makeMeasureSpec(Math.max(0, (getHeight() - getPaddingTop()) - getPaddingBottom()), Integer.MIN_VALUE);
         this.mPrevText.measure(childWidthSpec, childHeightSpec);
         this.mCurrText.measure(childWidthSpec, childHeightSpec);
         this.mNextText.measure(childWidthSpec, childHeightSpec);
@@ -369,8 +368,8 @@ public class PagerTitleStrip extends ViewGroup implements Decor {
             int minHeight = getMinHeight();
             int padding = getPaddingTop() + getPaddingBottom();
             childHeight = heightSize - padding;
-            int childWidthSpec = MeasureSpec.makeMeasureSpec(Math.max(0, (int) (((float) widthSize) * 0.8f)), ExploreByTouchHelper.INVALID_ID);
-            int childHeightSpec = MeasureSpec.makeMeasureSpec(Math.min(0, childHeight), ExploreByTouchHelper.INVALID_ID);
+            int childWidthSpec = MeasureSpec.makeMeasureSpec(Math.max(0, (int) (((float) widthSize) * 0.8f)), Integer.MIN_VALUE);
+            int childHeightSpec = MeasureSpec.makeMeasureSpec(Math.min(0, childHeight), Integer.MIN_VALUE);
             this.mPrevText.measure(childWidthSpec, childHeightSpec);
             this.mCurrText.measure(childWidthSpec, childHeightSpec);
             this.mNextText.measure(childWidthSpec, childHeightSpec);

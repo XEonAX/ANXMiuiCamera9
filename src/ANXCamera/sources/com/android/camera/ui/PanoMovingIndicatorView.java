@@ -7,7 +7,6 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.View;
@@ -89,7 +88,7 @@ public class PanoMovingIndicatorView extends View {
 
     public void onDraw(Canvas canvas) {
         Log.v(TAG, "onDraw mPointGap=" + this.mPointGap);
-        if (this.mCurrentFramePos.x != ExploreByTouchHelper.INVALID_ID && this.mCurrentFramePos.y != ExploreByTouchHelper.INVALID_ID) {
+        if (this.mCurrentFramePos.x != Integer.MIN_VALUE && this.mCurrentFramePos.y != Integer.MIN_VALUE) {
             int narrowStartX = this.mCurrentFramePos.x;
             int margin = this.mArrowMargin;
             Drawable drawable = this.mMovingDirectionIc;
@@ -142,7 +141,7 @@ public class PanoMovingIndicatorView extends View {
         this.mFast = false;
         this.mFilterMoveSpeed = 4096;
         this.mStateChangeTrigger.setCurrentState(Boolean.valueOf(this.mFast));
-        this.mCurrentFramePos.set(ExploreByTouchHelper.INVALID_ID, ExploreByTouchHelper.INVALID_ID);
+        this.mCurrentFramePos.set(Integer.MIN_VALUE, Integer.MIN_VALUE);
         this.mPointGap = -1.0f;
     }
 
