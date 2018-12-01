@@ -378,4 +378,6 @@
     <bool name="support_lens_dirty_detect">true</bool>
     <!-- whether support dynamic light spot in portrait module-->
     <bool name="support_camera_dynamic_light_spot">true</bool>
+    <!-- AEonAX - Notch Support - Resurrection Remix doesn't so 0 -->
+    <integer name="ro.miui.notch">0</integer>
 </features>

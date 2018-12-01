@@ -5355,7 +5355,7 @@
     .line 229
     const-string/jumbo v3, "ro.miui.notch"
 
-    invoke-static {v3, v5}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
+    invoke-static {v3, v5}, Lmiui/util/FeatureParser;->getInteger(Ljava/lang/String;I)I
 
     move-result v3
 

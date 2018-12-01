@@ -153,7 +153,7 @@ public class Util {
 
     public static void initialize(Context context) {
         boolean z;
-        if (SystemProperties.getInt("ro.miui.notch", 0) == 1) {
+        if (FeatureParser.getInteger("ro.miui.notch", 0) == 1) {
             z = true;
         } else {
             z = false;
