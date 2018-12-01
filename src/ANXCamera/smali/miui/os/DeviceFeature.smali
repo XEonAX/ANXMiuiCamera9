@@ -61,50 +61,38 @@
     .line 25
     sput-boolean v0, Lmiui/os/DeviceFeature;->SUPPORT_DISPLAYFEATURE_HIDL:Z
 
-    .line 31
-    invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
-
-    move-result-object v0
-
     .line 32
-    const v3, 0x110a0020
+    const-string/jumbo v3, "SUPPORT_NIGHT_LIGHT"
 
     .line 31
-    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
+    invoke-static {v3, v2}, Lmiui/util/FeatureParser;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v0
 
     sput-boolean v0, Lmiui/os/DeviceFeature;->SUPPORT_NIGHT_LIGHT:Z
 
-    .line 37
-    invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
-
-    move-result-object v0
-
     .line 38
-    const v3, 0x110a0021
+    const-string/jumbo v3, "SUPPORT_NIGHT_LIGHT_ADJ"
 
     .line 37
-    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
+    invoke-static {v3, v2}, Lmiui/util/FeatureParser;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v0
 
     sput-boolean v0, Lmiui/os/DeviceFeature;->SUPPORT_NIGHT_LIGHT_ADJ:Z
 
-    .line 41
-    invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
-
-    move-result-object v0
-
     .line 42
-    const v3, 0x1107001a
+    const-string/jumbo v3, "SUPPORT_NIGHT_LIGHT"
+    const v2, 0x0
 
     .line 41
-    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getInteger(I)I
+    invoke-static {v3, v2}, Lmiui/util/FeatureParser;->getInteger(Ljava/lang/String;I)I
 
     move-result v0
 
     sput v0, Lmiui/os/DeviceFeature;->BACKLIGHT_BIT:I
+
+    const/4 v2, 0x0
 
     .line 48
     const-string/jumbo v0, "sys.persist_screen_effect"
