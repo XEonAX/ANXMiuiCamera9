@@ -1,6 +1,5 @@
 package io.reactivex.internal.queue;
 
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import io.reactivex.annotations.Nullable;
 import io.reactivex.internal.fuseable.SimplePlainQueue;
 import io.reactivex.internal.util.Pow2;
@@ -9,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public final class SpscLinkedArrayQueue<T> implements SimplePlainQueue<T> {
     private static final Object HAS_NEXT = new Object();
-    static final int MAX_LOOK_AHEAD_STEP = Integer.getInteger("jctools.spsc.max.lookahead.step", STMobileHumanActionNative.ST_MOBILE_HAND_PALM).intValue();
+    static final int MAX_LOOK_AHEAD_STEP = Integer.getInteger("jctools.spsc.max.lookahead.step", 4096).intValue();
     AtomicReferenceArray<Object> consumerBuffer;
     final AtomicLong consumerIndex = new AtomicLong();
     final int consumerMask;

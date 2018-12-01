@@ -1,7 +1,7 @@
 package com.android.camera.ui;
 
 import android.os.SystemProperties;
-import android.support.v7.recyclerview.R;
+import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
 import com.android.camera.Util;
@@ -190,7 +190,7 @@ public class EdgeGestureDetector {
         int action = event.getAction();
         int NP = this.mPointers.size();
         if (action == 0 || (action & 255) == 5) {
-            index = (65280 & action) >> 8;
+            index = (MotionEventCompat.ACTION_POINTER_INDEX_MASK & action) >> 8;
             if (action == 0) {
                 for (int p = 0; p < NP; p++) {
                     ((PointerState) this.mPointers.get(p)).mCurDown = false;
@@ -251,7 +251,7 @@ public class EdgeGestureDetector {
             }
         }
         if (action == 1 || action == 3 || (action & 255) == 6) {
-            index = (65280 & action) >> 8;
+            index = (MotionEventCompat.ACTION_POINTER_INDEX_MASK & action) >> 8;
             id = event.getPointerId(index);
             if (id < this.mPointers.size()) {
                 ps = (PointerState) this.mPointers.get(id);
@@ -289,7 +289,7 @@ public class EdgeGestureDetector {
                 prefix = "OUTSIDE";
                 break;
             case 5:
-                if (index != ((65280 & action) >> 8)) {
+                if (index != ((MotionEventCompat.ACTION_POINTER_INDEX_MASK & action) >> 8)) {
                     prefix = "MOVE";
                     break;
                 } else {
@@ -297,7 +297,7 @@ public class EdgeGestureDetector {
                     break;
                 }
             case 6:
-                if (index != ((65280 & action) >> 8)) {
+                if (index != ((MotionEventCompat.ACTION_POINTER_INDEX_MASK & action) >> 8)) {
                     prefix = "MOVE";
                     break;
                 } else {
@@ -310,10 +310,10 @@ public class EdgeGestureDetector {
             case 8:
                 prefix = "SCROLL";
                 break;
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case 9:
                 prefix = "HOVER ENTER";
                 break;
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 prefix = "HOVER EXIT";
                 break;
             default:

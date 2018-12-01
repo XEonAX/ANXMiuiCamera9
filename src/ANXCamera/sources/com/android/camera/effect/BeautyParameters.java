@@ -1,6 +1,5 @@
 package com.android.camera.effect;
 
-import android.support.v7.recyclerview.R;
 import com.android.camera.CameraSettings;
 import com.android.camera.Device;
 import com.android.camera.Util;
@@ -219,11 +218,11 @@ public class BeautyParameters {
                 return "pref_beautify_slim_face_ratio_key";
             case 8:
                 return "pref_beautify_slim_nose_ratio_key";
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case 9:
                 return "pref_beautify_smile_ratio_key";
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 return "pref_beautify_skin_smooth_ratio_key";
-            case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+            case 11:
                 return "pref_beautify_skin_color_ratio_key";
             default:
                 return "";

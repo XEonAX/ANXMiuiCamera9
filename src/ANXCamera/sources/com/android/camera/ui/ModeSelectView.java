@@ -14,7 +14,6 @@ import com.android.camera.Util;
 import com.android.camera.animation.type.TranslateXOnSubscribe;
 import com.android.camera.data.data.ComponentDataItem;
 import com.android.camera.data.data.global.ComponentModuleList;
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.Completable;
 import java.util.List;
 
@@ -80,7 +79,7 @@ public class ModeSelectView extends LinearLayout implements OnClickListener {
         selectedTextView.setActivated(true);
         if (Util.isAccessible()) {
             selectedTextView.setContentDescription(selectedTextView.getText().toString() + getContext().getString(R.string.accessibility_selected));
-            selectedTextView.sendAccessibilityEvent(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+            selectedTextView.sendAccessibilityEvent(128);
         }
         this.mLastActivateTextView = selectedTextView;
         int leftWidth = 0;

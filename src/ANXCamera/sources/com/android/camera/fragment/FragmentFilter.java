@@ -43,7 +43,6 @@ import com.android.camera.protocol.ModeProtocol$FilterProtocol;
 import com.android.camera.protocol.ModeProtocol$ModeCoordinator;
 import com.android.camera.protocol.ModeProtocol$TopAlert;
 import com.android.camera.statistic.CameraStatUtil;
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.Completable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -160,7 +159,7 @@ public class FragmentFilter extends BaseFragment implements OnClickListener {
                     this.itemView.postDelayed(new Runnable() {
                         public void run() {
                             if (FragmentFilter.this.isAdded()) {
-                                EffectStillItemHolder.this.itemView.sendAccessibilityEvent(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                                EffectStillItemHolder.this.itemView.sendAccessibilityEvent(128);
                             }
                         }
                     }, 100);

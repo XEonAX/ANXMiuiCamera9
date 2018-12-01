@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.support.v4.internal.view.SupportMenu;
 import android.util.SparseIntArray;
 import com.android.camera.log.Log;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -169,7 +169,7 @@ public class ExifInterface {
     }
 
     public static int defineTag(int ifdId, short tagId) {
-        return (65535 & tagId) | (ifdId << 16);
+        return (SupportMenu.USER_MASK & tagId) | (ifdId << 16);
     }
 
     public static short getTrueTagKey(int tag) {
@@ -341,9 +341,9 @@ public class ExifInterface {
 
     private void initTagInfo() {
         int ifdFlags = getFlagsFromAllowedIfds(new int[]{0, 1}) << 24;
-        this.mTagInfo.put(TAG_MAKE, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_IMAGE_WIDTH, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 1);
-        this.mTagInfo.put(TAG_IMAGE_LENGTH, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 1);
+        this.mTagInfo.put(TAG_MAKE, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_IMAGE_WIDTH, (262144 | ifdFlags) | 1);
+        this.mTagInfo.put(TAG_IMAGE_LENGTH, (262144 | ifdFlags) | 1);
         this.mTagInfo.put(TAG_BITS_PER_SAMPLE, (196608 | ifdFlags) | 3);
         this.mTagInfo.put(TAG_COMPRESSION, (196608 | ifdFlags) | 1);
         this.mTagInfo.put(TAG_PHOTOMETRIC_INTERPRETATION, (196608 | ifdFlags) | 1);
@@ -355,47 +355,47 @@ public class ExifInterface {
         this.mTagInfo.put(TAG_X_RESOLUTION, (327680 | ifdFlags) | 1);
         this.mTagInfo.put(TAG_Y_RESOLUTION, (327680 | ifdFlags) | 1);
         this.mTagInfo.put(TAG_RESOLUTION_UNIT, (196608 | ifdFlags) | 1);
-        this.mTagInfo.put(TAG_STRIP_OFFSETS, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_ROWS_PER_STRIP, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 1);
-        this.mTagInfo.put(TAG_STRIP_BYTE_COUNTS, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_STRIP_OFFSETS, (262144 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_ROWS_PER_STRIP, (262144 | ifdFlags) | 1);
+        this.mTagInfo.put(TAG_STRIP_BYTE_COUNTS, (262144 | ifdFlags) | 0);
         this.mTagInfo.put(TAG_TRANSFER_FUNCTION, (196608 | ifdFlags) | 768);
         this.mTagInfo.put(TAG_WHITE_POINT, (327680 | ifdFlags) | 2);
         this.mTagInfo.put(TAG_PRIMARY_CHROMATICITIES, (327680 | ifdFlags) | 6);
         this.mTagInfo.put(TAG_Y_CB_CR_COEFFICIENTS, (327680 | ifdFlags) | 3);
         this.mTagInfo.put(TAG_REFERENCE_BLACK_WHITE, (327680 | ifdFlags) | 6);
-        this.mTagInfo.put(TAG_DATE_TIME, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 20);
-        this.mTagInfo.put(TAG_IMAGE_DESCRIPTION, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_MAKE, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_MODEL, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_SOFTWARE, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_ARTIST, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_COPYRIGHT, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | ifdFlags) | 0);
-        this.mTagInfo.put(TAG_EXIF_IFD, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_IFD, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags) | 1);
+        this.mTagInfo.put(TAG_DATE_TIME, (131072 | ifdFlags) | 20);
+        this.mTagInfo.put(TAG_IMAGE_DESCRIPTION, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_MAKE, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_MODEL, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_SOFTWARE, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_ARTIST, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_COPYRIGHT, (131072 | ifdFlags) | 0);
+        this.mTagInfo.put(TAG_EXIF_IFD, (262144 | ifdFlags) | 1);
+        this.mTagInfo.put(TAG_GPS_IFD, (262144 | ifdFlags) | 1);
         int ifdFlags1 = getFlagsFromAllowedIfds(new int[]{1}) << 24;
-        this.mTagInfo.put(TAG_JPEG_INTERCHANGE_FORMAT, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags1) | 1);
-        this.mTagInfo.put(TAG_JPEG_INTERCHANGE_FORMAT_LENGTH, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | ifdFlags1) | 1);
+        this.mTagInfo.put(TAG_JPEG_INTERCHANGE_FORMAT, (262144 | ifdFlags1) | 1);
+        this.mTagInfo.put(TAG_JPEG_INTERCHANGE_FORMAT_LENGTH, (262144 | ifdFlags1) | 1);
         int exifFlags = getFlagsFromAllowedIfds(new int[]{2}) << 24;
         this.mTagInfo.put(TAG_EXIF_VERSION, (458752 | exifFlags) | 4);
         this.mTagInfo.put(TAG_FLASHPIX_VERSION, (458752 | exifFlags) | 4);
         this.mTagInfo.put(TAG_COLOR_SPACE, (196608 | exifFlags) | 1);
         this.mTagInfo.put(TAG_COMPONENTS_CONFIGURATION, (458752 | exifFlags) | 4);
         this.mTagInfo.put(TAG_COMPRESSED_BITS_PER_PIXEL, (327680 | exifFlags) | 1);
-        this.mTagInfo.put(TAG_PIXEL_X_DIMENSION, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | exifFlags) | 1);
-        this.mTagInfo.put(TAG_PIXEL_Y_DIMENSION, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | exifFlags) | 1);
+        this.mTagInfo.put(TAG_PIXEL_X_DIMENSION, (262144 | exifFlags) | 1);
+        this.mTagInfo.put(TAG_PIXEL_Y_DIMENSION, (262144 | exifFlags) | 1);
         this.mTagInfo.put(TAG_MAKER_NOTE, (458752 | exifFlags) | 0);
         this.mTagInfo.put(TAG_USER_COMMENT, (458752 | exifFlags) | 0);
-        this.mTagInfo.put(TAG_RELATED_SOUND_FILE, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 13);
-        this.mTagInfo.put(TAG_DATE_TIME_ORIGINAL, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 20);
-        this.mTagInfo.put(TAG_DATE_TIME_DIGITIZED, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 20);
-        this.mTagInfo.put(TAG_SUB_SEC_TIME, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 0);
-        this.mTagInfo.put(TAG_SUB_SEC_TIME_ORIGINAL, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 0);
-        this.mTagInfo.put(TAG_SUB_SEC_TIME_DIGITIZED, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 0);
-        this.mTagInfo.put(TAG_IMAGE_UNIQUE_ID, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 33);
+        this.mTagInfo.put(TAG_RELATED_SOUND_FILE, (131072 | exifFlags) | 13);
+        this.mTagInfo.put(TAG_DATE_TIME_ORIGINAL, (131072 | exifFlags) | 20);
+        this.mTagInfo.put(TAG_DATE_TIME_DIGITIZED, (131072 | exifFlags) | 20);
+        this.mTagInfo.put(TAG_SUB_SEC_TIME, (131072 | exifFlags) | 0);
+        this.mTagInfo.put(TAG_SUB_SEC_TIME_ORIGINAL, (131072 | exifFlags) | 0);
+        this.mTagInfo.put(TAG_SUB_SEC_TIME_DIGITIZED, (131072 | exifFlags) | 0);
+        this.mTagInfo.put(TAG_IMAGE_UNIQUE_ID, (131072 | exifFlags) | 33);
         this.mTagInfo.put(TAG_EXPOSURE_TIME, (327680 | exifFlags) | 1);
         this.mTagInfo.put(TAG_F_NUMBER, (327680 | exifFlags) | 1);
         this.mTagInfo.put(TAG_EXPOSURE_PROGRAM, (196608 | exifFlags) | 1);
-        this.mTagInfo.put(TAG_SPECTRAL_SENSITIVITY, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 0);
+        this.mTagInfo.put(TAG_SPECTRAL_SENSITIVITY, (131072 | exifFlags) | 0);
         this.mTagInfo.put(TAG_ISO_SPEED_RATINGS, (196608 | exifFlags) | 0);
         this.mTagInfo.put(TAG_OECF, (458752 | exifFlags) | 0);
         this.mTagInfo.put(TAG_SHUTTER_SPEED_VALUE, (655360 | exifFlags) | 1);
@@ -432,43 +432,43 @@ public class ExifInterface {
         this.mTagInfo.put(TAG_SHARPNESS, (196608 | exifFlags) | 1);
         this.mTagInfo.put(TAG_DEVICE_SETTING_DESCRIPTION, (458752 | exifFlags) | 0);
         this.mTagInfo.put(TAG_SUBJECT_DISTANCE_RANGE, (196608 | exifFlags) | 1);
-        this.mTagInfo.put(TAG_INTEROPERABILITY_IFD, (STMobileHumanActionNative.ST_MOBILE_HAND_FINGER_HEART | exifFlags) | 1);
-        this.mTagInfo.put(TAG_ALGORITHM_COMMENT, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 0);
+        this.mTagInfo.put(TAG_INTEROPERABILITY_IFD, (262144 | exifFlags) | 1);
+        this.mTagInfo.put(TAG_ALGORITHM_COMMENT, (131072 | exifFlags) | 0);
         this.mTagInfo.put(TAG_DEPTH_MAP_BLUR_LEVEL, (196608 | exifFlags) | 1);
-        this.mTagInfo.put(TAG_DEPTH_MAP_FOCUS_POINT, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | exifFlags) | 0);
+        this.mTagInfo.put(TAG_DEPTH_MAP_FOCUS_POINT, (131072 | exifFlags) | 0);
         this.mTagInfo.put(TAG_DEPTH_MAP_DULCAMERA_WATER_MARK, (65536 | exifFlags) | 0);
         this.mTagInfo.put(TAG_DEPTH_MAP_TIME_WATER_MARK, (65536 | exifFlags) | 0);
         int gpsFlags = getFlagsFromAllowedIfds(new int[]{4}) << 24;
         this.mTagInfo.put(TAG_GPS_VERSION_ID, (65536 | gpsFlags) | 4);
-        this.mTagInfo.put(TAG_GPS_LATITUDE_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
-        this.mTagInfo.put(TAG_GPS_LONGITUDE_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_LATITUDE_REF, (131072 | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_LONGITUDE_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_LATITUDE, (655360 | gpsFlags) | 3);
         this.mTagInfo.put(TAG_GPS_LONGITUDE, (655360 | gpsFlags) | 3);
         this.mTagInfo.put(TAG_GPS_ALTITUDE_REF, (65536 | gpsFlags) | 1);
         this.mTagInfo.put(TAG_GPS_ALTITUDE, (327680 | gpsFlags) | 1);
         this.mTagInfo.put(TAG_GPS_TIME_STAMP, (327680 | gpsFlags) | 3);
-        this.mTagInfo.put(TAG_GPS_SATTELLITES, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 0);
-        this.mTagInfo.put(TAG_GPS_STATUS, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
-        this.mTagInfo.put(TAG_GPS_MEASURE_MODE, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_SATTELLITES, (131072 | gpsFlags) | 0);
+        this.mTagInfo.put(TAG_GPS_STATUS, (131072 | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_MEASURE_MODE, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_DOP, (327680 | gpsFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_SPEED_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_SPEED_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_SPEED, (327680 | gpsFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_TRACK_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_TRACK_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_TRACK, (327680 | gpsFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_IMG_DIRECTION_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_IMG_DIRECTION_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_IMG_DIRECTION, (327680 | gpsFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_MAP_DATUM, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 0);
-        this.mTagInfo.put(TAG_GPS_DEST_LATITUDE_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_MAP_DATUM, (131072 | gpsFlags) | 0);
+        this.mTagInfo.put(TAG_GPS_DEST_LATITUDE_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_DEST_LATITUDE, (327680 | gpsFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_DEST_BEARING_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_DEST_BEARING_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_DEST_BEARING, (327680 | gpsFlags) | 1);
-        this.mTagInfo.put(TAG_GPS_DEST_DISTANCE_REF, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 2);
+        this.mTagInfo.put(TAG_GPS_DEST_DISTANCE_REF, (131072 | gpsFlags) | 2);
         this.mTagInfo.put(TAG_GPS_DEST_DISTANCE, (327680 | gpsFlags) | 1);
         this.mTagInfo.put(TAG_GPS_PROCESSING_METHOD, (458752 | gpsFlags) | 0);
         this.mTagInfo.put(TAG_GPS_AREA_INFORMATION, (458752 | gpsFlags) | 0);
-        this.mTagInfo.put(TAG_GPS_DATE_STAMP, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | gpsFlags) | 11);
+        this.mTagInfo.put(TAG_GPS_DATE_STAMP, (131072 | gpsFlags) | 11);
         this.mTagInfo.put(TAG_GPS_DIFFERENTIAL, (196608 | gpsFlags) | 11);
-        this.mTagInfo.put(TAG_INTEROPERABILITY_INDEX, (STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE | (getFlagsFromAllowedIfds(new int[]{3}) << 24)) | 0);
+        this.mTagInfo.put(TAG_INTEROPERABILITY_INDEX, (131072 | (getFlagsFromAllowedIfds(new int[]{3}) << 24)) | 0);
     }
 
     protected static int getAllowedIfdFlagsFromInfo(int info) {
@@ -510,6 +510,6 @@ public class ExifInterface {
     }
 
     protected static int getComponentCountFromInfo(int info) {
-        return 65535 & info;
+        return SupportMenu.USER_MASK & info;
     }
 }

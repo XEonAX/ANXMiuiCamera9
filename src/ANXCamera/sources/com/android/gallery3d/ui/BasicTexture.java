@@ -2,7 +2,6 @@ package com.android.gallery3d.ui;
 
 import com.android.camera.effect.draw_mode.DrawBasicTexAttribute;
 import com.android.camera.log.Log;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.util.Locale;
 import java.util.WeakHashMap;
 
@@ -47,7 +46,7 @@ public abstract class BasicTexture implements Texture {
         this.mHeight = height;
         this.mTextureWidth = this.mWidth;
         this.mTextureHeight = this.mHeight;
-        if (this.mTextureWidth > STMobileHumanActionNative.ST_MOBILE_HAND_PALM || this.mTextureHeight > STMobileHumanActionNative.ST_MOBILE_HAND_PALM) {
+        if (this.mTextureWidth > 4096 || this.mTextureHeight > 4096) {
             Log.w("BasicTexture", String.format(Locale.ENGLISH, "texture is too large: %d x %d", new Object[]{Integer.valueOf(this.mTextureWidth), Integer.valueOf(this.mTextureHeight)}), new Exception());
         }
     }

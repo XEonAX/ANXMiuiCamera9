@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v7.recyclerview.R;
@@ -54,8 +55,6 @@ import com.android.camera.ui.CameraSnapView.SnapListener;
 import com.android.camera.ui.EdgeHorizonScrollView;
 import com.android.camera.ui.ModeSelectView;
 import com.android.camera.ui.ModeSelectView.onModeClickedListener;
-import com.sensetime.stmobile.STCommon;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import io.reactivex.Completable;
 import java.util.List;
 import java.util.Locale;
@@ -219,7 +218,7 @@ public class FragmentBottomAction extends BaseFragment implements OnClickListene
             }).start();
             if (Util.isAccessible()) {
                 this.mFilterLayout.setContentDescription(getString(R.string.accessibility_filter_pad_close));
-                this.mFilterLayout.sendAccessibilityEvent(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                this.mFilterLayout.sendAccessibilityEvent(128);
             }
         } else {
             this.mFragmentFilter.delayShowSelected(true);
@@ -525,7 +524,7 @@ public class FragmentBottomAction extends BaseFragment implements OnClickListene
                             }
                             if (Util.isAccessible()) {
                                 this.mEdgeHorizonScrollView.setContentDescription(getString(R.string.accessibility_camera_picker_finish));
-                                this.mEdgeHorizonScrollView.sendAccessibilityEvent(STMobileHumanActionNative.ST_MOBILE_HAND_HOLDUP);
+                                this.mEdgeHorizonScrollView.sendAccessibilityEvent(32768);
                                 break;
                             }
                         }
@@ -709,14 +708,14 @@ public class FragmentBottomAction extends BaseFragment implements OnClickListene
         if (gravity != -1) {
             if (Util.isLayoutRTL(getContext())) {
                 if (gravity == 3) {
-                    gravity = 8388613;
+                    gravity = GravityCompat.END;
                 } else if (gravity == 5) {
                     gravity = 8388611;
                 }
             } else if (gravity == 3) {
                 gravity = 8388611;
             } else if (gravity == 5) {
-                gravity = 8388613;
+                gravity = GravityCompat.END;
             }
             int mode = this.mCurrentMode;
             if (this.mCurrentMode == 169 || this.mCurrentMode == 168 || this.mCurrentMode == 170) {
@@ -737,7 +736,7 @@ public class FragmentBottomAction extends BaseFragment implements OnClickListene
                         break;
                     }
                     break;
-                case 8388613:
+                case GravityCompat.END /*8388613*/:
                     if (position < size - 1) {
                         position++;
                         break;
@@ -921,7 +920,7 @@ public class FragmentBottomAction extends BaseFragment implements OnClickListene
                     cameraAction.onShutterButtonClick(10);
                     if (Util.isAccessible()) {
                         this.mEdgeHorizonScrollView.setContentDescription(getString(R.string.accessibility_camera_shutter_finish));
-                        this.mEdgeHorizonScrollView.sendAccessibilityEvent(STMobileHumanActionNative.ST_MOBILE_HAND_HOLDUP);
+                        this.mEdgeHorizonScrollView.sendAccessibilityEvent(32768);
                     }
                     return;
                 }

@@ -11,6 +11,8 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.support.v4.media.TransportMediator;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -148,9 +150,9 @@ public class ProximitySensorLock implements SensorEventListener {
                 return 4;
             case 4:
                 return 8;
-            case 24:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
                 return 64;
-            case 25:
+            case MotionEventCompat.AXIS_TILT /*25*/:
                 return 32;
             case 26:
                 return 16;
@@ -171,8 +173,8 @@ public class ProximitySensorLock implements SensorEventListener {
             case 85:
             case 86:
             case 87:
-            case 126:
-            case 127:
+            case TransportMediator.KEYCODE_MEDIA_PLAY /*126*/:
+            case TransportMediator.KEYCODE_MEDIA_PAUSE /*127*/:
                 return false;
             default:
                 return true;

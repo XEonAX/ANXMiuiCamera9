@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.os.SystemClock;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -52,7 +53,6 @@ import com.android.camera2.Camera2Proxy;
 import com.android.camera2.Camera2Proxy.CameraPreviewCallback;
 import com.android.camera2.Camera2Proxy.FaceDetectionCallback;
 import com.android.camera2.Camera2Proxy.FocusCallback;
-import com.sensetime.stmobile.STCommon;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -157,28 +157,28 @@ public abstract class VideoBase extends BaseModule implements FaceDetectionCallb
                             break;
                         }
                         break;
-                    case R.styleable.ToggleSwitch_textOff /*9*/:
+                    case 9:
                         VideoBase.this.onPreviewStart();
                         VideoBase.this.mStereoSwitchThread = null;
                         break;
-                    case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                    case 10:
                         VideoBase.this.stopVideoRecording(true, false);
                         VideoBase.this.mOpenCameraFail = true;
                         VideoBase.this.onCameraException();
                         break;
-                    case 17:
+                    case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                         VideoBase.this.mHandler.removeMessages(17);
                         VideoBase.this.mHandler.removeMessages(2);
-                        VideoBase.this.getWindow().addFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                        VideoBase.this.getWindow().addFlags(128);
                         VideoBase.this.mHandler.sendEmptyMessageDelayed(2, (long) VideoBase.this.getScreenDelay());
                         break;
-                    case 22:
+                    case MotionEventCompat.AXIS_GAS /*22*/:
                         if (!VideoBase.this.isSelectingCapturedVideo()) {
                             VideoBase.this.enableCameraControls(true);
                             break;
                         }
                         break;
-                    case 35:
+                    case MotionEventCompat.AXIS_GENERIC_4 /*35*/:
                         VideoBase videoBase = VideoBase.this;
                         boolean z2 = msg.arg1 > 0;
                         if (msg.arg2 <= 0) {
@@ -186,25 +186,25 @@ public abstract class VideoBase extends BaseModule implements FaceDetectionCallb
                         }
                         videoBase.handleUpdateFaceView(z2, z);
                         break;
-                    case 40:
+                    case MotionEventCompat.AXIS_GENERIC_9 /*40*/:
                         if (CameraSettings.isStereoModeOn()) {
                             VideoBase.this.updateTipMessage(6, R.string.dual_camera_use_hint, 2);
                             break;
                         }
                         break;
-                    case 42:
+                    case MotionEventCompat.AXIS_GENERIC_11 /*42*/:
                         VideoBase.this.updateRecordingTime();
                         break;
-                    case 43:
+                    case MotionEventCompat.AXIS_GENERIC_12 /*43*/:
                         VideoBase.this.restoreMusicSound();
                         break;
-                    case 45:
+                    case MotionEventCompat.AXIS_GENERIC_14 /*45*/:
                         VideoBase.this.setActivity(null);
                         break;
-                    case 46:
+                    case MotionEventCompat.AXIS_GENERIC_15 /*46*/:
                         VideoBase.this.onWaitStopCallbackTimeout();
                         break;
-                    case 47:
+                    case MotionEventCompat.AXIS_GENERIC_16 /*47*/:
                         if (VideoBase.this.mHandlerFinishEmitter != null) {
                             VideoBase.this.mHandlerFinishEmitter.onComplete();
                             VideoBase.this.mHandlerFinishEmitter = null;
@@ -226,7 +226,7 @@ public abstract class VideoBase extends BaseModule implements FaceDetectionCallb
                         }
                         throw new RuntimeException("no consumer for this message: " + msg.what);
                 }
-                VideoBase.this.getWindow().clearFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                VideoBase.this.getWindow().clearFlags(128);
             }
         }
     }
@@ -521,7 +521,7 @@ public abstract class VideoBase extends BaseModule implements FaceDetectionCallb
     protected void keepScreenOn() {
         this.mHandler.removeMessages(17);
         this.mHandler.removeMessages(2);
-        getWindow().addFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+        getWindow().addFlags(128);
     }
 
     protected void resetScreenOn() {
@@ -546,8 +546,8 @@ public abstract class VideoBase extends BaseModule implements FaceDetectionCallb
             return true;
         }
         switch (keyCode) {
-            case 24:
-            case 25:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
+            case MotionEventCompat.AXIS_TILT /*25*/:
             case 87:
             case 88:
                 if (keyCode == 24) {

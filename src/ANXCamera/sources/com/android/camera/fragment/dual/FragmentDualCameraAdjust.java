@@ -247,7 +247,7 @@ public class FragmentDualCameraAdjust extends BaseFragment implements OnClickLis
             Util.appendInApi26(this.mStringBuilder, zoomSig + "." + zoomFraction, this.mDigitsTextStyle, 33);
         }
         if (Util.isAccessible()) {
-            this.mDualZoomButton.setContentDescription(getString(R.string.accessibility_focus_status, new Object[]{this.mStringBuilder}));
+            this.mDualZoomButton.setContentDescription(getString(R.string.accessibility_focus_status, this.mStringBuilder));
             this.mDualZoomButton.postDelayed(new Runnable() {
                 public void run() {
                     if (FragmentDualCameraAdjust.this.isAdded()) {

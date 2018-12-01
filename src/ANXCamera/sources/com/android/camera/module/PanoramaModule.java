@@ -15,6 +15,7 @@ import android.os.AsyncTask.Status;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import android.text.format.DateFormat;
 import android.view.KeyEvent;
@@ -52,8 +53,6 @@ import com.android.camera2.Camera2Proxy;
 import com.android.camera2.Camera2Proxy.CameraPreviewCallback;
 import com.android.camera2.Camera2Proxy.PictureCallback;
 import com.android.camera2.Camera2Proxy.PreviewCallback;
-import com.sensetime.stmobile.STCommon;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -87,8 +86,8 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
     private Location mLocation;
     protected final Handler mMainHandler = new MainHandler(this, null);
     private MorphoPanoramaGP mMorphoPanoramaGP;
-    private byte[] mMotionData = new byte[STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT];
-    private int mMotionlessThreshold = STMobileHumanActionNative.ST_MOBILE_HAND_HOLDUP;
+    private byte[] mMotionData = new byte[256];
+    private int mMotionlessThreshold = 32768;
     private int[] mMoveSpeed = new int[1];
     private long mPanoramaShootingStartTime;
     private int mPreViewScaleHeight;
@@ -143,7 +142,7 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
                     case 8:
                         PanoramaModule.this.mMainProtocol.setPreviewAspectRatio(CameraSettings.getPreviewAspectRatio(PanoramaModule.this.mPreviewSize.width, PanoramaModule.this.mPreviewSize.height));
                         break;
-                    case R.styleable.ToggleSwitch_textOff /*9*/:
+                    case 9:
                         sendEmptyMessageDelayed(22, 100);
                         int style = CameraSettings.getUIStyleByPreview(PanoramaModule.this.mPreviewSize.width, PanoramaModule.this.mPreviewSize.height);
                         if (style != PanoramaModule.this.mUIStyle) {
@@ -152,21 +151,21 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
                         PanoramaModule.this.initPreviewLayout();
                         PanoramaModule.this.enableCameraControls(true);
                         break;
-                    case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                    case 10:
                         PanoramaModule.this.mOpenCameraFail = true;
                         PanoramaModule.this.onCameraException();
                         break;
-                    case 17:
+                    case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                         PanoramaModule.this.mMainHandler.removeMessages(17);
                         PanoramaModule.this.mMainHandler.removeMessages(2);
-                        PanoramaModule.this.getWindow().addFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                        PanoramaModule.this.getWindow().addFlags(128);
                         PanoramaModule.this.mMainHandler.sendEmptyMessageDelayed(2, (long) PanoramaModule.this.getScreenDelay());
                         break;
-                    case 22:
+                    case MotionEventCompat.AXIS_GAS /*22*/:
                         PanoramaModule.this.mActivity.setBlurFlag(false);
                         PanoramaModule.this.enableCameraControls(true);
                         break;
-                    case 45:
+                    case MotionEventCompat.AXIS_GENERIC_14 /*45*/:
                         PanoramaModule.this.setActivity(null);
                         break;
                     case 51:
@@ -186,7 +185,7 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
                         }
                         throw new RuntimeException("no consumer for this message: " + msg.what);
                 }
-                PanoramaModule.this.getWindow().clearFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                PanoramaModule.this.getWindow().clearFlags(128);
             }
         }
     }
@@ -583,7 +582,7 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
                 case 1:
                     updatePictureAndPreviewSize();
                     break;
-                case 24:
+                case MotionEventCompat.AXIS_DISTANCE /*24*/:
                     setZoomRatio(getZoomValue());
                     break;
                 case 32:
@@ -605,7 +604,7 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
 
     private void updatePictureAndPreviewSize() {
         double scale;
-        CameraSize pictureSize = getBestPanoPictureSize(this.mCameraCapabilities.getSupportedOutputSize((int) STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT));
+        CameraSize pictureSize = getBestPanoPictureSize(this.mCameraCapabilities.getSupportedOutputSize(256));
         CameraSize previewSize = Util.getOptimalPreviewSize(this.mModuleIndex, this.mBogusCameraId, this.mCameraCapabilities.getSupportedOutputSize(SurfaceTexture.class), (double) CameraSettings.getPreviewAspectRatio(pictureSize.width, pictureSize.height));
         this.mPictureSize = pictureSize;
         this.mPreviewSize = previewSize;
@@ -652,14 +651,14 @@ public class PanoramaModule extends BaseModule implements PictureCallback, ModeP
             return true;
         }
         switch (keyCode) {
-            case 23:
+            case MotionEventCompat.AXIS_BRAKE /*23*/:
                 if (event.getRepeatCount() == 0) {
                     onShutterButtonClick(50);
                     return true;
                 }
                 break;
-            case 24:
-            case 25:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
+            case MotionEventCompat.AXIS_TILT /*25*/:
             case 87:
             case 88:
                 if (keyCode == 24) {

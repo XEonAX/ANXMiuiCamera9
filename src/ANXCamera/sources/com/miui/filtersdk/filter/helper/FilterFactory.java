@@ -1,11 +1,10 @@
 package com.miui.filtersdk.filter.helper;
 
-import android.support.v7.recyclerview.R;
+import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import com.miui.filtersdk.filter.base.BaseOriginalFilter;
 import com.miui.filtersdk.filter.base.ColorLookupFilter;
 import com.miui.filtersdk.filter.base.ColorLookupFilter4x4;
-import com.sensetime.stmobile.STCommon;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -341,39 +340,39 @@ public class FilterFactory {
                 return new ColorLookupFilter4x4("filter/aiscene/A-CAT.png");
             case 8:
                 return new ColorLookupFilter4x4("filter/aiscene/A-DOG.png");
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case 9:
                 return new ColorLookupFilter4x4("filter/aiscene/A-GREEN_PLANTS.png");
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 return new ColorLookupFilter4x4("filter/aiscene/A-NIGHT.png");
-            case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+            case 11:
                 return new ColorLookupFilter4x4("filter/aiscene/A-SNOW.png");
-            case R.styleable.ToggleSwitch_textSize /*12*/:
+            case 12:
                 return new ColorLookupFilter4x4("filter/aiscene/A-SEA.png");
-            case R.styleable.ToggleSwitch_textOffShadowRadius /*13*/:
+            case 13:
                 return new ColorLookupFilter4x4("filter/aiscene/A-AUTUMN.png");
-            case R.styleable.ToggleSwitch_duration /*14*/:
+            case 14:
                 return new ColorLookupFilter4x4("filter/aiscene/A-CANDLELIGHT.png");
-            case R.styleable.ToggleSwitch_checked /*15*/:
+            case 15:
                 return new ColorLookupFilter4x4("filter/aiscene/A-CAR.png");
             case 16:
                 return new ColorLookupFilter4x4("filter/aiscene/A-GRASS.png");
-            case 17:
+            case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-MAPLE_LEAVES.png");
-            case 18:
+            case MotionEventCompat.AXIS_RTRIGGER /*18*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-SUCCULENT.png");
             case 19:
                 return new ColorLookupFilter4x4("filter/aiscene/A-BUILDING.png");
-            case 20:
+            case MotionEventCompat.AXIS_RUDDER /*20*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-CITY.png");
-            case 21:
+            case MotionEventCompat.AXIS_WHEEL /*21*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-CLOUD.png");
-            case 22:
+            case MotionEventCompat.AXIS_GAS /*22*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-OVERCAST.png");
-            case 23:
+            case MotionEventCompat.AXIS_BRAKE /*23*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-GLOBAL-NONE.png");
-            case 24:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-SILHOUETTE.png");
-            case 25:
+            case MotionEventCompat.AXIS_TILT /*25*/:
                 return new ColorLookupFilter4x4("filter/aiscene/A-HUMAN.png");
             case 26:
                 return new ColorLookupFilter4x4("filter/aiscene/A-JEWELRY.png");
@@ -389,35 +388,35 @@ public class FilterFactory {
                 return new ColorLookupFilter4x4("filter/aiscene/A-TEMPLE.png");
             case 32:
                 return new ColorLookupFilter("filter/normal/N-BERRY.png");
-            case 33:
+            case MotionEventCompat.AXIS_GENERIC_2 /*33*/:
                 return new ColorLookupFilter("filter/normal/N-COOKIE.png");
-            case 34:
+            case MotionEventCompat.AXIS_GENERIC_3 /*34*/:
                 return new ColorLookupFilter("filter/normal/N-DELICACY.png");
-            case 35:
+            case MotionEventCompat.AXIS_GENERIC_4 /*35*/:
                 return new ColorLookupFilter("filter/normal/N-FADE.png");
-            case 36:
+            case MotionEventCompat.AXIS_GENERIC_5 /*36*/:
                 return new ColorLookupFilter("filter/normal/N-FILM.png");
-            case 37:
+            case MotionEventCompat.AXIS_GENERIC_6 /*37*/:
                 return new ColorLookupFilter("filter/normal/N-KOIZORA.png");
-            case 38:
+            case MotionEventCompat.AXIS_GENERIC_7 /*38*/:
                 return new ColorLookupFilter("filter/normal/N-LATTE.png");
-            case 39:
+            case MotionEventCompat.AXIS_GENERIC_8 /*39*/:
                 return new ColorLookupFilter("filter/normal/N-LIGHT.png");
-            case 40:
+            case MotionEventCompat.AXIS_GENERIC_9 /*40*/:
                 return new ColorLookupFilter("filter/normal/N-LIVELY.png");
-            case 41:
+            case MotionEventCompat.AXIS_GENERIC_10 /*41*/:
                 return new ColorLookupFilter("filter/normal/N-QUIET.png");
-            case 42:
+            case MotionEventCompat.AXIS_GENERIC_11 /*42*/:
                 return new ColorLookupFilter("filter/normal/N-SODA.png");
-            case 43:
+            case MotionEventCompat.AXIS_GENERIC_12 /*43*/:
                 return new ColorLookupFilter("filter/normal/N-WARM.png");
-            case 44:
+            case MotionEventCompat.AXIS_GENERIC_13 /*44*/:
                 return new ColorLookupFilter("filter/beauty/B-FAIRYTALE.png");
-            case 45:
+            case MotionEventCompat.AXIS_GENERIC_14 /*45*/:
                 return new ColorLookupFilter("filter/beauty/B-JAPANESE.png");
-            case 46:
+            case MotionEventCompat.AXIS_GENERIC_15 /*46*/:
                 return new ColorLookupFilter("filter/beauty/B-MINT.png");
-            case 47:
+            case MotionEventCompat.AXIS_GENERIC_16 /*47*/:
                 return new ColorLookupFilter("filter/beauty/B-HEART.png");
             case 48:
                 return new ColorLookupFilter("filter/beauty/B-NATURE.png");
@@ -450,7 +449,7 @@ public class FilterFactory {
                 return new ColorLookupFilter("filter/video/S-BYGONE.png");
             case 63:
                 return new ColorLookupFilter("filter/beauty_india/BI-SUNNY.png");
-            case STCommon.ST_MOBILE_ENABLE_FACE_DETECT /*64*/:
+            case 64:
                 return new ColorLookupFilter("filter/beauty_india/BI-PINK.png");
             case 65:
                 return new ColorLookupFilter("filter/beauty_india/BI-MEMORY.png");

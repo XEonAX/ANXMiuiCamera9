@@ -1,11 +1,10 @@
 package com.android.gallery3d.ui;
 
 import android.os.Build;
-import com.sensetime.stmobile.STCommon;
 
 public class Utils {
     private static final boolean IS_DEBUG_BUILD;
-    private static long[] sCrcTable = new long[STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT];
+    private static long[] sCrcTable = new long[256];
 
     static {
         boolean z;
@@ -15,7 +14,7 @@ public class Utils {
             z = Build.TYPE.equals("userdebug");
         }
         IS_DEBUG_BUILD = z;
-        for (int i = 0; i < STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT; i++) {
+        for (int i = 0; i < 256; i++) {
             long part = (long) i;
             for (int j = 0; j < 8; j++) {
                 part = (part >> 1) ^ ((((int) part) & 1) != 0 ? -7661587058870466123L : 0);

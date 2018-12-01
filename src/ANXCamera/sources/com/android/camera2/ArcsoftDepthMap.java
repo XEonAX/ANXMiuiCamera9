@@ -3,7 +3,6 @@ package com.android.camera2;
 import android.graphics.Point;
 import com.android.camera.log.Log;
 import com.android.gallery3d.exif.ExifInterface;
-import com.sensetime.stmobile.STCommon;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -18,8 +17,8 @@ public class ArcsoftDepthMap {
     private byte[] mDepthMapOriginalData;
 
     public ArcsoftDepthMap(byte[] originalData) {
-        Log.d(TAG, "ArcsoftDepthMap: " + getHeaderTag(originalData) + "; 0x80 = " + STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
-        if (originalData == null || getHeaderTag(originalData) != STCommon.ST_MOBILE_ENABLE_HAND_DETECT) {
+        Log.d(TAG, "ArcsoftDepthMap: " + getHeaderTag(originalData) + "; 0x80 = " + 128);
+        if (originalData == null || getHeaderTag(originalData) != 128) {
             throw new IllegalArgumentException("Not a legal depth format!");
         }
         this.mDepthMapOriginalData = originalData;
@@ -27,7 +26,7 @@ public class ArcsoftDepthMap {
     }
 
     public static boolean isDepthMapData(byte[] data) {
-        return data != null && getHeaderTag(data) == STCommon.ST_MOBILE_ENABLE_HAND_DETECT;
+        return data != null && getHeaderTag(data) == 128;
     }
 
     public byte[] getDepthMapHeader() {

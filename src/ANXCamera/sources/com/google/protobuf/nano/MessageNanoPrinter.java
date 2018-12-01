@@ -1,5 +1,6 @@
 package com.google.protobuf.nano;
 
+import android.support.v4.media.TransportMediator;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -150,7 +151,7 @@ public final class MessageNanoPrinter {
                 int ch = b & 255;
                 if (ch == 92 || ch == 34) {
                     builder.append('\\').append((char) ch);
-                } else if (ch >= 32 && ch < 127) {
+                } else if (ch >= 32 && ch < TransportMediator.KEYCODE_MEDIA_PAUSE) {
                     builder.append((char) ch);
                 } else {
                     builder.append(String.format("\\%03o", new Object[]{Integer.valueOf(ch)}));

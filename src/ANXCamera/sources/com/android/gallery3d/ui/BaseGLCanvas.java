@@ -6,11 +6,10 @@ import com.android.camera.effect.FrameBuffer;
 import com.android.camera.effect.GLCanvasState;
 import com.android.camera.effect.draw_mode.DrawAttribute;
 import com.android.camera.effect.renders.RenderGroup;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.util.ArrayList;
 
 public class BaseGLCanvas implements GLCanvas {
-    public static int sMaxTextureSize = STMobileHumanActionNative.ST_MOBILE_HAND_PALM;
+    public static int sMaxTextureSize = 4096;
     private final IntArray mDeleteBuffers = new IntArray();
     private final IntArray mDeleteFrameBuffers = new IntArray();
     private final ArrayList<Integer> mDeletePrograms = new ArrayList();
@@ -66,7 +65,7 @@ public class BaseGLCanvas implements GLCanvas {
 
     public void clearBuffer() {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        GLES20.glClear(STMobileHumanActionNative.ST_MOBILE_HAND_LOVE);
+        GLES20.glClear(16384);
     }
 
     public GLCanvasState getState() {

@@ -5,6 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
+import android.support.v4.view.ViewCompat;
 
 public abstract class BaseStub extends Binder implements IInterface {
     private static TransactionInterceptor globalInterceptor = null;
@@ -18,7 +19,7 @@ public abstract class BaseStub extends Binder implements IInterface {
     }
 
     protected boolean routeToSuperOrEnforceInterface(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
-        if (code > 16777215) {
+        if (code > ViewCompat.MEASURED_SIZE_MASK) {
             return super.onTransact(code, data, reply, flags);
         }
         data.enforceInterface(getInterfaceDescriptor());

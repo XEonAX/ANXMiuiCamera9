@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,7 +15,6 @@ import com.android.camera.CameraAppImpl;
 import com.android.camera.Util;
 import com.android.camera.log.Log;
 import com.android.camera.ui.drawable.TriangleIndicatorDrawable;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.util.HashMap;
 
 public class PanoMovingIndicatorView extends View {
@@ -89,7 +89,7 @@ public class PanoMovingIndicatorView extends View {
 
     public void onDraw(Canvas canvas) {
         Log.v(TAG, "onDraw mPointGap=" + this.mPointGap);
-        if (this.mCurrentFramePos.x != Integer.MIN_VALUE && this.mCurrentFramePos.y != Integer.MIN_VALUE) {
+        if (this.mCurrentFramePos.x != ExploreByTouchHelper.INVALID_ID && this.mCurrentFramePos.y != ExploreByTouchHelper.INVALID_ID) {
             int narrowStartX = this.mCurrentFramePos.x;
             int margin = this.mArrowMargin;
             Drawable drawable = this.mMovingDirectionIc;
@@ -140,9 +140,9 @@ public class PanoMovingIndicatorView extends View {
         this.mDirection = direction & 1;
         this.mOffsetX = offsetX;
         this.mFast = false;
-        this.mFilterMoveSpeed = STMobileHumanActionNative.ST_MOBILE_HAND_PALM;
+        this.mFilterMoveSpeed = 4096;
         this.mStateChangeTrigger.setCurrentState(Boolean.valueOf(this.mFast));
-        this.mCurrentFramePos.set(Integer.MIN_VALUE, Integer.MIN_VALUE);
+        this.mCurrentFramePos.set(ExploreByTouchHelper.INVALID_ID, ExploreByTouchHelper.INVALID_ID);
         this.mPointGap = -1.0f;
     }
 
@@ -162,7 +162,7 @@ public class PanoMovingIndicatorView extends View {
     }
 
     private int getPointGap(int speed) {
-        if (speed > STMobileHumanActionNative.ST_MOBILE_HAND_PALM) {
+        if (speed > 4096) {
             return (MAX_GAP * ((speed - 4096) + SPEED_DEVIATION)) / 2904;
         }
         return -1;

@@ -2,11 +2,12 @@ package com.android.camera.effect.renders;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
+import android.support.v4.internal.view.SupportMenu;
 import com.android.gallery3d.ui.GLCanvas;
 
 /* compiled from: FocusPeakingRender */
 class FocusPeakingFirstPassRender extends ConvolutionEffectRender {
-    private int mPeakColor = -65536;
+    private int mPeakColor = SupportMenu.CATEGORY_MASK;
     private float mThreshold = FocusPeakingRender.DEFAULT_THRESHOLD;
     private int mUniformPeakColorH;
     private int mUniformThresholdH;

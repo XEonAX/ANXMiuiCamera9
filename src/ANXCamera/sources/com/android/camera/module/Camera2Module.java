@@ -19,6 +19,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.util.Range;
@@ -102,7 +104,6 @@ import com.android.zxing.QRCodeManager;
 import com.google.lens.sdk.LensApi;
 import com.google.lens.sdk.LensApi.LensAvailabilityCallback;
 import com.google.zxing.Result;
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
@@ -358,7 +359,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
             } else if (Camera2Module.this.getActivity() != null) {
                 switch (msg.what) {
                     case 2:
-                        Camera2Module.this.getWindow().clearFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                        Camera2Module.this.getWindow().clearFlags(128);
                         break;
                     case 4:
                         Camera2Module.this.checkActivityOrientation();
@@ -367,29 +368,29 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                             break;
                         }
                         break;
-                    case R.styleable.ToggleSwitch_textOff /*9*/:
+                    case 9:
                         Camera2Module.this.mMainProtocol.initializeFocusView(Camera2Module.this);
                         Camera2Module.this.mMainProtocol.setObjectViewListener(Camera2Module.this);
                         break;
-                    case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                    case 10:
                         Camera2Module.this.mOpenCameraFail = true;
                         Camera2Module.this.onCameraException();
                         break;
-                    case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+                    case 11:
                         break;
-                    case 17:
+                    case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                         Camera2Module.this.mHandler.removeMessages(17);
                         Camera2Module.this.mHandler.removeMessages(2);
-                        Camera2Module.this.getWindow().addFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                        Camera2Module.this.getWindow().addFlags(128);
                         Camera2Module.this.mHandler.sendEmptyMessageDelayed(2, (long) Camera2Module.this.getScreenDelay());
                         break;
                     case 31:
                         Camera2Module.this.setOrientationParameter();
                         break;
-                    case 33:
+                    case MotionEventCompat.AXIS_GENERIC_2 /*33*/:
                         Camera2Module.this.setOrientation(msg.arg1, msg.arg2);
                         break;
-                    case 35:
+                    case MotionEventCompat.AXIS_GENERIC_4 /*35*/:
                         Camera2Module camera2Module = Camera2Module.this;
                         boolean z2 = msg.arg1 > 0;
                         if (msg.arg2 <= 0) {
@@ -397,10 +398,10 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                         }
                         camera2Module.handleUpdateFaceView(z2, z);
                         break;
-                    case 44:
+                    case MotionEventCompat.AXIS_GENERIC_13 /*44*/:
                         Camera2Module.this.restartModule();
                         break;
-                    case 45:
+                    case MotionEventCompat.AXIS_GENERIC_14 /*45*/:
                         Camera2Module.this.setActivity(null);
                         break;
                     case 48:
@@ -1700,9 +1701,9 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
         switch (saveType) {
             case 4:
             case 5:
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
-            case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
-            case R.styleable.ToggleSwitch_textSize /*12*/:
+            case 10:
+            case 11:
+            case 12:
                 return false;
             default:
                 return true;
@@ -2161,25 +2162,25 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                 case 8:
                     updateJpegThumbnailSize();
                     break;
-                case R.styleable.ToggleSwitch_textOff /*9*/:
+                case 9:
                     updateAntiBanding(CameraSettings.getAntiBanding());
                     break;
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     updateFlashPreference();
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+                case 11:
                     updateHDRPreference();
                     break;
-                case R.styleable.ToggleSwitch_textSize /*12*/:
+                case 12:
                     setEvValue();
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowRadius /*13*/:
+                case 13:
                     updateBeauty();
                     break;
-                case R.styleable.ToggleSwitch_duration /*14*/:
+                case 14:
                     updateFocusMode();
                     break;
-                case R.styleable.ToggleSwitch_checked /*15*/:
+                case 15:
                     updateISO();
                     break;
                 case 16:
@@ -2188,22 +2189,22 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                 case 19:
                     updateFpsRange();
                     break;
-                case 20:
+                case MotionEventCompat.AXIS_RUDDER /*20*/:
                     updateOIS();
                     break;
-                case 21:
+                case MotionEventCompat.AXIS_WHEEL /*21*/:
                     updateMute();
                     break;
-                case 22:
+                case MotionEventCompat.AXIS_GAS /*22*/:
                     updateZsl();
                     break;
-                case 23:
+                case MotionEventCompat.AXIS_BRAKE /*23*/:
                     updateQr();
                     break;
-                case 24:
+                case MotionEventCompat.AXIS_DISTANCE /*24*/:
                     setZoomRatio(getZoomValue());
                     break;
-                case 25:
+                case MotionEventCompat.AXIS_TILT /*25*/:
                     focusCenter();
                     break;
                 case 26:
@@ -2221,28 +2222,28 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                 case 30:
                     updateSuperResolution();
                     break;
-                case 34:
+                case MotionEventCompat.AXIS_GENERIC_3 /*34*/:
                     updateMfnr(CameraSettings.isMfnrSatEnable());
                     break;
-                case 35:
+                case MotionEventCompat.AXIS_GENERIC_4 /*35*/:
                     updateDeviceOrientation();
                     break;
-                case 36:
+                case MotionEventCompat.AXIS_GENERIC_5 /*36*/:
                     updateASD();
                     break;
-                case 37:
+                case MotionEventCompat.AXIS_GENERIC_6 /*37*/:
                     updateBokeh();
                     break;
-                case 38:
+                case MotionEventCompat.AXIS_GENERIC_7 /*38*/:
                     updateFaceAgeAnalyze();
                     break;
-                case 39:
+                case MotionEventCompat.AXIS_GENERIC_8 /*39*/:
                     updateFaceScore();
                     break;
-                case 40:
+                case MotionEventCompat.AXIS_GENERIC_9 /*40*/:
                     updateFrontMirror();
                     break;
-                case 41:
+                case MotionEventCompat.AXIS_GENERIC_10 /*41*/:
                     updateOperatingMode();
                     break;
                 default:
@@ -2252,7 +2253,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
     }
 
     private void updatePictureAndPreviewSize() {
-        CameraSize pictureSize = getBestPictureSize(this.mCameraCapabilities.getSupportedOutputSize((int) STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT));
+        CameraSize pictureSize = getBestPictureSize(this.mCameraCapabilities.getSupportedOutputSize(256));
         CameraSize optimalSize = Util.getOptimalPreviewSize(this.mModuleIndex, this.mBogusCameraId, this.mCameraCapabilities.getSupportedOutputSize(SurfaceTexture.class), (double) CameraSettings.getPreviewAspectRatio(pictureSize.width, pictureSize.height));
         this.mPictureSize = pictureSize;
         this.mPreviewSize = optimalSize;
@@ -2908,8 +2909,8 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         boolean z = false;
         switch (keyCode) {
-            case 24:
-            case 25:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
+            case MotionEventCompat.AXIS_TILT /*25*/:
             case 87:
             case 88:
                 if (keyCode == 24) {
@@ -2947,8 +2948,8 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                     return true;
                 }
                 break;
-            case 24:
-            case 25:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
+            case MotionEventCompat.AXIS_TILT /*25*/:
             case 87:
             case 88:
                 boolean z;
@@ -3081,7 +3082,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
             case 3:
                 this.mCamera2Device.setHHT(true);
                 break;
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 this.mCamera2Device.setSuperResolution(true);
                 break;
         }
@@ -3097,7 +3098,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
             case 3:
                 this.mCamera2Device.setHHT(false);
                 break;
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 this.mCamera2Device.setSuperResolution(false);
                 break;
         }
@@ -3253,7 +3254,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                     return;
                 }
                 return;
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case 9:
                 if ("103".equals(DataRepository.dataItemConfig().getComponentFlash().getComponentValue(this.mModuleIndex))) {
                     topAlert.alertFlash(8, false, false);
                 }
@@ -3294,7 +3295,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                     return;
                 }
                 return;
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case 9:
                 String currentFlash = DataRepository.dataItemConfig().getComponentFlash().getComponentValue(this.mModuleIndex);
                 if ("3".equals(currentFlash)) {
                     updatePreferenceInWorkThread(10);
@@ -3337,7 +3338,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
     }
 
     private int parseAiSceneResult(CaptureResult captureResult) {
-        int scene = Integer.MIN_VALUE;
+        int scene = ExploreByTouchHelper.INVALID_ID;
         Face[] faces = (Face[]) captureResult.get(CaptureResult.STATISTICS_FACES);
         if (faces != null && faces.length > 0) {
             for (Face face : faces) {
@@ -3354,7 +3355,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
         }
         int sceneResult = CaptureResultParser.getAsdDetectedModes(captureResult);
         if (faceSceneFiltering(scene)) {
-            if (scene != Integer.MIN_VALUE && sceneResult != 27) {
+            if (scene != ExploreByTouchHelper.INVALID_ID && sceneResult != 27) {
                 this.mParsedAiScene = scene;
             } else if (sceneResult < 0) {
                 Log.e(TAG, "parseAiSceneResult: parse a error result: " + sceneResult);
@@ -3416,8 +3417,8 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                         updateSuperResolution();
                         break;
                     case 6:
-                    case 21:
-                    case 22:
+                    case MotionEventCompat.AXIS_WHEEL /*21*/:
+                    case MotionEventCompat.AXIS_GAS /*22*/:
                         config.closeMutexElement("e", 194, 193);
                         updateHDR("normal");
                         break;
@@ -3426,13 +3427,13 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                         this.mCurrentAiScene = newResult;
                         config.restoreAllMutexElement("e");
                         break;
-                    case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                    case 10:
                         config.closeMutexElement("e", 194, 193);
                         setFlashMode("0");
                         updateMfnr(true);
                         updateOIS();
                         break;
-                    case R.styleable.ToggleSwitch_checked /*15*/:
+                    case 15:
                     case 19:
                         int sharpValue = Integer.parseInt(CameraSettings.getSharpness());
                         if (sharpValue < 6) {
@@ -3442,7 +3443,7 @@ public class Camera2Module extends BaseModule implements Listener, ObjectViewLis
                         this.mCurrentAiScene = newResult;
                         config.restoreAllMutexElement("e");
                         break;
-                    case 25:
+                    case MotionEventCompat.AXIS_TILT /*25*/:
                         trackAISceneChanged(this.mModuleIndex, 25);
                         topAlert.setAiSceneImageLevel(25);
                         topAlert.alertAiSceneSelector(8, null);

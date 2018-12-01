@@ -1,6 +1,6 @@
 package com.android.gallery3d.exif;
 
-import android.support.v7.recyclerview.R;
+import android.support.v4.internal.view.SupportMenu;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -219,7 +219,7 @@ public class ExifTag {
             return false;
         }
         if (obj instanceof Short) {
-            return setValue(((Short) obj).shortValue() & 65535);
+            return setValue(((Short) obj).shortValue() & SupportMenu.USER_MASK);
         }
         if (obj instanceof String) {
             return setValue((String) obj);
@@ -254,7 +254,7 @@ public class ExifTag {
             Short[] arr = (Short[]) obj;
             fin = new int[arr.length];
             for (i = 0; i < arr.length; i++) {
-                fin[i] = arr[i] == null ? 0 : arr[i].shortValue() & 65535;
+                fin[i] = arr[i] == null ? 0 : arr[i].shortValue() & SupportMenu.USER_MASK;
             }
             return setValue(fin);
         } else if (obj instanceof Integer[]) {
@@ -389,9 +389,9 @@ public class ExifTag {
                 return "UNSIGNED_RATIONAL";
             case (short) 7:
                 return "UNDEFINED";
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case (short) 9:
                 return "LONG";
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case (short) 10:
                 return "RATIONAL";
             default:
                 return "";
@@ -400,7 +400,7 @@ public class ExifTag {
 
     private boolean checkOverflowForUnsignedShort(int[] value) {
         for (int v : value) {
-            if (v > 65535 || v < 0) {
+            if (v > SupportMenu.USER_MASK || v < 0) {
                 return true;
             }
         }

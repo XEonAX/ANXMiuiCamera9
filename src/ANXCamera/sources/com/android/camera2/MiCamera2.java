@@ -58,7 +58,6 @@ import com.android.camera2.Camera2Proxy.ScreenLightCallback;
 import com.android.camera2.Camera2Proxy.ShutterCallback;
 import com.android.camera2.Camera2Proxy.VideoRecordStateCallback;
 import com.android.camera2.compat.MiCameraCompat;
-import com.sensetime.stmobile.STCommon;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -530,7 +529,7 @@ public class MiCamera2 extends Camera2Proxy {
         if (this.mPhotoImageReader != null) {
             this.mPhotoImageReader.close();
         }
-        this.mPhotoImageReader = ImageReader.newInstance(size.getWidth(), size.getHeight(), STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT, 2);
+        this.mPhotoImageReader = ImageReader.newInstance(size.getWidth(), size.getHeight(), 256, 2);
         this.mPhotoImageReader.setOnImageAvailableListener(new OnImageAvailableListener() {
             public void onImageAvailable(ImageReader reader) {
                 Image image = reader.acquireNextImage();
@@ -605,7 +604,7 @@ public class MiCamera2 extends Camera2Proxy {
                 }
             }
         };
-        this.mVideoSnapshotImageReader = ImageReader.newInstance(size.getWidth(), size.getHeight(), STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT, 2);
+        this.mVideoSnapshotImageReader = ImageReader.newInstance(size.getWidth(), size.getHeight(), 256, 2);
         this.mVideoSnapshotImageReader.setOnImageAvailableListener(listener, this.mCameraHandler);
     }
 
@@ -652,7 +651,7 @@ public class MiCamera2 extends Camera2Proxy {
                 }
             }
         };
-        this.mPortraitRawImageReader = ImageReader.newInstance(size.getWidth(), size.getHeight(), STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT, 2);
+        this.mPortraitRawImageReader = ImageReader.newInstance(size.getWidth(), size.getHeight(), 256, 2);
         this.mPortraitRawImageReader.setOnImageAvailableListener(listener, this.mCameraHandler);
     }
 
@@ -740,7 +739,7 @@ public class MiCamera2 extends Camera2Proxy {
                 notifyOnError(e.getReason());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to start preview session, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -776,7 +775,7 @@ public class MiCamera2 extends Camera2Proxy {
                 notifyOnError(e.getReason());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to start recording session, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -846,7 +845,7 @@ public class MiCamera2 extends Camera2Proxy {
                 notifyOnError(e.getReason());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to start recording, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -865,7 +864,7 @@ public class MiCamera2 extends Camera2Proxy {
                     Log.e(TAG, "Failed to stop recording");
                 } catch (IllegalStateException e2) {
                     Log.e(TAG, "Failed to stop recording, IllegalState", e2);
-                    notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                    notifyOnError(256);
                 }
             }
         }
@@ -908,7 +907,7 @@ public class MiCamera2 extends Camera2Proxy {
                 notifyOnError(e.getReason());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to start record preview, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -934,7 +933,7 @@ public class MiCamera2 extends Camera2Proxy {
                     notifyOnError(e.getReason());
                 } catch (IllegalStateException e2) {
                     Log.e(TAG, "Failed to resume preview, IllegalState", e2);
-                    notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                    notifyOnError(256);
                 }
             } else {
                 Log.d(TAG, "repeating sequenceId: " + this.mCaptureSession.setRepeatingRequest(this.mPreviewRequestBuilder.build(), this.mCaptureCallback, this.mCameraHandler));
@@ -953,7 +952,7 @@ public class MiCamera2 extends Camera2Proxy {
                 notifyOnError(e.getReason());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to pause preview, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -975,7 +974,7 @@ public class MiCamera2 extends Camera2Proxy {
                 notifyOnError(e.getReason());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to release preview, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -1092,7 +1091,7 @@ public class MiCamera2 extends Camera2Proxy {
             notifyOnError(e.getReason());
         } catch (IllegalStateException e2) {
             Log.e(TAG, "Failed to capture burst, IllegalState", e2);
-            notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+            notifyOnError(256);
         }
     }
 
@@ -1104,7 +1103,7 @@ public class MiCamera2 extends Camera2Proxy {
             notifyOnError(e.getReason());
         } catch (IllegalStateException e2) {
             Log.e(TAG, "Failed to abort burst, IllegalState", e2);
-            notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+            notifyOnError(256);
         }
     }
 
@@ -1138,7 +1137,7 @@ public class MiCamera2 extends Camera2Proxy {
                 Log.e(TAG, "cancelFocus: " + e.getMessage());
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to cancel focus, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -1686,7 +1685,7 @@ public class MiCamera2 extends Camera2Proxy {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:3:0x002f A:{Splitter: B:1:0x0008, ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:3:0x002f A:{ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception), Splitter: B:1:0x0008} */
     /* JADX WARNING: Missing block: B:3:0x002f, code:
             r1 = move-exception;
      */
@@ -1786,7 +1785,7 @@ public class MiCamera2 extends Camera2Proxy {
                 Log.e(TAG, "Cannot capture a still picture");
             } catch (IllegalStateException e2) {
                 Log.e(TAG, "Failed to capture a still picture, IllegalState", e2);
-                notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+                notifyOnError(256);
             }
         }
     }
@@ -1831,11 +1830,11 @@ public class MiCamera2 extends Camera2Proxy {
             Log.e(TAG, "cannot capture a video snapshot");
         } catch (IllegalStateException e2) {
             Log.e(TAG, "Failed to capture a video snapshot, IllegalState", e2);
-            notifyOnError(STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT);
+            notifyOnError(256);
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:9:0x0050 A:{Splitter: B:4:0x0012, ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:9:0x0050 A:{ExcHandler: android.hardware.camera2.CameraAccessException (r1_0 'e' java.lang.Exception), Splitter: B:4:0x0012} */
     /* JADX WARNING: Missing block: B:9:0x0050, code:
             r1 = move-exception;
      */

@@ -1,6 +1,5 @@
 package com.google.protobuf.nano;
 
-import android.support.v7.recyclerview.R;
 import com.google.protobuf.CodedOutputStream;
 import com.google.protobuf.GeneratedMessageLite;
 import com.google.protobuf.MessageLite;
@@ -95,11 +94,11 @@ public class Extension<M extends ExtendableMessageNano<M>, T> {
         Class<?> messageType = !this.repeated ? this.clazz : this.clazz.getComponentType();
         try {
             switch (this.type) {
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     MessageNano group = (MessageNano) messageType.newInstance();
                     input.readGroup(group, WireFormatNano.getTagFieldNumber(this.tag));
                     return group;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+                case 11:
                     if (this.defaultInstance != null) {
                         return input.readMessageLite(this.defaultInstance.getParserForType());
                     }
@@ -136,7 +135,7 @@ public class Extension<M extends ExtendableMessageNano<M>, T> {
         try {
             out.writeRawVarint32(this.tag);
             switch (this.type) {
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     int fieldNumber = WireFormatNano.getTagFieldNumber(this.tag);
                     if (this.defaultInstance != null) {
                         out.writeGroupNoTag((MessageLite) value);
@@ -145,7 +144,7 @@ public class Extension<M extends ExtendableMessageNano<M>, T> {
                     }
                     out.writeTag(fieldNumber, 4);
                     return;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+                case 11:
                     if (this.defaultInstance != null) {
                         out.writeMessageNoTag((MessageLite) value);
                         return;
@@ -193,12 +192,12 @@ public class Extension<M extends ExtendableMessageNano<M>, T> {
     protected int computeSingularSerializedSize(Object value) {
         int fieldNumber = WireFormatNano.getTagFieldNumber(this.tag);
         switch (this.type) {
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 if (this.defaultInstance != null) {
                     return CodedOutputStream.computeGroupSize(fieldNumber, (MessageLite) value);
                 }
                 return CodedOutputByteBufferNano.computeGroupSize(fieldNumber, (MessageNano) value);
-            case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+            case 11:
                 if (this.defaultInstance != null) {
                     return CodedOutputStream.computeMessageSize(fieldNumber, (MessageLite) value);
                 }

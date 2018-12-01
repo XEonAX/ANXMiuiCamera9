@@ -1,5 +1,6 @@
 package com.android.camera.effect;
 
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import com.miui.filtersdk.filter.helper.FilterFactory;
 import com.miui.filtersdk.filter.helper.FilterFactory.FilterScene;
@@ -321,22 +322,22 @@ public class BeautyInfoFactory {
         int iconResId = 0;
         for (FilterType type : FilterFactory.getFiltersByScene(FilterScene.BEAUTY)) {
             switch (m5-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
-                case R.styleable.ToggleSwitch_textSize /*12*/:
+                case 12:
                     order = 50;
                     nameResId = R.string.portait_effect_entry_fairytale;
                     iconResId = R.drawable.portait_effect_image_fairytale;
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowRadius /*13*/:
+                case 13:
                     order = 20;
                     nameResId = R.string.portait_effect_entry_japanese;
                     iconResId = R.drawable.portait_effect_image_japanese;
                     break;
-                case R.styleable.ToggleSwitch_duration /*14*/:
+                case 14:
                     order = 80;
                     nameResId = R.string.portait_effect_entry_maze;
                     iconResId = R.drawable.portait_effect_image_maze;
                     break;
-                case R.styleable.ToggleSwitch_checked /*15*/:
+                case 15:
                     order = 90;
                     nameResId = R.string.portait_effect_entry_cool;
                     iconResId = R.drawable.portait_effect_image_cool;
@@ -346,12 +347,12 @@ public class BeautyInfoFactory {
                     nameResId = R.string.portait_effect_entry_mood;
                     iconResId = R.drawable.portait_effect_image_mood;
                     break;
-                case 17:
+                case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                     order = 110;
                     nameResId = R.string.portait_effect_entry_movie;
                     iconResId = R.drawable.portait_effect_image_movie;
                     break;
-                case 18:
+                case MotionEventCompat.AXIS_RTRIGGER /*18*/:
                     order = 10;
                     nameResId = R.string.portait_effect_entry_nature;
                     iconResId = R.drawable.portait_effect_image_nature;
@@ -361,22 +362,22 @@ public class BeautyInfoFactory {
                     nameResId = R.string.portait_effect_entry_pink;
                     iconResId = R.drawable.portait_effect_image_pink;
                     break;
-                case 20:
+                case MotionEventCompat.AXIS_RUDDER /*20*/:
                     order = 100;
                     nameResId = R.string.portait_effect_entry_riddle;
                     iconResId = R.drawable.portait_effect_image_riddle;
                     break;
-                case 21:
+                case MotionEventCompat.AXIS_WHEEL /*21*/:
                     order = 70;
                     nameResId = R.string.portait_effect_entry_romance;
                     iconResId = R.drawable.portait_effect_image_romance;
                     break;
-                case 22:
+                case MotionEventCompat.AXIS_GAS /*22*/:
                     order = 40;
                     nameResId = R.string.portait_effect_entry_story;
                     iconResId = R.drawable.portait_effect_image_story;
                     break;
-                case 23:
+                case MotionEventCompat.AXIS_BRAKE /*23*/:
                     order = 120;
                     nameResId = R.string.portait_effect_entry_blackwhite;
                     iconResId = R.drawable.portait_effect_image_blackwhite;
@@ -440,17 +441,17 @@ public class BeautyInfoFactory {
                     nameResId = R.string.portrait_india_effect_entry_sunny;
                     iconResId = R.drawable.portrait_india_effect_image_sunny;
                     break;
-                case R.styleable.ToggleSwitch_textOff /*9*/:
+                case 9:
                     order = 60;
                     nameResId = R.string.portrait_india_effect_entry_sweet;
                     iconResId = R.drawable.portrait_india_effect_image_sweet;
                     break;
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     order = 50;
                     nameResId = R.string.portrait_india_effect_entry_warm;
                     iconResId = R.drawable.portrait_india_effect_image_warm;
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+                case 11:
                     order = 90;
                     nameResId = R.string.portrait_india_effect_entry_young;
                     iconResId = R.drawable.portrait_india_effect_image_young;

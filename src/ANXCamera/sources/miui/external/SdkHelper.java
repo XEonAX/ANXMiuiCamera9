@@ -5,7 +5,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
 import android.util.Log;
-import com.sensetime.stmobile.STCommon;
 import java.io.File;
 
 public class SdkHelper {
@@ -73,7 +72,7 @@ public class SdkHelper {
     private static PackageInfo F(Context context, String str) {
         PackageInfo packageInfo = null;
         try {
-            return context.getPackageManager().getPackageInfo(str, STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+            return context.getPackageManager().getPackageInfo(str, 128);
         } catch (NameNotFoundException e) {
             e.printStackTrace();
             return packageInfo;

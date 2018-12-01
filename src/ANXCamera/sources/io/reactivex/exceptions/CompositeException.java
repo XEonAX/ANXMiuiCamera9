@@ -1,6 +1,5 @@
 package io.reactivex.exceptions;
 
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.annotations.NonNull;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -140,7 +139,7 @@ public final class CompositeException extends RuntimeException {
     }
 
     private void printStackTrace(PrintStreamOrWriter s) {
-        StringBuilder b = new StringBuilder(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+        StringBuilder b = new StringBuilder(128);
         b.append(this).append(10);
         for (StackTraceElement myStackElement : getStackTrace()) {
             b.append("\tat ").append(myStackElement).append(10);

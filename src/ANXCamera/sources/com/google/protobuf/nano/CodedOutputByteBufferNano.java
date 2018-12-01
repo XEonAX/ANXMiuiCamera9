@@ -1,8 +1,8 @@
 package com.google.protobuf.nano;
 
+import android.support.v4.media.TransportMediator;
 import com.google.protobuf.CodedOutputStream;
 import com.google.protobuf.MessageLite;
-import com.sensetime.stmobile.STCommon;
 import java.io.IOException;
 import java.nio.BufferOverflowException;
 import java.nio.ByteBuffer;
@@ -163,7 +163,7 @@ public final class CodedOutputByteBufferNano {
                 byteBuffer.put((byte) c);
             } else if (c < 2048) {
                 byteBuffer.put((byte) ((c >>> 6) | 960));
-                byteBuffer.put((byte) ((c & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                byteBuffer.put((byte) ((c & 63) | 128));
             } else if (c >= 55296 && 57343 >= c) {
                 if (i + 1 != sequence.length()) {
                     i++;
@@ -171,16 +171,16 @@ public final class CodedOutputByteBufferNano {
                     if (Character.isSurrogatePair(c, low)) {
                         int codePoint = Character.toCodePoint(c, low);
                         byteBuffer.put((byte) ((codePoint >>> 18) | 240));
-                        byteBuffer.put((byte) (((codePoint >>> 12) & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
-                        byteBuffer.put((byte) (((codePoint >>> 6) & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
-                        byteBuffer.put((byte) ((codePoint & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                        byteBuffer.put((byte) (((codePoint >>> 12) & 63) | 128));
+                        byteBuffer.put((byte) (((codePoint >>> 6) & 63) | 128));
+                        byteBuffer.put((byte) ((codePoint & 63) | 128));
                     }
                 }
                 throw new IllegalArgumentException("Unpaired surrogate at index " + (i - 1));
             } else {
                 byteBuffer.put((byte) ((c >>> 12) | 480));
-                byteBuffer.put((byte) (((c >>> 6) & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
-                byteBuffer.put((byte) ((c & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                byteBuffer.put((byte) (((c >>> 6) & 63) | 128));
+                byteBuffer.put((byte) ((c & 63) | 128));
             }
             i++;
         }
@@ -213,15 +213,15 @@ public final class CodedOutputByteBufferNano {
                 j = j2 + 1;
                 bytes[j2] = (byte) ((byte) ((c >>> 6) | 960));
                 j2 = j + 1;
-                bytes[j] = (byte) ((byte) ((c & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                bytes[j] = (byte) ((byte) ((c & 63) | 128));
                 j = j2;
             } else if ((c < 55296 || 57343 < c) && j2 <= limit - 3) {
                 j = j2 + 1;
                 bytes[j2] = (byte) ((byte) ((c >>> 12) | 480));
                 j2 = j + 1;
-                bytes[j] = (byte) ((byte) (((c >>> 6) & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                bytes[j] = (byte) ((byte) (((c >>> 6) & 63) | 128));
                 j = j2 + 1;
-                bytes[j2] = (byte) ((byte) ((c & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                bytes[j2] = (byte) ((byte) ((c & 63) | 128));
             } else if (j2 > limit - 4) {
                 char c2 = c;
                 throw new ArrayIndexOutOfBoundsException("Failed writing " + c + " at index " + j2);
@@ -234,11 +234,11 @@ public final class CodedOutputByteBufferNano {
                         j = j2 + 1;
                         bytes[j2] = (byte) ((byte) ((codePoint >>> 18) | 240));
                         j2 = j + 1;
-                        bytes[j] = (byte) ((byte) (((codePoint >>> 12) & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                        bytes[j] = (byte) ((byte) (((codePoint >>> 12) & 63) | 128));
                         j = j2 + 1;
-                        bytes[j2] = (byte) ((byte) (((codePoint >>> 6) & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                        bytes[j2] = (byte) ((byte) (((codePoint >>> 6) & 63) | 128));
                         j2 = j + 1;
-                        bytes[j] = (byte) ((byte) ((codePoint & 63) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT));
+                        bytes[j] = (byte) ((byte) ((codePoint & 63) | 128));
                         j = j2;
                     }
                 }
@@ -354,7 +354,7 @@ public final class CodedOutputByteBufferNano {
 
     public void writeRawVarint32(int value) throws IOException {
         while ((value & -128) != 0) {
-            writeRawByte((value & 127) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+            writeRawByte((value & TransportMediator.KEYCODE_MEDIA_PAUSE) | 128);
             value >>>= 7;
         }
         writeRawByte(value);
@@ -378,7 +378,7 @@ public final class CodedOutputByteBufferNano {
 
     public void writeRawVarint64(long value) throws IOException {
         while ((-128 & value) != 0) {
-            writeRawByte((((int) value) & 127) | STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+            writeRawByte((((int) value) & TransportMediator.KEYCODE_MEDIA_PAUSE) | 128);
             value >>>= 7;
         }
         writeRawByte((int) value);

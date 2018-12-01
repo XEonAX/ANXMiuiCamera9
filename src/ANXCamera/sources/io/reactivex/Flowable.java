@@ -1,6 +1,5 @@
 package io.reactivex;
 
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.annotations.BackpressureKind;
 import io.reactivex.annotations.BackpressureSupport;
 import io.reactivex.annotations.Beta;
@@ -29,7 +28,7 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 public abstract class Flowable<T> {
-    static final int BUFFER_SIZE = Math.max(1, Integer.getInteger("rx2.buffer-size", STCommon.ST_MOBILE_ENABLE_HAND_DETECT).intValue());
+    static final int BUFFER_SIZE = Math.max(1, Integer.getInteger("rx2.buffer-size", 128).intValue());
 
     protected abstract void subscribeActual(Subscriber<? super T> subscriber);
 

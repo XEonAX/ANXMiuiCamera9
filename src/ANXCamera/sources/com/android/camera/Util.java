@@ -65,7 +65,6 @@ import com.android.camera.storage.Storage;
 import com.android.camera2.CameraCapabilities;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.ui.StringTexture;
-import com.sensetime.stmobile.STCommon;
 import dalvik.system.VMRuntime;
 import java.io.Closeable;
 import java.io.File;
@@ -260,7 +259,7 @@ public class Util {
             lowerBound = (int) Math.ceil(Math.sqrt((w * h) / ((double) maxNumOfPixels)));
         }
         if (minSideLength < 0) {
-            upperBound = STCommon.ST_MOBILE_ENABLE_HAND_DETECT;
+            upperBound = 128;
         } else {
             upperBound = (int) Math.min(Math.floor(w / ((double) minSideLength)), Math.floor(h / ((double) minSideLength)));
         }

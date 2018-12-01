@@ -88,7 +88,7 @@ public abstract class ActivityBase extends FragmentActivity implements AppContro
                         Log.d("ActivityBase", "handleMessage:  set mIsFinishInKeyguard = true;");
                         activity.mIsFinishInKeyguard = true;
                         break;
-                    case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                    case 10:
                         int exception = msg.arg1;
                         Log.d("ActivityBase", "msg = " + msg + ", exception = " + exception);
                         switch (exception) {

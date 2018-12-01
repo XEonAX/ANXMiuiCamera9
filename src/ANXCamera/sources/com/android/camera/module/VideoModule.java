@@ -21,6 +21,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.support.annotation.MainThread;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import android.telephony.TelephonyManager;
 import android.util.Range;
@@ -57,7 +58,6 @@ import com.android.camera.ui.RotateTextToast;
 import com.android.camera2.Camera2Proxy;
 import com.android.camera2.Camera2Proxy.PictureCallback;
 import com.android.camera2.Camera2Proxy.VideoRecordStateCallback;
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
@@ -1333,7 +1333,7 @@ public class VideoModule extends VideoBase implements VideoRecordStateCallback, 
                 case 5:
                     updateFace();
                     break;
-                case R.styleable.ToggleSwitch_textOff /*9*/:
+                case 9:
                     String antiBanding;
                     if (Device.isSupportedHFR() && (isHFRMode() || isSlowMode())) {
                         antiBanding = "0";
@@ -1342,27 +1342,27 @@ public class VideoModule extends VideoBase implements VideoRecordStateCallback, 
                     }
                     updateAntiBanding(antiBanding);
                     break;
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     updateFlashPreference();
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
-                case 20:
+                case 11:
+                case MotionEventCompat.AXIS_RUDDER /*20*/:
                 case 30:
-                case 34:
+                case MotionEventCompat.AXIS_GENERIC_3 /*34*/:
                     break;
-                case R.styleable.ToggleSwitch_textSize /*12*/:
+                case 12:
                     setEvValue();
                     break;
-                case R.styleable.ToggleSwitch_duration /*14*/:
+                case 14:
                     updateVideoFocusMode();
                     break;
                 case 19:
                     updateFpsRange();
                     break;
-                case 24:
+                case MotionEventCompat.AXIS_DISTANCE /*24*/:
                     setZoomRatio(getZoomValue());
                     break;
-                case 25:
+                case MotionEventCompat.AXIS_TILT /*25*/:
                     focusCenter();
                     break;
                 case 29:
@@ -1371,7 +1371,7 @@ public class VideoModule extends VideoBase implements VideoRecordStateCallback, 
                 case 31:
                     updateVideoStabilization();
                     break;
-                case 33:
+                case MotionEventCompat.AXIS_GENERIC_2 /*33*/:
                     if (this.mCamera2Device == null) {
                         break;
                     }
@@ -1398,7 +1398,7 @@ public class VideoModule extends VideoBase implements VideoRecordStateCallback, 
             maxWidth = videoSize.width;
             maxHeight = videoSize.height;
         }
-        CameraSize pictureSize = Util.getOptimalVideoSnapshotPictureSize(this.mCameraCapabilities.getSupportedOutputSize((int) STCommon.ST_MOBILE_ENABLE_SEGMENT_DETECT), videoAspectRatio, maxWidth, maxHeight);
+        CameraSize pictureSize = Util.getOptimalVideoSnapshotPictureSize(this.mCameraCapabilities.getSupportedOutputSize(256), videoAspectRatio, maxWidth, maxHeight);
         this.mPictureSize = pictureSize;
         Log.d(TAG, "pictureSize: " + pictureSize);
         if (videoSize.width > Util.sWindowHeight || videoSize.width < 720) {
@@ -1464,7 +1464,7 @@ public class VideoModule extends VideoBase implements VideoRecordStateCallback, 
 
     private boolean needImageThumbnail(int saveType) {
         switch (saveType) {
-            case R.styleable.ToggleSwitch_textSize /*12*/:
+            case 12:
                 return false;
             default:
                 return true;

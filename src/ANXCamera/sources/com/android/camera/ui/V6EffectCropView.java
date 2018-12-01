@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v4.view.InputDeviceCompat;
 import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -205,7 +206,7 @@ public class V6EffectCropView extends View {
             this.mTouchCenter.set((this.mPoint1.x + this.mPoint2.x) / 2, (this.mPoint1.y + this.mPoint2.y) / 2);
             if (MIN_DIS_FOR_MOVE_POINT < ((float) this.mCenterLineSquare)) {
                 if (squareOfPoints(point, this.mPoint1) < this.mCenterLineSquare / 16) {
-                    this.mMovingEdges = 257;
+                    this.mMovingEdges = InputDeviceCompat.SOURCE_KEYBOARD;
                     return;
                 }
             }
@@ -287,7 +288,7 @@ public class V6EffectCropView extends View {
             double currentDis = Math.sqrt((double) getSquareOfDistance(x, y, new PointF(this.mPoint1), new PointF(this.mPoint2), false));
             this.mRangeWidth = Util.clamp(this.mRangeWidth + ((int) (currentDis - this.mLastMoveDis)), MIN_RANGE, this.mMaxRange);
             this.mLastMoveDis = currentDis;
-        } else if (this.mMovingEdges == 257 || this.mMovingEdges == 258) {
+        } else if (this.mMovingEdges == InputDeviceCompat.SOURCE_KEYBOARD || this.mMovingEdges == 258) {
             computeCertenLineCrossPoints(this.mTouchCenter, new Point((int) x, (int) y));
         } else if (this.mMovingEdges == 16) {
             computeCertenLineCrossPoints(new Point(this.mPoint1.x + ((int) deltaX), this.mPoint1.y + ((int) deltaY)), new Point(this.mPoint2.x + ((int) deltaX), this.mPoint2.y + ((int) deltaY)));

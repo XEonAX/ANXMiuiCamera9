@@ -20,7 +20,6 @@ import com.android.camera.data.data.runing.DataItemRunning;
 import com.android.camera.fragment.CommonRecyclerViewHolder;
 import com.android.camera.module.ModuleManager;
 import com.android.camera.ui.ColorImageView;
-import com.sensetime.stmobile.STCommon;
 
 public class ExtraAdapter extends Adapter<CommonRecyclerViewHolder> {
     private DataItemConfig mDataItemConfig;
@@ -181,7 +180,7 @@ public class ExtraAdapter extends Adapter<CommonRecyclerViewHolder> {
             final CommonRecyclerViewHolder commonRecyclerViewHolder = holder;
             holder.itemView.postDelayed(new Runnable() {
                 public void run() {
-                    commonRecyclerViewHolder.itemView.sendAccessibilityEvent(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                    commonRecyclerViewHolder.itemView.sendAccessibilityEvent(128);
                 }
             }, 100);
         }

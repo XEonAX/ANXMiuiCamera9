@@ -9,6 +9,7 @@ import android.hardware.camera2.CameraCaptureSession;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.annotation.MainThread;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import android.telephony.TelephonyManager;
 import android.util.Range;
@@ -514,30 +515,30 @@ public class FunModule extends VideoBase implements ModeProtocol$FilterProtocol,
                 case 5:
                     updateFace();
                     break;
-                case R.styleable.ToggleSwitch_textOff /*9*/:
+                case 9:
                     updateAntiBanding(CameraSettings.getAntiBanding());
                     break;
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     updateFlashPreference();
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
-                case 20:
+                case 11:
+                case MotionEventCompat.AXIS_RUDDER /*20*/:
                 case 30:
-                case 34:
+                case MotionEventCompat.AXIS_GENERIC_3 /*34*/:
                     break;
-                case R.styleable.ToggleSwitch_textSize /*12*/:
+                case 12:
                     setEvValue();
                     break;
-                case R.styleable.ToggleSwitch_duration /*14*/:
+                case 14:
                     updateVideoFocusMode();
                     break;
                 case 19:
                     updateFpsRange();
                     break;
-                case 24:
+                case MotionEventCompat.AXIS_DISTANCE /*24*/:
                     setZoomRatio(getZoomValue());
                     break;
-                case 25:
+                case MotionEventCompat.AXIS_TILT /*25*/:
                     focusCenter();
                     break;
                 case 29:

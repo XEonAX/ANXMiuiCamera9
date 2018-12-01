@@ -15,7 +15,6 @@ import com.android.camera.protocol.ModeCoordinatorImpl;
 import com.android.camera.protocol.ModeProtocol$ActionProcessing;
 import com.android.camera.storage.Storage.StorageListener;
 import com.android.gallery3d.exif.ExifInterface;
-import com.sensetime.stmobile.STCommon;
 import java.io.File;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -27,7 +26,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ImageSaver {
     private static final Executor CAMERA_SAVER_EXECUTOR;
-    private static final BlockingQueue<Runnable> mSaveRequestQueue = new LinkedBlockingQueue(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+    private static final BlockingQueue<Runnable> mSaveRequestQueue = new LinkedBlockingQueue(128);
     private static final ThreadFactory sThreadFactory = new ThreadFactory() {
         private final AtomicInteger mCount = new AtomicInteger(1);
 

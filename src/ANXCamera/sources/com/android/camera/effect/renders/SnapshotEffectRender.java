@@ -1,5 +1,7 @@
 package com.android.camera.effect.renders;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -324,7 +326,6 @@ public class SnapshotEffectRender {
                     SnapshotEffectRender.this.mTitleMap.remove(jpeg.mTitle);
                 }
                 String str;
-                Object -get1;
                 if (SnapshotEffectRender.this.mImageSaver != null) {
                     ImageSaver -get13 = SnapshotEffectRender.this.mImageSaver;
                     byte[] bArr = jpeg.mData;
@@ -337,7 +338,7 @@ public class SnapshotEffectRender {
                     -get13.addImage(bArr, z, str, title == null ? null : jpeg.mTitle, jpeg.mDate, jpeg.mUri, jpeg.mLoc, jpeg.mWidth, jpeg.mHeight, jpeg.mExif, jpeg.mJpegOrientation, false, false, title == null ? jpeg.mFinalImage : false, false, false, jpeg.mAlgorithmName);
                 } else if (jpeg.mUri == null) {
                     String str2;
-                    -get1 = SnapshotEffectRender.this.mActivity;
+                    Activity -get1 = SnapshotEffectRender.this.mActivity;
                     if (title == null) {
                         str2 = jpeg.mTitle;
                     } else {
@@ -346,7 +347,7 @@ public class SnapshotEffectRender {
                     Storage.addImage(-get1, str2, jpeg.mDate, jpeg.mLoc, jpeg.mJpegOrientation, jpeg.mData, jpeg.mWidth, jpeg.mHeight, false, jpeg.mAlgorithmName);
                 } else {
                     String str3;
-                    -get1 = SnapshotEffectRender.this.mActivity;
+                    Context -get12 = SnapshotEffectRender.this.mActivity;
                     byte[] bArr2 = jpeg.mData;
                     ExifInterface exifInterface = jpeg.mExif;
                     Uri uri = jpeg.mUri;
@@ -364,7 +365,7 @@ public class SnapshotEffectRender {
                     } else {
                         str3 = jpeg.mTitle;
                     }
-                    Storage.updateImage(-get1, bArr2, exifInterface, uri, str, location, i, i2, i3, str3);
+                    Storage.updateImage(-get12, bArr2, exifInterface, uri, str, location, i, i2, i3, str3);
                 }
             } else if (jpeg.mExif != null) {
                 OutputStream s = new ByteArrayOutputStream();

@@ -1,6 +1,6 @@
 package com.google.android.apps.lens.library.base.proto.nano;
 
-import android.support.v7.recyclerview.R;
+import android.support.v4.view.MotionEventCompat;
 import com.google.protobuf.nano.CodedInputByteBufferNano;
 import com.google.protobuf.nano.CodedOutputByteBufferNano;
 import com.google.protobuf.nano.ExtendableMessageNano;
@@ -88,13 +88,13 @@ public final class LensSdkParamsProto$LensSdkParams extends ExtendableMessageNan
             switch (tag) {
                 case 0:
                     return this;
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     this.lensSdkVersion = input.readString();
                     break;
-                case 18:
+                case MotionEventCompat.AXIS_RTRIGGER /*18*/:
                     this.agsaVersionName = input.readString();
                     break;
-                case 24:
+                case MotionEventCompat.AXIS_DISTANCE /*24*/:
                     initialPos = input.getPosition();
                     try {
                         this.lensAvailabilityStatus = checkLensAvailabilityStatusOrThrow(input.readInt32());

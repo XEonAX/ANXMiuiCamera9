@@ -3,7 +3,6 @@ package com.android.camera.effect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.v7.recyclerview.R;
 import com.android.camera.Device;
 import com.android.camera.effect.BeautyParameters.Type;
 import java.util.Locale;
@@ -173,11 +172,11 @@ public class BeautyValues implements Parcelable {
                 return this.mBeautySlimFace;
             case 8:
                 return this.mBeautySlimNose;
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case 9:
                 return this.mBeautySmile;
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case 10:
                 return this.mBeautySkinSmooth;
-            case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+            case 11:
                 return this.mBeautySkinColor;
             default:
                 return 0;

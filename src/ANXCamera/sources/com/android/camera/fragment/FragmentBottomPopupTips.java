@@ -39,7 +39,6 @@ import com.android.camera.protocol.ModeProtocol$HandleBackTrace;
 import com.android.camera.protocol.ModeProtocol$ManuallyAdjust;
 import com.android.camera.protocol.ModeProtocol$ModeCoordinator;
 import com.android.camera.statistic.CameraStat;
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.Completable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -346,7 +345,7 @@ public class FragmentBottomPopupTips extends BaseFragment implements OnClickList
             if (Util.isAccessible()) {
                 this.mQrCodeButton.postDelayed(new Runnable() {
                     public void run() {
-                        FragmentBottomPopupTips.this.mQrCodeButton.sendAccessibilityEvent(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                        FragmentBottomPopupTips.this.mQrCodeButton.sendAccessibilityEvent(128);
                     }
                 }, 100);
             }

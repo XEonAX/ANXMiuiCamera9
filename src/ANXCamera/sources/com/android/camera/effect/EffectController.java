@@ -2,6 +2,8 @@ package com.android.camera.effect;
 
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.support.v4.media.TransportMediator;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.util.SparseArray;
@@ -741,37 +743,37 @@ public class EffectController {
         int iconResId = 0;
         for (FilterType type : FilterFactory.getFiltersByScene(FilterScene.NORMAL)) {
             switch (m0-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
-                case R.styleable.ToggleSwitch_textOff /*9*/:
+                case 9:
                     order = 110;
                     nameResId = R.string.color_effect_entry_berry;
                     iconResId = R.drawable.color_effect_image_berry;
                     break;
-                case R.styleable.ToggleSwitch_textOffColor /*10*/:
+                case 10:
                     order = 60;
                     nameResId = R.string.color_effect_entry_cookie;
                     iconResId = R.drawable.color_effect_image_cookie;
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
+                case 11:
                     order = 90;
                     nameResId = R.string.color_effect_entry_delicacy;
                     iconResId = R.drawable.color_effect_image_delicacy;
                     break;
-                case R.styleable.ToggleSwitch_textSize /*12*/:
-                    order = 130;
+                case 12:
+                    order = TransportMediator.KEYCODE_MEDIA_RECORD;
                     nameResId = R.string.color_effect_entry_fade;
                     iconResId = R.drawable.color_effect_image_fade;
                     break;
-                case R.styleable.ToggleSwitch_textOffShadowRadius /*13*/:
+                case 13:
                     order = 20;
                     nameResId = R.string.color_effect_entry_film;
                     iconResId = R.drawable.color_effect_image_film;
                     break;
-                case R.styleable.ToggleSwitch_duration /*14*/:
+                case 14:
                     order = 30;
                     nameResId = R.string.color_effect_entry_koizora;
                     iconResId = R.drawable.color_effect_image_koizora;
                     break;
-                case R.styleable.ToggleSwitch_checked /*15*/:
+                case 15:
                     order = 40;
                     nameResId = R.string.color_effect_entry_latte;
                     iconResId = R.drawable.color_effect_image_latte;
@@ -781,12 +783,12 @@ public class EffectController {
                     nameResId = R.string.color_effect_entry_glimmer;
                     iconResId = R.drawable.color_effect_image_glimmer;
                     break;
-                case 17:
+                case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                     order = 10;
                     nameResId = R.string.color_effect_entry_vivid;
                     iconResId = R.drawable.color_effect_image_vivid;
                     break;
-                case 18:
+                case MotionEventCompat.AXIS_RTRIGGER /*18*/:
                     order = 70;
                     nameResId = R.string.color_effect_entry_quiet;
                     iconResId = R.drawable.color_effect_image_quiet;
@@ -796,12 +798,12 @@ public class EffectController {
                     nameResId = R.string.color_effect_entry_soda;
                     iconResId = R.drawable.color_effect_image_soda;
                     break;
-                case 20:
+                case MotionEventCompat.AXIS_RUDDER /*20*/:
                     order = 50;
                     nameResId = R.string.color_effect_entry_warm;
                     iconResId = R.drawable.color_effect_image_warm;
                     break;
-                case 21:
+                case MotionEventCompat.AXIS_WHEEL /*21*/:
                     order = 120;
                     nameResId = R.string.color_effect_entry_blackwhite;
                     iconResId = R.drawable.color_effect_image_blackwhite;
@@ -825,22 +827,22 @@ public class EffectController {
         int iconResId = 0;
         for (FilterType type : FilterFactory.getFiltersByScene(FilterScene.STICKER)) {
             switch (m0-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues()[type.ordinal()]) {
-                case 22:
+                case MotionEventCompat.AXIS_GAS /*22*/:
                     order = 45;
                     nameResId = R.string.video_effect_entry_bygone;
                     iconResId = R.drawable.video_effect_image_bygone;
                     break;
-                case 23:
+                case MotionEventCompat.AXIS_BRAKE /*23*/:
                     order = 10;
                     nameResId = R.string.video_effect_entry_film;
                     iconResId = R.drawable.video_effect_image_film;
                     break;
-                case 24:
+                case MotionEventCompat.AXIS_DISTANCE /*24*/:
                     order = 40;
                     nameResId = R.string.video_effect_entry_forest;
                     iconResId = R.drawable.video_effect_image_forest;
                     break;
-                case 25:
+                case MotionEventCompat.AXIS_TILT /*25*/:
                     order = 30;
                     nameResId = R.string.video_effect_entry_polaroid;
                     iconResId = R.drawable.video_effect_image_polaroid;
@@ -1079,14 +1081,14 @@ public class EffectController {
                 return 80;
             case 7:
                 return 70;
-            case R.styleable.ToggleSwitch_textOff /*9*/:
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
-            case R.styleable.ToggleSwitch_textOffShadowColor /*11*/:
-            case R.styleable.ToggleSwitch_textOffShadowRadius /*13*/:
-            case R.styleable.ToggleSwitch_duration /*14*/:
-            case 18:
+            case 9:
+            case 10:
+            case 11:
+            case 13:
+            case 14:
+            case MotionEventCompat.AXIS_RTRIGGER /*18*/:
                 return 80;
-            case 17:
+            case MotionEventCompat.AXIS_LTRIGGER /*17*/:
                 return 60;
             case 19:
                 return 70;

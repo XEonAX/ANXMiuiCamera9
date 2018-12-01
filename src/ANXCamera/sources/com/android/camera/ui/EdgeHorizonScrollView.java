@@ -9,6 +9,7 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader.TileMode;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -47,7 +48,7 @@ public class EdgeHorizonScrollView extends HorizontalScrollView {
         this.mEdgePaint.setAntiAlias(true);
         this.mEdgePaint.setStyle(Style.FILL);
         this.mEdgePaint.setXfermode(new PorterDuffXfermode(Mode.DST_OUT));
-        this.mEdgePaint.setShader(new LinearGradient(0.0f, 0.0f, 0.0f, (float) this.mEdgeWidth, new int[]{-16777216, -16777216, 0}, new float[]{0.0f, 0.2f, 1.0f}, TileMode.CLAMP));
+        this.mEdgePaint.setShader(new LinearGradient(0.0f, 0.0f, 0.0f, (float) this.mEdgeWidth, new int[]{ViewCompat.MEASURED_STATE_MASK, ViewCompat.MEASURED_STATE_MASK, 0}, new float[]{0.0f, 0.2f, 1.0f}, TileMode.CLAMP));
         setFocusable(false);
     }
 

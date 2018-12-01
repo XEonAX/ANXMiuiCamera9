@@ -1,6 +1,6 @@
 package com.android.gallery3d.exif;
 
-import android.support.v7.recyclerview.R;
+import android.support.v4.internal.view.SupportMenu;
 import com.android.camera.log.Log;
 import java.io.IOException;
 import java.io.InputStream;
@@ -454,7 +454,7 @@ class ExifParser {
                 }
                 tag.setValue(value2);
                 return;
-            case R.styleable.ToggleSwitch_textOff /*9*/:
+            case (short) 9:
                 value = new int[tag.getComponentCount()];
                 n = value.length;
                 for (i = 0; i < n; i++) {
@@ -462,7 +462,7 @@ class ExifParser {
                 }
                 tag.setValue(value);
                 return;
-            case R.styleable.ToggleSwitch_textOffColor /*10*/:
+            case (short) 10:
                 value2 = new Rational[tag.getComponentCount()];
                 n = value2.length;
                 for (i = 0; i < n; i++) {
@@ -533,7 +533,7 @@ class ExifParser {
     }
 
     protected int readUnsignedShort() throws IOException {
-        return this.mTiffStream.readShort() & 65535;
+        return this.mTiffStream.readShort() & SupportMenu.USER_MASK;
     }
 
     protected long readUnsignedLong() throws IOException {

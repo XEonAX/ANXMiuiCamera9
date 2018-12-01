@@ -1,5 +1,6 @@
 package com.google.protobuf.nano;
 
+import android.support.v4.media.TransportMediator;
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.GeneratedMessageLite;
@@ -127,16 +128,16 @@ public final class CodedInputByteBufferNano {
         if (tmp >= (byte) 0) {
             return tmp;
         }
-        int result = tmp & 127;
+        int result = tmp & TransportMediator.KEYCODE_MEDIA_PAUSE;
         tmp = readRawByte();
         if (tmp < (byte) 0) {
-            result |= (tmp & 127) << 7;
+            result |= (tmp & TransportMediator.KEYCODE_MEDIA_PAUSE) << 7;
             tmp = readRawByte();
             if (tmp < (byte) 0) {
-                result |= (tmp & 127) << 14;
+                result |= (tmp & TransportMediator.KEYCODE_MEDIA_PAUSE) << 14;
                 tmp = readRawByte();
                 if (tmp < (byte) 0) {
-                    result |= (tmp & 127) << 21;
+                    result |= (tmp & TransportMediator.KEYCODE_MEDIA_PAUSE) << 21;
                     tmp = readRawByte();
                     result |= tmp << 28;
                     if (tmp < (byte) 0) {

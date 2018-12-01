@@ -2,6 +2,7 @@ package com.android.camera.fragment;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.recyclerview.R;
@@ -10,7 +11,6 @@ import android.util.SparseIntArray;
 import com.android.camera.Camera;
 import com.android.camera.Device;
 import com.android.camera.animation.AnimationComposite;
-import com.android.camera.animation.AnimationDelegate.AnimationResource;
 import com.android.camera.fragment.beauty.FragmentPopupBeauty;
 import com.android.camera.fragment.beauty.FragmentPopupBeautyLevel;
 import com.android.camera.fragment.beauty.FragmentPopupMakeup;
@@ -74,7 +74,7 @@ public class BaseFragmentDelegate implements ModeProtocol$BaseDelegate {
         fragmentTransaction.replace(R.id.panorama_content, fragmentPanorama, fragmentPanorama.getFragmentTag());
         fragmentTransaction.replace(R.id.screen_light_content, fragmentScreenLight, fragmentScreenLight.getFragmentTag());
         fragmentTransaction.hide(fragmentScreenLight);
-        AnimationResource dualFragment = null;
+        Fragment dualFragment = null;
         if (Device.isSupportedOpticalZoom()) {
             dualFragment = constructFragment(true, 4084, 240, baseLifecycleListener);
         } else if (Device.isSupportedStereo()) {

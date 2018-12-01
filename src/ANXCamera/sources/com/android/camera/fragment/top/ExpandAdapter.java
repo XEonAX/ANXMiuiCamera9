@@ -13,7 +13,6 @@ import com.android.camera.data.data.ComponentData;
 import com.android.camera.data.data.ComponentDataItem;
 import com.android.camera.data.data.global.DataItemGlobal;
 import com.android.camera.fragment.CommonRecyclerViewHolder;
-import com.sensetime.stmobile.STCommon;
 
 public class ExpandAdapter extends Adapter<CommonRecyclerViewHolder> implements OnClickListener {
     private ComponentData mComponentData;
@@ -49,7 +48,7 @@ public class ExpandAdapter extends Adapter<CommonRecyclerViewHolder> implements 
                 textView.postDelayed(new Runnable() {
                     public void run() {
                         textView.setContentDescription(textView.getText() + ", " + selectedStr);
-                        textView.sendAccessibilityEvent(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                        textView.sendAccessibilityEvent(128);
                     }
                 }, 100);
                 return;

@@ -15,6 +15,8 @@ import android.os.ServiceManager;
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -65,7 +67,6 @@ import com.android.camera.ui.CameraRootView;
 import com.android.camera.ui.V6CameraGLSurfaceView;
 import com.android.camera.ui.V6GestureRecognizer;
 import com.android.camera.ui.V9EdgeShutterView;
-import com.sensetime.stmobile.STCommon;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -388,7 +389,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
         if (Util.checkDeviceHasNavigationBar(this)) {
             Window win = getWindow();
             win.getDecorView().setSystemUiVisibility(768);
-            win.addFlags(Integer.MIN_VALUE);
+            win.addFlags(ExploreByTouchHelper.INVALID_ID);
         }
     }
 
@@ -520,7 +521,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
         setBrightnessRampRate(-1);
         setScreenEffect(false);
         setSwitchingModule(false);
-        getWindow().clearFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+        getWindow().clearFlags(128);
         if (this.mDidRegister) {
             unregisterReceiver(this.mReceiver);
             this.mDidRegister = false;
@@ -664,8 +665,8 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
             return z;
         }
         switch (keyCode) {
-            case 24:
-            case 25:
+            case MotionEventCompat.AXIS_DISTANCE /*24*/:
+            case MotionEventCompat.AXIS_TILT /*25*/:
             case 27:
             case 66:
             case 80:
@@ -761,7 +762,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
             setSwitchingModule(true);
             if (!isCurrentModuleAlive()) {
                 startControl.mNeedBlurAnimation = false;
-                getWindow().clearFlags(STCommon.ST_MOBILE_ENABLE_HAND_DETECT);
+                getWindow().clearFlags(128);
             }
             V6GestureRecognizer.getInstance(this).setCurrentModule(null);
             BaseModule lastModule = this.mCurrentModule;
@@ -866,7 +867,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
     }
 
     public boolean showNewBie(int newBieType) {
-        DialogFragment dialogFragment;
+        Fragment dialogFragment;
         switch (newBieType) {
             case 1:
                 dialogFragment = new PortraitNewbieDialogFragment();
@@ -882,7 +883,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
                 this.mHandler.postDelayed(new Runnable() {
                     public void run() {
                         if (!Camera.this.isActivityPaused()) {
-                            DialogFragment aiSceneFragment = new AiSceneNewbieDialogFragment();
+                            Fragment aiSceneFragment = new AiSceneNewbieDialogFragment();
                             aiSceneFragment.setStyle(2, R.style.DialogFragmentFullScreen);
                             Camera.this.getSupportFragmentManager().beginTransaction().add(aiSceneFragment, "AiSceneHint").commitAllowingStateLoss();
                             DataRepository.dataItemGlobal().editor().putBoolean("pref_camera_first_ai_scene_use_hint_shown_key", false).apply();
@@ -1027,7 +1028,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
     }
 
     private void showHibernationFragment() {
-        DialogFragment dialogFragment = new HibernationFragment();
+        Fragment dialogFragment = new HibernationFragment();
         dialogFragment.setStyle(2, R.style.DialogFragmentFullScreen);
         getSupportFragmentManager().beginTransaction().add(dialogFragment, "Hibernation").commitAllowingStateLoss();
     }
@@ -1041,7 +1042,7 @@ public class Camera extends ActivityBase implements OnRequestPermissionsResultCa
 
     public void showLensDirtyDetectedHint() {
         if (getSupportFragmentManager().findFragmentByTag("LensDirtyDetectDialog") == null) {
-            DialogFragment dialogFragment = new LensDirtyDetectDialogFragment();
+            Fragment dialogFragment = new LensDirtyDetectDialogFragment();
             dialogFragment.setStyle(2, R.style.LensDirtyDetectDialogFragment);
             getSupportFragmentManager().beginTransaction().add(dialogFragment, "LensDirtyDetectDialog").commitAllowingStateLoss();
         }

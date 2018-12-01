@@ -19,7 +19,6 @@ import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Video.Thumbnails;
 import com.android.camera.log.Log;
 import com.android.camera.storage.Storage;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.io.BufferedOutputStream;
 import java.io.Closeable;
 import java.io.DataOutputStream;
@@ -143,7 +142,7 @@ public class Thumbnail {
                 FileOutputStream f = new FileOutputStream(file);
                 try {
                     DataOutputStream d3;
-                    BufferedOutputStream b3 = new BufferedOutputStream(f, STMobileHumanActionNative.ST_MOBILE_HAND_PALM);
+                    BufferedOutputStream b3 = new BufferedOutputStream(f, 4096);
                     try {
                         d3 = new DataOutputStream(b3);
                         try {

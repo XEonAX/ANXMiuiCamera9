@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.android.camera.log.Log;
-import com.sensetime.stmobile.STMobileHumanActionNative;
 import java.io.Writer;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -1209,7 +1208,7 @@ public class GLTextureView extends TextureView implements SurfaceTextureListener
             if (!this.mGLESDriverCheckComplete) {
                 checkGLESVersion();
                 String renderer = gl.glGetString(7937);
-                if (this.mGLESVersion < STMobileHumanActionNative.ST_MOBILE_HAND_CONGRATULATE) {
+                if (this.mGLESVersion < 131072) {
                     this.mMultipleGLESContextsAllowed = renderer.startsWith("Q3Dimension MSM7500 ") ^ 1;
                     notifyAll();
                 }
