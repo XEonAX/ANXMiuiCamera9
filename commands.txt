@@ -24,7 +24,11 @@ java  -jar .\tools\apktool.jar b -p .\tools\MiuiFrameworks -o .\out\ANXCamera.ap
 Sign
 java  -jar .\tools\SignApk.jar .\tools\testkey.x509.pem .\tools\testkey.pk8 .\out\ANXCamera.apkunsign .\out\ANXCamera.apk
 
+Install
+adb install -g .\out\ANXCamera.apk
 
+Reinstall
+adb uninstall com.aeonax.camera && adb install -g .\out\ANXCamera.apk
 
 
 

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.android.camera" platformBuildVersionCode="27" platformBuildVersionName="8.1.0">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.android.camera" platformBuildVersionCode="27" platformBuildVersionName="8.1.0">
     <original-package android:name="com.android.camera"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera"/>
@@ -27,11 +28,11 @@
     <application android:allowBackup="true" android:backupAgent="miui.app.backup.FullBackupAgent" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_camera" android:label="@string/camera_label" android:name="com.android.camera.CameraAppImpl" android:supportsRtl="true" android:theme="@style/ThemeCamera">
         <meta-data android:name="android.max_aspect" android:value="2.2"/>
         <uses-library android:name="zxing.jar" android:required="false"/>
-        <uses-library android:name="miui-stat.jar"/>
-        <uses-library android:name="android-support-v13.jar"/>
-        <uses-library android:name="android-support-v7-recyclerview.jar"/>
-        <uses-library android:name="cloud-common.jar"/>
-        <uses-library android:name="volley.jar"/>
+        <uses-library android:name="miui-stat.jar" android:required="false"/>
+        <uses-library android:name="android-support-v13.jar" android:required="false"/>
+        <uses-library android:name="android-support-v7-recyclerview.jar" android:required="false"/>
+        <uses-library android:name="cloud-common.jar" android:required="false"/>
+        <uses-library android:name="volley.jar" android:required="false"/>
         <service android:exported="false" android:name=".snap.SnapService"/>
         <receiver android:name=".snap.SnapKeyReceiver">
             <intent-filter>
