@@ -1,13 +1,13 @@
 package com.android.camera.fragment.sticker;
 
 import android.content.Context;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import com.android.camera.R;
 import java.util.List;
 
 public abstract class BaseSelectAdapter<T> extends Adapter<BaseSelectHolder> implements OnClickListener {

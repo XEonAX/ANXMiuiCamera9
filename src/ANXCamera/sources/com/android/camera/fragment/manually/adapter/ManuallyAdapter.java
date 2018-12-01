@@ -1,7 +1,6 @@
 package com.android.camera.fragment.manually.adapter;
 
 import android.support.annotation.StringRes;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.android.camera.R;
 import com.android.camera.data.data.ComponentData;
 import com.android.camera.fragment.CommonRecyclerViewHolder;
 import java.util.List;

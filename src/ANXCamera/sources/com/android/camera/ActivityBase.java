@@ -13,7 +13,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.UiThread;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.recyclerview.R;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.widget.TextView;

@@ -10,11 +10,11 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.ui.drawable.snap.CameraSnapAnimateDrawable;
 

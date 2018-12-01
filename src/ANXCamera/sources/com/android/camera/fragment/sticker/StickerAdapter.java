@@ -1,9 +1,9 @@
 package com.android.camera.fragment.sticker;
 
 import android.content.Context;
-import android.support.v7.recyclerview.R;
 import android.view.View;
 import android.widget.ImageView;
+import com.android.camera.R;
 import com.android.camera.fragment.sticker.BaseSelectAdapter.BaseSelectHolder;
 import com.android.camera.fragment.sticker.download.DownloadView;
 import com.android.camera.network.imageloader.ImageLoaderManager;

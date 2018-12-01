@@ -1,6 +1,5 @@
 package com.android.camera;
 
-import android.support.v7.recyclerview.R;
 import java.util.ArrayList;
 import java.util.List;
 

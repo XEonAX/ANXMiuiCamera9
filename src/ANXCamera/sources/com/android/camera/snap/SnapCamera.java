@@ -27,7 +27,6 @@ import android.os.HandlerThread;
 import android.provider.MediaStore.Video.Media;
 import android.provider.Settings.Secure;
 import android.support.annotation.NonNull;
-import android.support.v7.recyclerview.R;
 import android.view.OrientationEventListener;
 import android.view.Surface;
 import com.android.camera.CameraSettings;
@@ -35,6 +34,7 @@ import com.android.camera.CameraSize;
 import com.android.camera.Device;
 import com.android.camera.Exif;
 import com.android.camera.LocationManager;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.data.DataRepository;
 import com.android.camera.log.Log;
@@ -245,7 +245,7 @@ public class SnapCamera implements OnErrorListener, OnInfoListener {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:12:0x0057 A:{Splitter: B:4:0x0024, ExcHandler: android.hardware.camera2.CameraAccessException (r3_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:12:0x0057 A:{ExcHandler: android.hardware.camera2.CameraAccessException (r3_0 'e' java.lang.Exception), Splitter: B:4:0x0024} */
     /* JADX WARNING: Missing block: B:12:0x0057, code:
             r3 = move-exception;
      */

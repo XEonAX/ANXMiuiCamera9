@@ -1,9 +1,9 @@
 package com.android.camera.fragment.beauty;
 
-import android.support.v7.recyclerview.R;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.fragment.beauty.SingleCheckAdapter.LevelItem;
 import java.util.ArrayList;

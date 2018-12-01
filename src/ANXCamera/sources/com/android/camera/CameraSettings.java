@@ -5,7 +5,6 @@ import android.hardware.input.InputManager;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.provider.Settings.System;
-import android.support.v7.recyclerview.R;
 import android.util.Range;
 import android.util.Size;
 import android.util.SparseArray;

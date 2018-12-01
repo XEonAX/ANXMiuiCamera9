@@ -170,8 +170,8 @@ public class Camera2OpenManager {
         this.mCameraHandler.sendEmptyMessage(2);
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:23:0x00c8 A:{Splitter: B:21:0x00ab, ExcHandler: android.hardware.camera2.CameraAccessException (r0_0 'e' java.lang.Exception)} */
-    /* JADX WARNING: Removed duplicated region for block: B:23:0x00c8 A:{Splitter: B:21:0x00ab, ExcHandler: android.hardware.camera2.CameraAccessException (r0_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:23:0x00c8 A:{ExcHandler: android.hardware.camera2.CameraAccessException (r0_0 'e' java.lang.Exception), Splitter: B:21:0x00ab} */
+    /* JADX WARNING: Removed duplicated region for block: B:23:0x00c8 A:{ExcHandler: android.hardware.camera2.CameraAccessException (r0_0 'e' java.lang.Exception), Splitter: B:21:0x00ab} */
     /* JADX WARNING: Missing block: B:23:0x00c8, code:
             r0 = move-exception;
      */

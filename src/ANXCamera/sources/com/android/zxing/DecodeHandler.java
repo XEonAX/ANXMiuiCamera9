@@ -3,7 +3,7 @@ package com.android.zxing;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v7.recyclerview.R;
+import com.android.camera.R;
 import com.android.camera.log.Log;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;

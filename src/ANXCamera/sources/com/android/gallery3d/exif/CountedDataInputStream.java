@@ -1,6 +1,5 @@
 package com.android.gallery3d.exif;
 
-import android.support.v4.internal.view.SupportMenu;
 import java.io.EOFException;
 import java.io.FilterInputStream;
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.nio.charset.Charset;
 
 class CountedDataInputStream extends FilterInputStream {
     /* renamed from: -assertionsDisabled */
-    static final /* synthetic */ boolean f11-assertionsDisabled = (CountedDataInputStream.class.desiredAssertionStatus() ^ 1);
+    static final /* synthetic */ boolean f10-assertionsDisabled = (CountedDataInputStream.class.desiredAssertionStatus() ^ 1);
     private final byte[] mByteArray = new byte[8];
     private final ByteBuffer mByteBuffer = ByteBuffer.wrap(this.mByteArray);
     private int mCount = 0;
@@ -71,7 +70,7 @@ class CountedDataInputStream extends FilterInputStream {
 
     public void skipTo(long target) throws IOException {
         long diff = target - ((long) this.mCount);
-        if (f11-assertionsDisabled || diff >= 0) {
+        if (f10-assertionsDisabled || diff >= 0) {
             skipOrThrow(diff);
             return;
         }
@@ -103,7 +102,7 @@ class CountedDataInputStream extends FilterInputStream {
     }
 
     public int readUnsignedShort() throws IOException {
-        return readShort() & SupportMenu.USER_MASK;
+        return readShort() & 65535;
     }
 
     public int readInt() throws IOException {

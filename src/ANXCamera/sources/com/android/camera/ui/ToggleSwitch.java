@@ -25,7 +25,7 @@ import miui.view.animation.QuarticEaseInOutInterpolator;
 
 public class ToggleSwitch extends CompoundButton implements Checkable {
     /* renamed from: -com-android-camera-ui-ToggleSwitch$StateSwitchesValues */
-    private static final /* synthetic */ int[] f9-com-android-camera-ui-ToggleSwitch$StateSwitchesValues = null;
+    private static final /* synthetic */ int[] f8-com-android-camera-ui-ToggleSwitch$StateSwitchesValues = null;
     private static final String TAG = ToggleSwitch.class.getSimpleName();
     private boolean isMoving;
     private int mAnimDuration;
@@ -65,8 +65,8 @@ public class ToggleSwitch extends CompoundButton implements Checkable {
 
     /* renamed from: -getcom-android-camera-ui-ToggleSwitch$StateSwitchesValues */
     private static /* synthetic */ int[] m8-getcom-android-camera-ui-ToggleSwitch$StateSwitchesValues() {
-        if (f9-com-android-camera-ui-ToggleSwitch$StateSwitchesValues != null) {
-            return f9-com-android-camera-ui-ToggleSwitch$StateSwitchesValues;
+        if (f8-com-android-camera-ui-ToggleSwitch$StateSwitchesValues != null) {
+            return f8-com-android-camera-ui-ToggleSwitch$StateSwitchesValues;
         }
         int[] iArr = new int[State.values().length];
         try {
@@ -85,7 +85,7 @@ public class ToggleSwitch extends CompoundButton implements Checkable {
             iArr[State.SWITCH_ON.ordinal()] = 4;
         } catch (NoSuchFieldError e4) {
         }
-        f9-com-android-camera-ui-ToggleSwitch$StateSwitchesValues = iArr;
+        f8-com-android-camera-ui-ToggleSwitch$StateSwitchesValues = iArr;
         return iArr;
     }
 

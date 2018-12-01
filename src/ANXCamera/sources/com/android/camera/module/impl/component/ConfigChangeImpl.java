@@ -2,12 +2,12 @@ package com.android.camera.module.impl.component;
 
 import android.content.Intent;
 import android.support.annotation.StringRes;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import com.android.camera.ActivityBase;
 import com.android.camera.CameraPreferenceActivity;
 import com.android.camera.CameraSettings;
 import com.android.camera.MutexModeManager;
+import com.android.camera.R;
 import com.android.camera.data.DataRepository;
 import com.android.camera.data.data.ComponentData;
 import com.android.camera.data.data.config.ComponentConfigBeauty;

@@ -2,7 +2,6 @@ package com.android.camera.ui;
 
 import android.graphics.Point;
 import android.graphics.RectF;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -12,6 +11,7 @@ import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
 import android.view.ViewConfiguration;
 import com.android.camera.ActivityBase;
 import com.android.camera.Camera;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.effect.EffectController;
 import com.android.camera.log.Log;

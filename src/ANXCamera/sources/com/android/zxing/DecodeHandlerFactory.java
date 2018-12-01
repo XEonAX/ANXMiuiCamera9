@@ -1,7 +1,7 @@
 package com.android.zxing;
 
 import android.os.HandlerThread;
-import android.support.v7.recyclerview.R;
+import com.android.camera.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import java.util.Hashtable;

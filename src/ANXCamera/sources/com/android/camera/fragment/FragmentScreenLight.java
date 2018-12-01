@@ -1,8 +1,8 @@
 package com.android.camera.fragment;
 
-import android.support.v7.recyclerview.R;
 import android.view.View;
 import android.view.animation.Animation;
+import com.android.camera.R;
 import com.android.camera.animation.FragmentAnimationFactory;
 import com.android.camera.log.Log;
 import com.android.camera.protocol.ModeCoordinatorImpl;

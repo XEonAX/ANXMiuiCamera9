@@ -2,9 +2,9 @@ package com.android.camera.backup;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.support.v7.recyclerview.R;
 import com.android.camera.CameraAppImpl;
 import com.android.camera.CameraSettings;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.log.Log;
 import com.xiaomi.settingsdk.backup.data.DataPackage;
@@ -62,7 +62,7 @@ public class CameraBackupHelper {
         editor.commit();
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:15:0x003a A:{Splitter: B:1:0x0014, ExcHandler: org.xmlpull.v1.XmlPullParserException (r0_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:15:0x003a A:{ExcHandler: org.xmlpull.v1.XmlPullParserException (r0_0 'e' java.lang.Exception), Splitter: B:1:0x0014} */
     /* JADX WARNING: Missing block: B:15:0x003a, code:
             r0 = move-exception;
      */

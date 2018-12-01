@@ -2,7 +2,6 @@ package com.android.camera.fragment.top;
 
 import android.animation.LayoutTransition;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -13,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.android.camera.CameraSettings;
 import com.android.camera.Device;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.animation.type.TranslateYOnSubscribe;
 import com.android.camera.data.DataRepository;

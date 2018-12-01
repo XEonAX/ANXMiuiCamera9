@@ -5,8 +5,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.support.v7.recyclerview.R;
 import com.android.camera.CameraAppImpl;
+import com.android.camera.R;
 
 public class PriorityStorageBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {

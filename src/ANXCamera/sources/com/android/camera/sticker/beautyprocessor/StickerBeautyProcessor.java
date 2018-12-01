@@ -8,13 +8,13 @@ import java.util.Map.Entry;
 
 public class StickerBeautyProcessor extends IntelligentBeautyProcessor {
     /* renamed from: -com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
-    private static final /* synthetic */ int[] f10-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f9-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
     private STBeautifyNative mStBeautifyNative;
 
     /* renamed from: -getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
     private static /* synthetic */ int[] m9-getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues() {
-        if (f10-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues != null) {
-            return f10-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues;
+        if (f9-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues != null) {
+            return f9-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues;
         }
         int[] iArr = new int[BeautyParameterType.values().length];
         try {
@@ -73,7 +73,7 @@ public class StickerBeautyProcessor extends IntelligentBeautyProcessor {
             iArr[BeautyParameterType.WHITEN_STRENGTH.ordinal()] = 6;
         } catch (NoSuchFieldError e14) {
         }
-        f10-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = iArr;
+        f9-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = iArr;
         return iArr;
     }
 

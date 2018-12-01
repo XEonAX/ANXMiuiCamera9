@@ -2,7 +2,6 @@ package com.android.camera.fragment.manually;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -15,6 +14,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import com.android.camera.CameraSettings;
 import com.android.camera.Device;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.animation.type.AlphaOutOnSubscribe;
 import com.android.camera.animation.type.SlideInOnSubscribe;

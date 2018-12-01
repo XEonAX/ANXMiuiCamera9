@@ -5,13 +5,13 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
-import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.android.camera.R;
 import miui.view.animation.CubicEaseOutInterpolator;
 
 public class DownloadView extends RelativeLayout {

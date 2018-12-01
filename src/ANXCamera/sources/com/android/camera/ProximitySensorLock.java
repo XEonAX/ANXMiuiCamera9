@@ -13,7 +13,6 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.support.v4.media.TransportMediator;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v7.recyclerview.R;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;

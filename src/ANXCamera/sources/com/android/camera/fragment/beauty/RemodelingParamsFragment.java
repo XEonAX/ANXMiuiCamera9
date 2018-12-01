@@ -1,9 +1,9 @@
 package com.android.camera.fragment.beauty;
 
-import android.support.v7.recyclerview.R;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.android.camera.R;
 import com.android.camera.effect.BeautyParameters;
 import com.android.camera.effect.BeautyParameters.Type;
 import com.android.camera.fragment.beauty.MakeupSingleCheckAdapter.MakeupItem;

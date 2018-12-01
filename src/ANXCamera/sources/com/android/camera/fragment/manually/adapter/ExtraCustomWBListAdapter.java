@@ -1,12 +1,12 @@
 package com.android.camera.fragment.manually.adapter;
 
-import android.support.v7.recyclerview.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import com.android.camera.R;
 import com.android.camera.data.data.config.ComponentManuallyWB;
 import com.android.camera.fragment.manually.ManuallyListener;
 import com.android.camera.ui.ColorActivateTextView;

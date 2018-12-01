@@ -3,7 +3,6 @@ package com.android.camera;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v7.recyclerview.R;
 import com.android.camera.log.Log;
 
 public abstract class FocusManagerAbstract {

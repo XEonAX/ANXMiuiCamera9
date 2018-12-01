@@ -1,7 +1,6 @@
 package com.android.camera.effect;
 
 import android.support.annotation.NonNull;
-import android.support.v4.internal.view.SupportMenu;
 import android.support.v4.view.InputDeviceCompat;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -72,7 +71,7 @@ public class FilterInfo implements Comparable<FilterInfo> {
     }
 
     public static int getIndex(int id) {
-        return SupportMenu.USER_MASK & id;
+        return 65535 & id;
     }
 
     public int compareTo(@NonNull FilterInfo another) {

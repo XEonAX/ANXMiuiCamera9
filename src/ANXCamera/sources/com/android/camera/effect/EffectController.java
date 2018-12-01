@@ -4,12 +4,12 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.support.v4.media.TransportMediator;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.android.camera.CameraSettings;
 import com.android.camera.Device;
 import com.android.camera.EffectChangedListenerController;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.effect.renders.BeautificationWrapperRender;
 import com.android.camera.effect.renders.FocusPeakingRender;
@@ -46,7 +46,7 @@ import miui.util.FeatureParser;
 
 public class EffectController {
     /* renamed from: -com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues */
-    private static final /* synthetic */ int[] f1-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f0-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = null;
     public static final int[] EFFECT_ALL_CHANGE_TYPES = new int[]{1, 2, 3, 4, 5, 6};
     private static final String TAG = EffectController.class.getSimpleName();
     private static EffectController sInstance;
@@ -117,8 +117,8 @@ public class EffectController {
 
     /* renamed from: -getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues */
     private static /* synthetic */ int[] m0-getcom-miui-filtersdk-filter-helper-FilterTypeSwitchesValues() {
-        if (f1-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues != null) {
-            return f1-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues;
+        if (f0-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues != null) {
+            return f0-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues;
         }
         int[] iArr = new int[FilterType.values().length];
         try {
@@ -413,7 +413,7 @@ public class EffectController {
             iArr[FilterType.S_YEARS.ordinal()] = 27;
         } catch (NoSuchFieldError e73) {
         }
-        f1-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = iArr;
+        f0-com-miui-filtersdk-filter-helper-FilterTypeSwitchesValues = iArr;
         return iArr;
     }
 

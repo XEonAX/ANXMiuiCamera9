@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.support.v4.internal.view.SupportMenu;
 import android.util.SparseIntArray;
 import com.android.camera.log.Log;
 import java.io.ByteArrayInputStream;
@@ -169,7 +168,7 @@ public class ExifInterface {
     }
 
     public static int defineTag(int ifdId, short tagId) {
-        return (SupportMenu.USER_MASK & tagId) | (ifdId << 16);
+        return (65535 & tagId) | (ifdId << 16);
     }
 
     public static short getTrueTagKey(int tag) {
@@ -510,6 +509,6 @@ public class ExifInterface {
     }
 
     protected static int getComponentCountFromInfo(int info) {
-        return SupportMenu.USER_MASK & info;
+        return 65535 & info;
     }
 }

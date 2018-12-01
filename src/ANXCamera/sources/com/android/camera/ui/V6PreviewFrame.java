@@ -1,13 +1,13 @@
 package com.android.camera.ui;
 
 import android.content.Context;
-import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout.LayoutParams;
 import com.android.camera.ActivityBase;
 import com.android.camera.CameraSettings;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.data.DataRepository;
 import com.android.camera.module.ModuleManager;

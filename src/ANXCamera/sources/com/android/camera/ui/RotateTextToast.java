@@ -2,9 +2,9 @@ package com.android.camera.ui;
 
 import android.app.Activity;
 import android.os.Handler;
-import android.support.v7.recyclerview.R;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.android.camera.R;
 import com.android.camera.Util;
 
 public class RotateTextToast {

@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.app.ActivityCompatApi23.RequestPermissionsRequestCodeValidator;
-import android.support.v4.internal.view.SupportMenu;
 import android.support.v4.util.SimpleArrayMap;
 import android.support.v4.view.InputDeviceCompat;
 import android.support.v4.view.ViewCompat;
@@ -148,7 +147,7 @@ public class FragmentActivity extends BaseFragmentActivityHoneycomb implements O
         if (activeFragmentsCount != 0 && index >= 0 && index < activeFragmentsCount) {
             Fragment frag = (Fragment) this.mFragments.getActiveFragments(new ArrayList(activeFragmentsCount)).get(index);
             if (frag != null) {
-                frag.onActivityResult(SupportMenu.USER_MASK & requestCode, resultCode, data);
+                frag.onActivityResult(65535 & requestCode, resultCode, data);
             } else {
                 Log.w(TAG, "Activity result no fragment exists for index: 0x" + Integer.toHexString(requestCode));
             }
@@ -550,7 +549,7 @@ public class FragmentActivity extends BaseFragmentActivityHoneycomb implements O
     }
 
     public void startActivityForResult(Intent intent, int requestCode) {
-        if (requestCode == -1 || (SupportMenu.CATEGORY_MASK & requestCode) == 0) {
+        if (requestCode == -1 || (-65536 & requestCode) == 0) {
             super.startActivityForResult(intent, requestCode);
             return;
         }
@@ -586,8 +585,8 @@ public class FragmentActivity extends BaseFragmentActivityHoneycomb implements O
     public void startActivityFromFragment(Fragment fragment, Intent intent, int requestCode) {
         if (requestCode == -1) {
             super.startActivityForResult(intent, -1);
-        } else if ((SupportMenu.CATEGORY_MASK & requestCode) == 0) {
-            super.startActivityForResult(intent, ((fragment.mIndex + 1) << 16) + (SupportMenu.USER_MASK & requestCode));
+        } else if ((-65536 & requestCode) == 0) {
+            super.startActivityForResult(intent, ((fragment.mIndex + 1) << 16) + (65535 & requestCode));
         } else {
             throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
         }

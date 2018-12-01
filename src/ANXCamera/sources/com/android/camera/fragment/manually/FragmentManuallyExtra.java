@@ -2,11 +2,11 @@ package com.android.camera.fragment.manually;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ListAdapter;
+import com.android.camera.R;
 import com.android.camera.animation.type.SlideInOnSubscribe;
 import com.android.camera.animation.type.SlideOutOnSubscribe;
 import com.android.camera.data.DataRepository;

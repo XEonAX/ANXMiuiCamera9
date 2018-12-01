@@ -2,10 +2,10 @@ package com.android.camera.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.support.v7.recyclerview.R;
 import com.android.camera.Device;
 import com.android.camera.LocationManager;
 import com.android.camera.OnScreenHint;
+import com.android.camera.R;
 import com.android.camera.RotateDialogController;
 import com.android.camera.data.DataRepository;
 import com.android.camera.data.data.global.DataItemGlobal;

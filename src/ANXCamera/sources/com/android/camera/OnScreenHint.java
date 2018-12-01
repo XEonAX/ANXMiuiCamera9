@@ -1,7 +1,6 @@
 package com.android.camera;
 
 import android.app.Activity;
-import android.support.v7.recyclerview.R;
 import android.view.ViewGroup;
 import android.widget.TextView;
 

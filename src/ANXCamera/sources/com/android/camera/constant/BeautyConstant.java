@@ -1,8 +1,8 @@
 package com.android.camera.constant;
 
 import android.content.res.Resources;
-import android.support.v7.recyclerview.R;
 import com.android.camera.CameraAppImpl;
+import com.android.camera.R;
 
 public class BeautyConstant {
     public static final String LEVEL_ADVANCED;

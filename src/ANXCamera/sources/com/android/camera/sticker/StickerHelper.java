@@ -1,7 +1,7 @@
 package com.android.camera.sticker;
 
 import android.content.Context;
-import android.support.v7.recyclerview.R;
+import com.android.camera.R;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

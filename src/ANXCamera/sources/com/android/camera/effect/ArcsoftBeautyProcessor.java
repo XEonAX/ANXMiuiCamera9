@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 
 public class ArcsoftBeautyProcessor extends IntelligentBeautyProcessor {
     /* renamed from: -com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
-    private static final /* synthetic */ int[] f2-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f1-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
     private static final String TAG = ArcsoftBeautyProcessor.class.getSimpleName();
     private int mEnlargeEyeRatio;
     private int mShrinkFaceRatio;
@@ -18,8 +18,8 @@ public class ArcsoftBeautyProcessor extends IntelligentBeautyProcessor {
 
     /* renamed from: -getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
     private static /* synthetic */ int[] m1-getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues() {
-        if (f2-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues != null) {
-            return f2-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues;
+        if (f1-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues != null) {
+            return f1-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues;
         }
         int[] iArr = new int[BeautyParameterType.values().length];
         try {
@@ -78,7 +78,7 @@ public class ArcsoftBeautyProcessor extends IntelligentBeautyProcessor {
             iArr[BeautyParameterType.WHITEN_STRENGTH.ordinal()] = 4;
         } catch (NoSuchFieldError e14) {
         }
-        f2-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = iArr;
+        f1-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = iArr;
         return iArr;
     }
 

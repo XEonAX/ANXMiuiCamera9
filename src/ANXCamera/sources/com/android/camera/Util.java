@@ -39,7 +39,6 @@ import android.provider.Settings.Secure;
 import android.provider.Settings.SettingNotFoundException;
 import android.provider.Settings.System;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.recyclerview.R;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.format.Time;

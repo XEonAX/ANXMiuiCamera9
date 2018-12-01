@@ -16,7 +16,6 @@ import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;

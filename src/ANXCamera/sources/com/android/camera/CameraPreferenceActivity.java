@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.provider.Settings.Secure;
 import android.provider.Settings.System;
-import android.support.v7.recyclerview.R;
 import android.widget.Toast;
 import com.android.camera.statistic.CameraStatUtil;
 import com.android.camera.ui.PreviewListPreference;

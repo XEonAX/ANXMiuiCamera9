@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnKeyListener;
-import android.support.v7.recyclerview.R;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;

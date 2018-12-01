@@ -2,7 +2,6 @@ package com.android.camera.ui;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,7 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.LinearLayout;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.animation.type.TranslateXOnSubscribe;
 import com.android.camera.data.data.ComponentDataItem;

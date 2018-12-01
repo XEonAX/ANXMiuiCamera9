@@ -13,7 +13,6 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings.Secure;
 import android.provider.Settings.System;
-import android.support.v7.recyclerview.R;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.Toast;

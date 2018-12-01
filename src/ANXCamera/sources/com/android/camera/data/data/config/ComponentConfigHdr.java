@@ -1,8 +1,8 @@
 package com.android.camera.data.data.config;
 
-import android.support.v7.recyclerview.R;
 import com.android.camera.CameraSettings;
 import com.android.camera.Device;
+import com.android.camera.R;
 import com.android.camera.data.data.ComponentData;
 import com.android.camera.data.data.ComponentDataItem;
 import com.android.camera2.CameraCapabilities;

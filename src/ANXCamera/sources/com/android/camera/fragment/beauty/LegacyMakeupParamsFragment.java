@@ -1,9 +1,9 @@
 package com.android.camera.fragment.beauty;
 
-import android.support.v7.recyclerview.R;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.android.camera.R;
 import com.android.camera.effect.BeautyParameters;
 import com.android.camera.effect.BeautyParameters.Type;
 import com.android.camera.fragment.beauty.MakeupSingleCheckAdapter.MakeupItem;
@@ -15,12 +15,12 @@ import java.util.List;
 
 public class LegacyMakeupParamsFragment extends MakeupParamsFragment {
     /* renamed from: -com-android-camera-effect-BeautyParameters$TypeSwitchesValues */
-    private static final /* synthetic */ int[] f8-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
 
     /* renamed from: -getcom-android-camera-effect-BeautyParameters$TypeSwitchesValues */
     private static /* synthetic */ int[] m7xed999735() {
-        if (f8-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
-            return f8-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
+        if (f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
+            return f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
         }
         int[] iArr = new int[Type.values().length];
         try {
@@ -67,7 +67,7 @@ public class LegacyMakeupParamsFragment extends MakeupParamsFragment {
             iArr[Type.WHITEN_STRENGTH.ordinal()] = 3;
         } catch (NoSuchFieldError e11) {
         }
-        f8-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
+        f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
         return iArr;
     }
 

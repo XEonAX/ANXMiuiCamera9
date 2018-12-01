@@ -36,7 +36,7 @@ public class ActivityDelegate extends ActionBarDelegateImpl implements Callback,
     private final Class<? extends Activity> aee;
     private final Runnable aef = new Runnable() {
         public void run() {
-            MenuBuilder createMenu = ActivityDelegate.this.createMenu();
+            Object createMenu = ActivityDelegate.this.createMenu();
             if (!ActivityDelegate.this.isImmersionMenuEnabled() && ActivityDelegate.this.zx(0, createMenu) && ActivityDelegate.this.zz(0, null, createMenu)) {
                 ActivityDelegate.this.setMenu(createMenu);
             } else {

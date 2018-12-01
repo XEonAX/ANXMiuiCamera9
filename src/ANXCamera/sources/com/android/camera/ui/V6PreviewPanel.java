@@ -2,13 +2,13 @@ package com.android.camera.ui;
 
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.recyclerview.R;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.android.camera.R;
 import com.android.camera.protocol.ModeCoordinatorImpl;
 import com.android.camera.protocol.ModeProtocol$PlayVideoProtocol;
 

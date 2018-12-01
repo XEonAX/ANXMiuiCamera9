@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.recyclerview.R;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ItemAnimator;
@@ -20,6 +19,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.android.camera.R;
 import com.android.camera.Util;
 import com.android.camera.effect.BeautyParameters;
 import com.android.camera.effect.BeautyParameters.Type;
@@ -33,7 +33,7 @@ import java.util.List;
 
 public class MakeupParamsFragment extends Fragment {
     /* renamed from: -com-android-camera-effect-BeautyParameters$TypeSwitchesValues */
-    private static final /* synthetic */ int[] f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f6-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
     protected OnItemClickListener mClickListener;
     private int mItemWidth;
     int mLastSelectedParam = -1;
@@ -59,8 +59,8 @@ public class MakeupParamsFragment extends Fragment {
 
     /* renamed from: -getcom-android-camera-effect-BeautyParameters$TypeSwitchesValues */
     private static /* synthetic */ int[] m6xed999735() {
-        if (f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
-            return f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
+        if (f6-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
+            return f6-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
         }
         int[] iArr = new int[Type.values().length];
         try {
@@ -107,7 +107,7 @@ public class MakeupParamsFragment extends Fragment {
             iArr[Type.WHITEN_STRENGTH.ordinal()] = 4;
         } catch (NoSuchFieldError e11) {
         }
-        f7-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
+        f6-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
         return iArr;
     }
 
