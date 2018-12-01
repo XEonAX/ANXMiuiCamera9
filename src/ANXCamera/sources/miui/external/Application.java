@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Application extends android.app.Application {
     private ApplicationDelegate b;
@@ -19,50 +17,15 @@ public class Application extends android.app.Application {
     }
 
     private boolean d() {
-        try {
-            if (SdkHelper.isMiuiSystem() || d.N(SdkHelper.D(null, "com.miui.core", "miui"), null, SdkHelper.E(null, "com.miui.core"), Application.class.getClassLoader())) {
-                return true;
-            }
-            a.A(SdkConstants$SdkError.NO_SDK);
-            return false;
-        } catch (Throwable th) {
-            a(th);
-            return false;
-        }
+        return true;
     }
 
     private boolean c() {
-        try {
-            HashMap hashMap = new HashMap();
-            int intValue = ((Integer) c.C().getMethod("initialize", new Class[]{android.app.Application.class, Map.class}).invoke(null, new Object[]{this, hashMap})).intValue();
-            if (intValue == 0) {
-                return true;
-            }
-            b("initialize", intValue);
-            return false;
-        } catch (Throwable th) {
-            a(th);
-            return false;
-        }
+        return true;
     }
 
     private boolean e() {
-        try {
-            HashMap hashMap = new HashMap();
-            int intValue = ((Integer) c.C().getMethod("start", new Class[]{Map.class}).invoke(null, new Object[]{hashMap})).intValue();
-            if (intValue == 1) {
-                a.A(SdkConstants$SdkError.LOW_SDK_VERSION);
-                return false;
-            } else if (intValue == 0) {
-                return true;
-            } else {
-                b("start", intValue);
-                return false;
-            }
-        } catch (Throwable th) {
-            a(th);
-            return false;
-        }
+        return true;
     }
 
     private void a(Throwable th) {
