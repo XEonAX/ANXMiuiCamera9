@@ -6231,20 +6231,12 @@
 .end method
 
 .method public static isFullScreenNavBarHidden(Landroid/content/Context;)Z
-    .locals 2
+    .locals 1
     .param p0, "context"    # Landroid/content/Context;
 
     .prologue
     .line 1593
-    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v0
-
-    const-string/jumbo v1, "force_fsg_nav_bar"
-
-    invoke-static {v0, v1}, Landroid/provider/MiuiSettings$Global;->getBoolean(Landroid/content/ContentResolver;Ljava/lang/String;)Z
-
-    move-result v0
+	const/4 v0, 0x1
 
     return v0
 .end method

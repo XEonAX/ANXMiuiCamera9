@@ -35,7 +35,6 @@ import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
-import android.provider.MiuiSettings.Global;
 import android.provider.Settings.Secure;
 import android.provider.Settings.SettingNotFoundException;
 import android.provider.Settings.System;
@@ -1081,7 +1080,7 @@ public class Util {
     }
 
     public static boolean isFullScreenNavBarHidden(Context context) {
-        return Global.getBoolean(context.getContentResolver(), "force_fsg_nav_bar");
+        return true;
     }
 
     public static boolean isPackageAvailable(Context context, String packageName) {

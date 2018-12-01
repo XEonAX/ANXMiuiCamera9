@@ -62,7 +62,7 @@ public class CameraBackupHelper {
         editor.commit();
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:15:0x003a A:{ExcHandler: org.xmlpull.v1.XmlPullParserException (r0_0 'e' java.lang.Exception), Splitter: B:1:0x0014} */
+    /* JADX WARNING: Removed duplicated region for block: B:15:0x003a A:{Splitter: B:1:0x0014, ExcHandler: org.xmlpull.v1.XmlPullParserException (r0_0 'e' java.lang.Exception)} */
     /* JADX WARNING: Missing block: B:15:0x003a, code:
             r0 = move-exception;
      */
