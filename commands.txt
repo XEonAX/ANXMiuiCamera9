@@ -35,3 +35,7 @@ adb install -g .\out\ANXCamera.apk
 
 Reinstall
 adb uninstall com.aeonax.camera && adb install -g .\out\ANXCamera.apk
+
+
+Logcat
+adb logcat -s System.err

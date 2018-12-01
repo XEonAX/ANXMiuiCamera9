@@ -9,7 +9,7 @@ import java.util.Locale;
 
 public class BeautyValues implements Parcelable {
     /* renamed from: -com-android-camera-effect-BeautyParameters$TypeSwitchesValues */
-    private static final /* synthetic */ int[] f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
     public static final Creator<BeautyValues> CREATOR = new Creator<BeautyValues>() {
         public BeautyValues createFromParcel(Parcel source) {
             return new BeautyValues(source);
@@ -34,8 +34,8 @@ public class BeautyValues implements Parcelable {
 
     /* renamed from: -getcom-android-camera-effect-BeautyParameters$TypeSwitchesValues */
     private static /* synthetic */ int[] m2xed999735() {
-        if (f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
-            return f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
+        if (f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
+            return f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
         }
         int[] iArr = new int[Type.values().length];
         try {
@@ -82,7 +82,7 @@ public class BeautyValues implements Parcelable {
             iArr[Type.WHITEN_STRENGTH.ordinal()] = 11;
         } catch (NoSuchFieldError e11) {
         }
-        f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
+        f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
         return iArr;
     }
 

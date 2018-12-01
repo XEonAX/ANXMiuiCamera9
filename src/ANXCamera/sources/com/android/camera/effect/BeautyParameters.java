@@ -17,7 +17,7 @@ import java.util.Map.Entry;
 
 public class BeautyParameters {
     /* renamed from: -com-android-camera-effect-BeautyParameters$TypeSwitchesValues */
-    private static final /* synthetic */ int[] f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
     /* renamed from: -com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
     private static final /* synthetic */ int[] f5-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
     private static final String TAG = BeautyParameters.class.getSimpleName();
@@ -56,8 +56,8 @@ public class BeautyParameters {
 
     /* renamed from: -getcom-android-camera-effect-BeautyParameters$TypeSwitchesValues */
     private static /* synthetic */ int[] m3xed999735() {
-        if (f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
-            return f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
+        if (f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
+            return f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
         }
         int[] iArr = new int[Type.values().length];
         try {
@@ -104,7 +104,7 @@ public class BeautyParameters {
             iArr[Type.WHITEN_STRENGTH.ordinal()] = 11;
         } catch (NoSuchFieldError e11) {
         }
-        f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
+        f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
         return iArr;
     }
 

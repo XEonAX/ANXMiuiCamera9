@@ -79,7 +79,7 @@ public class LensServiceBridge extends Stub implements ServiceConnection {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:9:0x002a A:{ExcHandler: android.os.RemoteException (r1_0 'e' java.lang.Exception), Splitter: B:3:0x0015} */
+    /* JADX WARNING: Removed duplicated region for block: B:9:0x002a A:{Splitter: B:3:0x0015, ExcHandler: android.os.RemoteException (r1_0 'e' java.lang.Exception)} */
     /* JADX WARNING: Missing block: B:9:0x002a, code:
             r1 = move-exception;
      */
@@ -129,7 +129,7 @@ public class LensServiceBridge extends Stub implements ServiceConnection {
         return true;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:7:0x002f A:{ExcHandler: android.os.RemoteException (r1_0 'e' java.lang.Exception), Splitter: B:3:0x001e} */
+    /* JADX WARNING: Removed duplicated region for block: B:7:0x002f A:{Splitter: B:3:0x001e, ExcHandler: android.os.RemoteException (r1_0 'e' java.lang.Exception)} */
     /* JADX WARNING: Missing block: B:7:0x002f, code:
             r1 = move-exception;
      */
@@ -171,7 +171,7 @@ public class LensServiceBridge extends Stub implements ServiceConnection {
         throw new UnsupportedOperationException("Method not decompiled: com.google.android.apps.lens.library.base.LensServiceBridge.beginLensSession():void");
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:9:0x001e A:{ExcHandler: android.os.RemoteException (r1_0 'e' java.lang.Exception), Splitter: B:6:0x0014} */
+    /* JADX WARNING: Removed duplicated region for block: B:9:0x001e A:{Splitter: B:6:0x0014, ExcHandler: android.os.RemoteException (r1_0 'e' java.lang.Exception)} */
     /* JADX WARNING: Missing block: B:9:0x001e, code:
             r1 = move-exception;
      */
