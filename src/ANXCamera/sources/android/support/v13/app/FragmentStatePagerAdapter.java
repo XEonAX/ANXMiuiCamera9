@@ -50,8 +50,8 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         while (this.mFragments.size() <= position) {
             this.mFragments.add(null);
         }
-        FragmentCompat.setMenuVisibility(fragment, DEBUG);
-        FragmentCompat.setUserVisibleHint(fragment, DEBUG);
+        FragmentCompat.setMenuVisibility(fragment, false);
+        FragmentCompat.setUserVisibleHint(fragment, false);
         this.mFragments.set(position, fragment);
         this.mCurTransaction.add(container.getId(), fragment);
         return fragment;
@@ -74,8 +74,8 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         Fragment fragment = (Fragment) object;
         if (fragment != this.mCurrentPrimaryItem) {
             if (this.mCurrentPrimaryItem != null) {
-                FragmentCompat.setMenuVisibility(this.mCurrentPrimaryItem, DEBUG);
-                FragmentCompat.setUserVisibleHint(this.mCurrentPrimaryItem, DEBUG);
+                FragmentCompat.setMenuVisibility(this.mCurrentPrimaryItem, false);
+                FragmentCompat.setUserVisibleHint(this.mCurrentPrimaryItem, false);
             }
             if (fragment != null) {
                 FragmentCompat.setMenuVisibility(fragment, true);
@@ -94,7 +94,7 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
     }
 
     public boolean isViewFromObject(View view, Object object) {
-        return ((Fragment) object).getView() != view ? DEBUG : true;
+        return ((Fragment) object).getView() == view;
     }
 
     public Parcelable saveState() {
@@ -139,7 +139,7 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
                         while (this.mFragments.size() <= index) {
                             this.mFragments.add(null);
                         }
-                        FragmentCompat.setMenuVisibility(f, DEBUG);
+                        FragmentCompat.setMenuVisibility(f, false);
                         this.mFragments.set(index, f);
                     }
                 }

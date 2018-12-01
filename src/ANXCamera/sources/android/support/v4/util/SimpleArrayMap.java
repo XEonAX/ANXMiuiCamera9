@@ -183,7 +183,7 @@ public class SimpleArrayMap<K, V> {
     }
 
     public boolean containsKey(Object key) {
-        return indexOfKey(key) < 0 ? DEBUG : true;
+        return indexOfKey(key) >= 0;
     }
 
     public int indexOfKey(Object key) {
@@ -211,7 +211,7 @@ public class SimpleArrayMap<K, V> {
     }
 
     public boolean containsValue(Object value) {
-        return indexOfValue(value) < 0 ? DEBUG : true;
+        return indexOfValue(value) >= 0;
     }
 
     public V get(Object key) {
@@ -235,7 +235,7 @@ public class SimpleArrayMap<K, V> {
     }
 
     public boolean isEmpty() {
-        return this.mSize > 0 ? DEBUG : true;
+        return this.mSize <= 0;
     }
 
     public V put(K key, V value) {
@@ -349,11 +349,11 @@ public class SimpleArrayMap<K, V> {
             return true;
         }
         if (!(object instanceof Map)) {
-            return DEBUG;
+            return false;
         }
         Map<?, ?> map = (Map) object;
         if (size() != map.size()) {
-            return DEBUG;
+            return false;
         }
         int i = 0;
         while (i < this.mSize) {
@@ -363,16 +363,16 @@ public class SimpleArrayMap<K, V> {
                 Object theirs = map.get(key);
                 if (mine != null) {
                     if (!mine.equals(theirs)) {
-                        return DEBUG;
+                        return false;
                     }
                 } else if (theirs != null || !map.containsKey(key)) {
-                    return DEBUG;
+                    return false;
                 }
                 i++;
             } catch (NullPointerException e) {
-                return DEBUG;
+                return false;
             } catch (ClassCastException e2) {
-                return DEBUG;
+                return false;
             }
         }
         return true;

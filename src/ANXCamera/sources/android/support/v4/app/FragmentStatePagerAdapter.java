@@ -47,8 +47,8 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         while (this.mFragments.size() <= position) {
             this.mFragments.add(null);
         }
-        fragment.setMenuVisibility(DEBUG);
-        fragment.setUserVisibleHint(DEBUG);
+        fragment.setMenuVisibility(false);
+        fragment.setUserVisibleHint(false);
         this.mFragments.set(position, fragment);
         this.mCurTransaction.add(container.getId(), fragment);
         return fragment;
@@ -71,8 +71,8 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         Fragment fragment = (Fragment) object;
         if (fragment != this.mCurrentPrimaryItem) {
             if (this.mCurrentPrimaryItem != null) {
-                this.mCurrentPrimaryItem.setMenuVisibility(DEBUG);
-                this.mCurrentPrimaryItem.setUserVisibleHint(DEBUG);
+                this.mCurrentPrimaryItem.setMenuVisibility(false);
+                this.mCurrentPrimaryItem.setUserVisibleHint(false);
             }
             if (fragment != null) {
                 fragment.setMenuVisibility(true);
@@ -91,7 +91,7 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
     }
 
     public boolean isViewFromObject(View view, Object object) {
-        return ((Fragment) object).getView() != view ? DEBUG : true;
+        return ((Fragment) object).getView() == view;
     }
 
     public Parcelable saveState() {
@@ -136,7 +136,7 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
                         while (this.mFragments.size() <= index) {
                             this.mFragments.add(null);
                         }
-                        f.setMenuVisibility(DEBUG);
+                        f.setMenuVisibility(false);
                         this.mFragments.set(index, f);
                     }
                 }

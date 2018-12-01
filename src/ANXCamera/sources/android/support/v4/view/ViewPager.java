@@ -112,7 +112,7 @@ public class ViewPager extends ViewGroup {
     private Drawable mMarginDrawable;
     private int mMaximumVelocity;
     private int mMinimumVelocity;
-    private boolean mNeedCalculatePageOffsets = DEBUG;
+    private boolean mNeedCalculatePageOffsets = false;
     private PagerObserver mObserver;
     private int mOffscreenPageLimit = 1;
     private OnPageChangeListener mOnPageChangeListener;
@@ -215,23 +215,23 @@ public class ViewPager extends ViewGroup {
             switch (action) {
                 case 4096:
                     if (!ViewPager.this.canScrollHorizontally(1)) {
-                        return ViewPager.DEBUG;
+                        return false;
                     }
                     ViewPager.this.setCurrentItem(ViewPager.this.mCurItem + 1);
                     return true;
                 case 8192:
                     if (!ViewPager.this.canScrollHorizontally(-1)) {
-                        return ViewPager.DEBUG;
+                        return false;
                     }
                     ViewPager.this.setCurrentItem(ViewPager.this.mCurItem - 1);
                     return true;
                 default:
-                    return ViewPager.DEBUG;
+                    return false;
             }
         }
 
         private boolean canScroll() {
-            return (ViewPager.this.mAdapter != null && ViewPager.this.mAdapter.getCount() > 1) ? true : ViewPager.DEBUG;
+            return ViewPager.this.mAdapter != null && ViewPager.this.mAdapter.getCount() > 1;
         }
     }
 
@@ -331,7 +331,7 @@ public class ViewPager extends ViewGroup {
     }
 
     void initViewPager() {
-        setWillNotDraw(DEBUG);
+        setWillNotDraw(false);
         setDescendantFocusability(262144);
         setFocusable(true);
         Context context = getContext();
@@ -358,7 +358,7 @@ public class ViewPager extends ViewGroup {
     }
 
     private void setScrollState(int newState) {
-        boolean z = DEBUG;
+        boolean z = false;
         if (this.mScrollState != newState) {
             this.mScrollState = newState;
             if (this.mPageTransformer != null) {
@@ -393,13 +393,13 @@ public class ViewPager extends ViewGroup {
                 this.mObserver = new PagerObserver(this, null);
             }
             this.mAdapter.registerDataSetObserver(this.mObserver);
-            this.mPopulatePending = DEBUG;
+            this.mPopulatePending = false;
             boolean wasFirstLayout = this.mFirstLayout;
             this.mFirstLayout = true;
             this.mExpectedAdapterCount = this.mAdapter.getCount();
             if (this.mRestoredCurItem >= 0) {
                 this.mAdapter.restoreState(this.mRestoredAdapterState, this.mRestoredClassLoader);
-                setCurrentItemInternal(this.mRestoredCurItem, DEBUG, true);
+                setCurrentItemInternal(this.mRestoredCurItem, false, true);
                 this.mRestoredCurItem = -1;
                 this.mRestoredAdapterState = null;
                 this.mRestoredClassLoader = null;
@@ -438,13 +438,13 @@ public class ViewPager extends ViewGroup {
     }
 
     public void setCurrentItem(int item) {
-        this.mPopulatePending = DEBUG;
-        setCurrentItemInternal(item, this.mFirstLayout ? DEBUG : true, DEBUG);
+        this.mPopulatePending = false;
+        setCurrentItemInternal(item, !this.mFirstLayout, false);
     }
 
     public void setCurrentItem(int item, boolean smoothScroll) {
-        this.mPopulatePending = DEBUG;
-        setCurrentItemInternal(item, smoothScroll, DEBUG);
+        this.mPopulatePending = false;
+        setCurrentItemInternal(item, smoothScroll, false);
     }
 
     public int getCurrentItem() {
@@ -456,9 +456,9 @@ public class ViewPager extends ViewGroup {
     }
 
     void setCurrentItemInternal(int item, boolean smoothScroll, boolean always, int velocity) {
-        boolean dispatchSelected = DEBUG;
+        boolean dispatchSelected = false;
         if (this.mAdapter == null || this.mAdapter.getCount() <= 0) {
-            setScrollingCacheEnabled(DEBUG);
+            setScrollingCacheEnabled(false);
         } else if (always || this.mCurItem != item || this.mItems.size() == 0) {
             if (item < 0) {
                 item = 0;
@@ -485,7 +485,7 @@ public class ViewPager extends ViewGroup {
                 scrollToItem(item, smoothScroll, velocity, dispatchSelected);
             }
         } else {
-            setScrollingCacheEnabled(DEBUG);
+            setScrollingCacheEnabled(false);
         }
     }
 
@@ -506,7 +506,7 @@ public class ViewPager extends ViewGroup {
         if (dispatchSelected) {
             dispatchOnPageSelected(item);
         }
-        completeScroll(DEBUG);
+        completeScroll(false);
         scrollTo(destX, 0);
         pageScrolled(destX);
     }
@@ -538,14 +538,19 @@ public class ViewPager extends ViewGroup {
     public void setPageTransformer(boolean reverseDrawingOrder, PageTransformer transformer) {
         int i = 1;
         if (VERSION.SDK_INT >= 11) {
+            boolean hasTransformer;
             boolean z;
-            boolean hasTransformer = transformer == null ? DEBUG : true;
+            if (transformer == null) {
+                hasTransformer = false;
+            } else {
+                hasTransformer = true;
+            }
             if (this.mPageTransformer == null) {
                 z = false;
             } else {
                 z = true;
             }
-            boolean needsPopulate = hasTransformer == z ? DEBUG : true;
+            boolean needsPopulate = hasTransformer != z;
             this.mPageTransformer = transformer;
             setChildrenDrawingOrderEnabledCompat(hasTransformer);
             if (hasTransformer) {
@@ -621,7 +626,7 @@ public class ViewPager extends ViewGroup {
         if (d != null) {
             refreshDrawableState();
         }
-        setWillNotDraw(d != null ? DEBUG : true);
+        setWillNotDraw(d == null);
         invalidate();
     }
 
@@ -630,7 +635,7 @@ public class ViewPager extends ViewGroup {
     }
 
     protected boolean verifyDrawable(Drawable who) {
-        return (super.verifyDrawable(who) || who == this.mMarginDrawable) ? true : DEBUG;
+        return super.verifyDrawable(who) || who == this.mMarginDrawable;
     }
 
     protected void drawableStateChanged() {
@@ -656,7 +661,7 @@ public class ViewPager extends ViewGroup {
             int dx = x - sx;
             int dy = y - sy;
             if (dx == 0 && dy == 0) {
-                completeScroll(DEBUG);
+                completeScroll(false);
                 populate();
                 setScrollState(0);
                 return;
@@ -677,7 +682,7 @@ public class ViewPager extends ViewGroup {
             ViewCompat.postInvalidateOnAnimation(this);
             return;
         }
-        setScrollingCacheEnabled(DEBUG);
+        setScrollingCacheEnabled(false);
     }
 
     ItemInfo addNewItem(int position, int index) {
@@ -696,9 +701,9 @@ public class ViewPager extends ViewGroup {
     void dataSetChanged() {
         int adapterCount = this.mAdapter.getCount();
         this.mExpectedAdapterCount = adapterCount;
-        boolean needPopulate = (this.mItems.size() < (this.mOffscreenPageLimit * 2) + 1 && this.mItems.size() < adapterCount) ? true : DEBUG;
+        boolean needPopulate = this.mItems.size() < (this.mOffscreenPageLimit * 2) + 1 && this.mItems.size() < adapterCount;
         int newCurrItem = this.mCurItem;
-        boolean isUpdating = DEBUG;
+        boolean isUpdating = false;
         int i = 0;
         while (i < this.mItems.size()) {
             ItemInfo ii = (ItemInfo) this.mItems.get(i);
@@ -739,7 +744,7 @@ public class ViewPager extends ViewGroup {
                     lp.widthFactor = 0.0f;
                 }
             }
-            setCurrentItemInternal(newCurrItem, DEBUG, true);
+            setCurrentItemInternal(newCurrItem, false, true);
             requestLayout();
         }
     }
@@ -1520,7 +1525,7 @@ public class ViewPager extends ViewGroup {
             i++;
             pos++;
         }
-        this.mNeedCalculatePageOffsets = DEBUG;
+        this.mNeedCalculatePageOffsets = false;
     }
 
     public Parcelable onSaveInstanceState() {
@@ -1542,7 +1547,7 @@ public class ViewPager extends ViewGroup {
                 this.mRestoredClassLoader = ss.loader;
             } else {
                 this.mAdapter.restoreState(ss.adapterState, ss.loader);
-                setCurrentItemInternal(ss.position, DEBUG, true);
+                setCurrentItemInternal(ss.position, false, true);
             }
             return;
         }
@@ -1630,8 +1635,8 @@ public class ViewPager extends ViewGroup {
                     int vgrav = lp.gravity & 112;
                     int widthMode = ExploreByTouchHelper.INVALID_ID;
                     int heightMode = ExploreByTouchHelper.INVALID_ID;
-                    boolean consumeVertical = (vgrav == 48 || vgrav == 80) ? true : DEBUG;
-                    boolean consumeHorizontal = (hgrav == 3 || hgrav == 5) ? true : DEBUG;
+                    boolean consumeVertical = vgrav == 48 || vgrav == 80;
+                    boolean consumeHorizontal = hgrav == 3 || hgrav == 5;
                     if (consumeVertical) {
                         widthMode = 1073741824;
                     } else if (consumeHorizontal) {
@@ -1664,7 +1669,7 @@ public class ViewPager extends ViewGroup {
         this.mChildHeightMeasureSpec = MeasureSpec.makeMeasureSpec(childHeightSize, 1073741824);
         this.mInLayout = true;
         populate();
-        this.mInLayout = DEBUG;
+        this.mInLayout = false;
         size = getChildCount();
         for (i = 0; i < size; i++) {
             child = getChildAt(i);
@@ -1697,7 +1702,7 @@ public class ViewPager extends ViewGroup {
         ItemInfo ii = infoForPosition(this.mCurItem);
         int scrollPos = (int) (((float) ((width - getPaddingLeft()) - getPaddingRight())) * (ii == null ? 0.0f : Math.min(ii.offset, this.mLastOffset)));
         if (scrollPos != getScrollX()) {
-            completeScroll(DEBUG);
+            completeScroll(false);
             scrollTo(scrollPos, getScrollY());
         }
     }
@@ -1772,7 +1777,7 @@ public class ViewPager extends ViewGroup {
                         childLeft = paddingLeft + ((int) (((float) childWidth) * ii.offset));
                         childTop = paddingTop;
                         if (lp.needsMeasure) {
-                            lp.needsMeasure = DEBUG;
+                            lp.needsMeasure = false;
                             child.measure(MeasureSpec.makeMeasureSpec((int) (((float) childWidth) * lp.widthFactor), 1073741824), MeasureSpec.makeMeasureSpec((height - paddingTop) - paddingBottom, 1073741824));
                         }
                         child.layout(childLeft, childTop, child.getMeasuredWidth() + childLeft, child.getMeasuredHeight() + childTop);
@@ -1784,9 +1789,9 @@ public class ViewPager extends ViewGroup {
         this.mBottomPageBounds = height - paddingBottom;
         this.mDecorChildCount = decorCount;
         if (this.mFirstLayout) {
-            scrollToItem(this.mCurItem, DEBUG, 0, DEBUG);
+            scrollToItem(this.mCurItem, false, 0, false);
         }
-        this.mFirstLayout = DEBUG;
+        this.mFirstLayout = false;
     }
 
     public void computeScroll() {
@@ -1817,17 +1822,17 @@ public class ViewPager extends ViewGroup {
             int currentPage = ii.position;
             float pageOffset = ((((float) xpos) / ((float) width)) - ii.offset) / (ii.widthFactor + marginOffset);
             int offsetPixels = (int) (((float) widthWithMargin) * pageOffset);
-            this.mCalledSuper = DEBUG;
+            this.mCalledSuper = false;
             onPageScrolled(currentPage, pageOffset, offsetPixels);
             if (this.mCalledSuper) {
                 return true;
             }
             throw new IllegalStateException("onPageScrolled did not call superclass implementation");
         }
-        this.mCalledSuper = DEBUG;
+        this.mCalledSuper = false;
         onPageScrolled(0, 0.0f, 0);
         if (this.mCalledSuper) {
-            return DEBUG;
+            return false;
         }
         throw new IllegalStateException("onPageScrolled did not call superclass implementation");
     }
@@ -1941,9 +1946,9 @@ public class ViewPager extends ViewGroup {
     }
 
     private void completeScroll(boolean postEvents) {
-        boolean needPopulate = this.mScrollState != 2 ? DEBUG : true;
+        boolean needPopulate = this.mScrollState == 2;
         if (needPopulate) {
-            setScrollingCacheEnabled(DEBUG);
+            setScrollingCacheEnabled(false);
             this.mScroller.abortAnimation();
             int oldX = getScrollX();
             int oldY = getScrollY();
@@ -1956,12 +1961,12 @@ public class ViewPager extends ViewGroup {
                 }
             }
         }
-        this.mPopulatePending = DEBUG;
+        this.mPopulatePending = false;
         for (int i = 0; i < this.mItems.size(); i++) {
             ItemInfo ii = (ItemInfo) this.mItems.get(i);
             if (ii.scrolling) {
                 needPopulate = true;
-                ii.scrolling = DEBUG;
+                ii.scrolling = false;
             }
         }
         if (!needPopulate) {
@@ -1975,7 +1980,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /* JADX WARNING: Missing block: B:5:0x000f, code:
-            if ((r7 > 0.0f ? true : DEBUG) == false) goto L_0x0011;
+            if ((r7 > 0.0f) == false) goto L_0x0011;
      */
     private boolean isGutterDrag(float r6, float r7) {
         /*
@@ -2025,21 +2030,21 @@ public class ViewPager extends ViewGroup {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         int action = ev.getAction() & 255;
         if (action == 3 || action == 1) {
-            this.mIsBeingDragged = DEBUG;
-            this.mIsUnableToDrag = DEBUG;
+            this.mIsBeingDragged = false;
+            this.mIsUnableToDrag = false;
             this.mActivePointerId = -1;
             if (this.mVelocityTracker != null) {
                 this.mVelocityTracker.recycle();
                 this.mVelocityTracker = null;
             }
-            return DEBUG;
+            return false;
         }
         if (action != 0) {
             if (this.mIsBeingDragged) {
                 return true;
             }
             if (this.mIsUnableToDrag) {
-                return DEBUG;
+                return false;
             }
         }
         switch (action) {
@@ -2051,15 +2056,15 @@ public class ViewPager extends ViewGroup {
                 this.mInitialMotionY = x;
                 this.mLastMotionY = x;
                 this.mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
-                this.mIsUnableToDrag = DEBUG;
+                this.mIsUnableToDrag = false;
                 this.mScroller.computeScrollOffset();
                 if (this.mScrollState != 2 || Math.abs(this.mScroller.getFinalX() - this.mScroller.getCurrX()) <= this.mCloseEnough) {
-                    completeScroll(DEBUG);
-                    this.mIsBeingDragged = DEBUG;
+                    completeScroll(false);
+                    this.mIsBeingDragged = false;
                     break;
                 }
                 this.mScroller.abortAnimation();
-                this.mPopulatePending = DEBUG;
+                this.mPopulatePending = false;
                 populate();
                 this.mIsBeingDragged = true;
                 requestParentDisallowInterceptTouchEvent(true);
@@ -2076,11 +2081,11 @@ public class ViewPager extends ViewGroup {
                     float y = MotionEventCompat.getY(ev, pointerIndex);
                     float yDiff = Math.abs(y - this.mInitialMotionY);
                     if (!(dx == 0.0f || isGutterDrag(this.mLastMotionX, dx))) {
-                        if (canScroll(this, DEBUG, (int) dx, (int) x2, (int) y)) {
+                        if (canScroll(this, false, (int) dx, (int) x2, (int) y)) {
                             this.mLastMotionX = x2;
                             this.mLastMotionY = y;
                             this.mIsUnableToDrag = true;
-                            return DEBUG;
+                            return false;
                         }
                     }
                     if (xDiff > ((float) this.mTouchSlop) && 0.5f * xDiff > yDiff) {
@@ -2115,22 +2120,21 @@ public class ViewPager extends ViewGroup {
             return true;
         }
         if (ev.getAction() == 0 && ev.getEdgeFlags() != 0) {
-            return DEBUG;
+            return false;
         }
         if (this.mAdapter == null || this.mAdapter.getCount() == 0) {
-            return DEBUG;
+            return false;
         }
         if (this.mVelocityTracker == null) {
             this.mVelocityTracker = VelocityTracker.obtain();
         }
         this.mVelocityTracker.addMovement(ev);
-        int action = ev.getAction();
-        boolean needsInvalidate = DEBUG;
+        boolean needsInvalidate = false;
         float x;
-        switch (action & 255) {
+        switch (ev.getAction() & 255) {
             case 0:
                 this.mScroller.abortAnimation();
-                this.mPopulatePending = DEBUG;
+                this.mPopulatePending = false;
                 populate();
                 x = ev.getX();
                 this.mInitialMotionX = x;
@@ -2188,7 +2192,7 @@ public class ViewPager extends ViewGroup {
                 break;
             case 3:
                 if (this.mIsBeingDragged) {
-                    scrollToItem(this.mCurItem, true, 0, DEBUG);
+                    scrollToItem(this.mCurItem, true, 0, false);
                     this.mActivePointerId = -1;
                     endDrag();
                     needsInvalidate = this.mLeftEdge.onRelease() | this.mRightEdge.onRelease();
@@ -2219,7 +2223,7 @@ public class ViewPager extends ViewGroup {
     }
 
     private boolean performDrag(float x) {
-        boolean needsInvalidate = DEBUG;
+        boolean needsInvalidate = false;
         float deltaX = this.mLastMotionX - x;
         this.mLastMotionX = x;
         float scrollX = ((float) getScrollX()) + deltaX;
@@ -2231,11 +2235,11 @@ public class ViewPager extends ViewGroup {
         ItemInfo firstItem = (ItemInfo) this.mItems.get(0);
         ItemInfo lastItem = (ItemInfo) this.mItems.get(this.mItems.size() - 1);
         if (firstItem.position != 0) {
-            leftAbsolute = DEBUG;
+            leftAbsolute = false;
             leftBound = firstItem.offset * ((float) width);
         }
         if (lastItem.position != this.mAdapter.getCount() - 1) {
-            rightAbsolute = DEBUG;
+            rightAbsolute = false;
             rightBound = lastItem.offset * ((float) width);
         }
         if (scrollX < leftBound) {
@@ -2283,7 +2287,7 @@ public class ViewPager extends ViewGroup {
             if ((scrollOffset < rightBound ? 1 : null) != null || i == this.mItems.size() - 1) {
                 return ii;
             }
-            first = DEBUG;
+            first = false;
             lastPos = ii.position;
             lastOffset = offset;
             lastWidth = ii.widthFactor;
@@ -2308,7 +2312,7 @@ public class ViewPager extends ViewGroup {
 
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        boolean needsInvalidate = DEBUG;
+        boolean needsInvalidate = false;
         int overScrollMode = ViewCompat.getOverScrollMode(this);
         if (overScrollMode != 0 && (overScrollMode != 1 || this.mAdapter == null || this.mAdapter.getCount() <= 1)) {
             this.mLeftEdge.finish();
@@ -2385,7 +2389,7 @@ public class ViewPager extends ViewGroup {
 
     public boolean beginFakeDrag() {
         if (this.mIsBeingDragged) {
-            return DEBUG;
+            return false;
         }
         this.mFakeDragging = true;
         setScrollState(1);
@@ -2415,7 +2419,7 @@ public class ViewPager extends ViewGroup {
             ItemInfo ii = infoForCurrentScrollPosition();
             setCurrentItemInternal(determineTargetPage(ii.position, ((((float) scrollX) / ((float) width)) - ii.offset) / ii.widthFactor, initialVelocity, (int) (this.mLastMotionX - this.mInitialMotionX)), true, true, initialVelocity);
             endDrag();
-            this.mFakeDragging = DEBUG;
+            this.mFakeDragging = false;
             return;
         }
         throw new IllegalStateException("No fake drag in progress. Call beginFakeDrag first.");
@@ -2472,8 +2476,8 @@ public class ViewPager extends ViewGroup {
     }
 
     private void endDrag() {
-        this.mIsBeingDragged = DEBUG;
-        this.mIsUnableToDrag = DEBUG;
+        this.mIsBeingDragged = false;
+        this.mIsUnableToDrag = false;
         if (this.mVelocityTracker != null) {
             this.mVelocityTracker.recycle();
             this.mVelocityTracker = null;
@@ -2487,9 +2491,9 @@ public class ViewPager extends ViewGroup {
     }
 
     public boolean canScrollHorizontally(int direction) {
-        boolean z = DEBUG;
+        boolean z = false;
         if (this.mAdapter == null) {
-            return DEBUG;
+            return false;
         }
         int width = getClientWidth();
         int scrollX = getScrollX();
@@ -2499,7 +2503,7 @@ public class ViewPager extends ViewGroup {
             }
             return z;
         } else if (direction <= 0) {
-            return DEBUG;
+            return false;
         } else {
             if (scrollX < ((int) (((float) width) * this.mLastOffset))) {
                 z = true;
@@ -2526,18 +2530,18 @@ public class ViewPager extends ViewGroup {
         if (checkV && ViewCompat.canScrollHorizontally(v, -dx)) {
             z = true;
         } else {
-            z = DEBUG;
+            z = false;
         }
         return z;
     }
 
     public boolean dispatchKeyEvent(KeyEvent event) {
-        return (super.dispatchKeyEvent(event) || executeKeyEvent(event)) ? true : DEBUG;
+        return super.dispatchKeyEvent(event) || executeKeyEvent(event);
     }
 
     public boolean executeKeyEvent(KeyEvent event) {
         if (event.getAction() != 0) {
-            return DEBUG;
+            return false;
         }
         switch (event.getKeyCode()) {
             case MotionEventCompat.AXIS_WHEEL /*21*/:
@@ -2546,7 +2550,7 @@ public class ViewPager extends ViewGroup {
                 return arrowScroll(66);
             case 61:
                 if (VERSION.SDK_INT < 11) {
-                    return DEBUG;
+                    return false;
                 }
                 if (KeyEventCompat.hasNoModifiers(event)) {
                     return arrowScroll(2);
@@ -2554,9 +2558,9 @@ public class ViewPager extends ViewGroup {
                 if (KeyEventCompat.hasModifiers(event, 1)) {
                     return arrowScroll(1);
                 }
-                return DEBUG;
+                return false;
             default:
-                return DEBUG;
+                return false;
         }
     }
 
@@ -2565,7 +2569,7 @@ public class ViewPager extends ViewGroup {
         if (currentFocused == this) {
             currentFocused = null;
         } else if (currentFocused != null) {
-            boolean isChild = DEBUG;
+            boolean isChild = false;
             for (ViewPager parent = currentFocused.getParent(); parent instanceof ViewGroup; parent = parent.getParent()) {
                 if (parent == this) {
                     isChild = true;
@@ -2582,7 +2586,7 @@ public class ViewPager extends ViewGroup {
                 currentFocused = null;
             }
         }
-        boolean handled = DEBUG;
+        boolean handled = false;
         View nextFocused = FocusFinder.getInstance().findNextFocus(this, currentFocused, direction);
         if (nextFocused == null || nextFocused == currentFocused) {
             if (direction == 17 || direction == 1) {
@@ -2627,7 +2631,7 @@ public class ViewPager extends ViewGroup {
 
     boolean pageLeft() {
         if (this.mCurItem <= 0) {
-            return DEBUG;
+            return false;
         }
         setCurrentItem(this.mCurItem - 1, true);
         return true;
@@ -2635,7 +2639,7 @@ public class ViewPager extends ViewGroup {
 
     boolean pageRight() {
         if (this.mAdapter == null || this.mCurItem >= this.mAdapter.getCount() - 1) {
-            return DEBUG;
+            return false;
         }
         setCurrentItem(this.mCurItem + 1, true);
         return true;
@@ -2697,7 +2701,7 @@ public class ViewPager extends ViewGroup {
                 }
             }
         }
-        return DEBUG;
+        return false;
     }
 
     public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
@@ -2714,7 +2718,7 @@ public class ViewPager extends ViewGroup {
                 }
             }
         }
-        return DEBUG;
+        return false;
     }
 
     protected android.view.ViewGroup.LayoutParams generateDefaultLayoutParams() {
@@ -2726,7 +2730,7 @@ public class ViewPager extends ViewGroup {
     }
 
     protected boolean checkLayoutParams(android.view.ViewGroup.LayoutParams p) {
-        return ((p instanceof LayoutParams) && super.checkLayoutParams(p)) ? true : DEBUG;
+        return (p instanceof LayoutParams) && super.checkLayoutParams(p);
     }
 
     public android.view.ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {

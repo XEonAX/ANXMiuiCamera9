@@ -49,7 +49,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     public static final int ANIM_STYLE_FADE_EXIT = 6;
     public static final int ANIM_STYLE_OPEN_ENTER = 1;
     public static final int ANIM_STYLE_OPEN_EXIT = 2;
-    static boolean DEBUG = HONEYCOMB;
+    static boolean DEBUG = false;
     static final Interpolator DECELERATE_CUBIC = new DecelerateInterpolator(1.5f);
     static final Interpolator DECELERATE_QUINT = new DecelerateInterpolator(2.5f);
     static final boolean HONEYCOMB;
@@ -89,7 +89,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
 
     /* compiled from: FragmentManager */
     static class AnimateOnHWLayerIfNeededListener implements AnimationListener {
-        private boolean mShouldRunOnHWLayer = FragmentManagerImpl.HONEYCOMB;
+        private boolean mShouldRunOnHWLayer = false;
         private View mView;
 
         public AnimateOnHWLayerIfNeededListener(View v, Animation anim) {
@@ -132,7 +132,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     }
 
     static {
-        boolean z = HONEYCOMB;
+        boolean z = false;
         if (VERSION.SDK_INT >= 11) {
             z = true;
         }
@@ -151,11 +151,11 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 }
             }
         }
-        return HONEYCOMB;
+        return false;
     }
 
     static boolean shouldRunOnHWLayer(View v, Animation anim) {
-        return (VERSION.SDK_INT >= 16 && ViewCompat.getLayerType(v) == 0 && ViewCompat.hasOverlappingRendering(v) && modifiesAlpha(anim)) ? true : HONEYCOMB;
+        return VERSION.SDK_INT >= 16 && ViewCompat.getLayerType(v) == 0 && ViewCompat.hasOverlappingRendering(v) && modifiesAlpha(anim);
     }
 
     private void throwException(RuntimeException ex) {
@@ -191,7 +191,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             public void run() {
                 FragmentManagerImpl.this.popBackStackState(FragmentManagerImpl.this.mHost.getHandler(), null, -1, 0);
             }
-        }, HONEYCOMB);
+        }, false);
     }
 
     public boolean popBackStackImmediate() {
@@ -205,7 +205,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             public void run() {
                 FragmentManagerImpl.this.popBackStackState(FragmentManagerImpl.this.mHost.getHandler(), name, -1, flags);
             }
-        }, HONEYCOMB);
+        }, false);
     }
 
     public boolean popBackStackImmediate(String name, int flags) {
@@ -220,7 +220,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 public void run() {
                     FragmentManagerImpl.this.popBackStackState(FragmentManagerImpl.this.mHost.getHandler(), null, id, flags);
                 }
-            }, HONEYCOMB);
+            }, false);
             return;
         }
         throw new IllegalArgumentException("Bad id: " + id);
@@ -462,7 +462,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     }
 
     static Animation makeOpenCloseAnimation(Context context, float startScale, float endScale, float startAlpha, float endAlpha) {
-        AnimationSet set = new AnimationSet(HONEYCOMB);
+        AnimationSet set = new AnimationSet(false);
         ScaleAnimation scale = new ScaleAnimation(startScale, endScale, startScale, endScale, 1, 0.5f, 1, 0.5f);
         scale.setInterpolator(DECELERATE_QUINT);
         scale.setDuration(220);
@@ -526,8 +526,8 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 this.mHavePendingDeferredStart = true;
                 return;
             }
-            f.mDeferStart = HONEYCOMB;
-            moveToState(f, this.mCurState, 0, 0, HONEYCOMB);
+            f.mDeferStart = false;
+            moveToState(f, this.mCurState, 0, 0, false);
         }
     }
 
@@ -639,7 +639,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             r12.onViewCreated(r12.mView, r12.mSavedFragmentState);
      */
     /* JADX WARNING: Missing block: B:109:0x024f, code:
-            android.support.v4.view.ViewCompat.setSaveFromParentEnabled(r12.mView, HONEYCOMB);
+            android.support.v4.view.ViewCompat.setSaveFromParentEnabled(r12.mView, false);
      */
     /* JADX WARNING: Missing block: B:110:0x0256, code:
             r6 = loadAnimation(r12, r14, true, r15);
@@ -688,7 +688,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             if (r12.mRetaining == false) goto L_0x0417;
      */
     /* JADX WARNING: Missing block: B:133:0x02d7, code:
-            r12.mCalled = HONEYCOMB;
+            r12.mCalled = false;
             r12.onDetach();
      */
     /* JADX WARNING: Missing block: B:134:0x02df, code:
@@ -781,7 +781,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             if (r11.mDestroyed != false) goto L_0x03bc;
      */
     /* JADX WARNING: Missing block: B:180:0x03cb, code:
-            r6 = loadAnimation(r12, r14, HONEYCOMB, r15);
+            r6 = loadAnimation(r12, r14, false, r15);
      */
     /* JADX WARNING: Missing block: B:181:0x03d1, code:
             r8 = r12;
@@ -1440,7 +1440,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     }
 
     void moveToState(Fragment f) {
-        moveToState(f, this.mCurState, 0, 0, HONEYCOMB);
+        moveToState(f, this.mCurState, 0, 0, false);
     }
 
     void moveToState(int newState, boolean always) {
@@ -1453,11 +1453,11 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
         } else if (always || this.mCurState != newState) {
             this.mCurState = newState;
             if (this.mActive != null) {
-                boolean loadersRunning = HONEYCOMB;
+                boolean loadersRunning = false;
                 for (int i = 0; i < this.mActive.size(); i++) {
                     Fragment f = (Fragment) this.mActive.get(i);
                     if (f != null) {
-                        moveToState(f, newState, transit, transitStyle, HONEYCOMB);
+                        moveToState(f, newState, transit, transitStyle, false);
                         if (f.mLoaderManager != null) {
                             loadersRunning |= f.mLoaderManager.hasRunningLoaders();
                         }
@@ -1468,7 +1468,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 }
                 if (this.mNeedMenuInvalidate && this.mHost != null && this.mCurState == 5) {
                     this.mHost.onSupportInvalidateOptionsMenu();
-                    this.mNeedMenuInvalidate = HONEYCOMB;
+                    this.mNeedMenuInvalidate = false;
                 }
             }
         }
@@ -1532,7 +1532,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             }
             this.mAdded.add(fragment);
             fragment.mAdded = true;
-            fragment.mRemoving = HONEYCOMB;
+            fragment.mRemoving = false;
             if (fragment.mHasMenu && fragment.mMenuVisible) {
                 this.mNeedMenuInvalidate = true;
             }
@@ -1543,10 +1543,15 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     }
 
     public void removeFragment(Fragment fragment, int transition, int transitionStyle) {
+        boolean inactive;
         if (DEBUG) {
             Log.v(TAG, "remove: " + fragment + " nesting=" + fragment.mBackStackNesting);
         }
-        boolean inactive = fragment.isInBackStack() ? HONEYCOMB : true;
+        if (fragment.isInBackStack()) {
+            inactive = false;
+        } else {
+            inactive = true;
+        }
         if (!fragment.mDetached || inactive) {
             int i;
             if (this.mAdded != null) {
@@ -1555,14 +1560,14 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             if (fragment.mHasMenu && fragment.mMenuVisible) {
                 this.mNeedMenuInvalidate = true;
             }
-            fragment.mAdded = HONEYCOMB;
+            fragment.mAdded = false;
             fragment.mRemoving = true;
             if (inactive) {
                 i = 0;
             } else {
                 i = 1;
             }
-            moveToState(fragment, i, transition, transitionStyle, HONEYCOMB);
+            moveToState(fragment, i, transition, transitionStyle, false);
         }
     }
 
@@ -1573,7 +1578,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
         if (!fragment.mHidden) {
             fragment.mHidden = true;
             if (fragment.mView != null) {
-                Animation anim = loadAnimation(fragment, transition, HONEYCOMB, transitionStyle);
+                Animation anim = loadAnimation(fragment, transition, false, transitionStyle);
                 if (anim != null) {
                     setHWLayerAnimListenerIfAlpha(fragment.mView, anim);
                     fragment.mView.startAnimation(anim);
@@ -1592,7 +1597,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             Log.v(TAG, "show: " + fragment);
         }
         if (fragment.mHidden) {
-            fragment.mHidden = HONEYCOMB;
+            fragment.mHidden = false;
             if (fragment.mView != null) {
                 Animation anim = loadAnimation(fragment, transition, true, transitionStyle);
                 if (anim != null) {
@@ -1604,7 +1609,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             if (fragment.mAdded && fragment.mHasMenu && fragment.mMenuVisible) {
                 this.mNeedMenuInvalidate = true;
             }
-            fragment.onHiddenChanged(HONEYCOMB);
+            fragment.onHiddenChanged(false);
         }
     }
 
@@ -1624,8 +1629,8 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 if (fragment.mHasMenu && fragment.mMenuVisible) {
                     this.mNeedMenuInvalidate = true;
                 }
-                fragment.mAdded = HONEYCOMB;
-                moveToState(fragment, 1, transition, transitionStyle, HONEYCOMB);
+                fragment.mAdded = false;
+                moveToState(fragment, 1, transition, transitionStyle, false);
             }
         }
     }
@@ -1635,7 +1640,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             Log.v(TAG, "attach: " + fragment);
         }
         if (fragment.mDetached) {
-            fragment.mDetached = HONEYCOMB;
+            fragment.mDetached = false;
             if (!fragment.mAdded) {
                 if (this.mAdded == null) {
                     this.mAdded = new ArrayList();
@@ -1651,7 +1656,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 if (fragment.mHasMenu && fragment.mMenuVisible) {
                     this.mNeedMenuInvalidate = true;
                 }
-                moveToState(fragment, this.mCurState, transition, transitionStyle, HONEYCOMB);
+                moveToState(fragment, this.mCurState, transition, transitionStyle, false);
             }
         }
     }
@@ -1963,7 +1968,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
 
     boolean popBackStackState(Handler handler, String name, int id, int flags) {
         if (this.mBackStack == null) {
-            return HONEYCOMB;
+            return false;
         }
         BackStackRecord bss;
         SparseArray<Fragment> firstOutFragments;
@@ -1971,7 +1976,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
         if (name == null && id < 0 && (flags & 1) == 0) {
             int last = this.mBackStack.size() - 1;
             if (last < 0) {
-                return HONEYCOMB;
+                return false;
             }
             bss = (BackStackRecord) this.mBackStack.remove(last);
             firstOutFragments = new SparseArray();
@@ -1991,7 +1996,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                     index--;
                 }
                 if (index < 0) {
-                    return HONEYCOMB;
+                    return false;
                 }
                 if ((flags & 1) != 0) {
                     index--;
@@ -2005,7 +2010,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 }
             }
             if (index == this.mBackStack.size() - 1) {
-                return HONEYCOMB;
+                return false;
             }
             int i;
             ArrayList<BackStackRecord> states = new ArrayList();
@@ -2024,7 +2029,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 if (DEBUG) {
                     Log.v(TAG, "Popping back stack state: " + states.get(i));
                 }
-                state = ((BackStackRecord) states.get(i)).popFromBackStack(i != LAST ? HONEYCOMB : true, state, firstOutFragments, lastInFragments);
+                state = ((BackStackRecord) states.get(i)).popFromBackStack(i == LAST, state, firstOutFragments, lastInFragments);
                 i++;
             }
             reportBackStackChanged();
@@ -2107,7 +2112,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
         int i;
         int N = this.mActive.size();
         FragmentState[] active = new FragmentState[N];
-        boolean haveFragments = HONEYCOMB;
+        boolean haveFragments = false;
         for (i = 0; i < N; i++) {
             Fragment f = (Fragment) this.mActive.get(i);
             if (f != null) {
@@ -2198,8 +2203,8 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                         fs.mInstance = f;
                         f.mSavedViewState = null;
                         f.mBackStackNesting = 0;
-                        f.mInLayout = HONEYCOMB;
-                        f.mAdded = HONEYCOMB;
+                        f.mInLayout = false;
+                        f.mAdded = false;
                         f.mTarget = null;
                         if (fs.mSavedFragmentState != null) {
                             fs.mSavedFragmentState.setClassLoader(this.mHost.getContext().getClassLoader());
@@ -2272,7 +2277,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                         BackStackRecord bse = fms.mBackStack[i].instantiate(this);
                         if (DEBUG) {
                             Log.v(TAG, "restoreAllState: back stack #" + i + " (index " + bse.mIndex + "): " + bse);
-                            bse.dump("  ", new PrintWriter(new LogWriter(TAG)), HONEYCOMB);
+                            bse.dump("  ", new PrintWriter(new LogWriter(TAG)), false);
                         }
                         this.mBackStack.add(bse);
                         if (bse.mIndex >= 0) {
@@ -2295,50 +2300,50 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     }
 
     public void noteStateNotSaved() {
-        this.mStateSaved = HONEYCOMB;
+        this.mStateSaved = false;
     }
 
     public void dispatchCreate() {
-        this.mStateSaved = HONEYCOMB;
-        moveToState(1, HONEYCOMB);
+        this.mStateSaved = false;
+        moveToState(1, false);
     }
 
     public void dispatchActivityCreated() {
-        this.mStateSaved = HONEYCOMB;
-        moveToState(2, HONEYCOMB);
+        this.mStateSaved = false;
+        moveToState(2, false);
     }
 
     public void dispatchStart() {
-        this.mStateSaved = HONEYCOMB;
-        moveToState(4, HONEYCOMB);
+        this.mStateSaved = false;
+        moveToState(4, false);
     }
 
     public void dispatchResume() {
-        this.mStateSaved = HONEYCOMB;
-        moveToState(5, HONEYCOMB);
+        this.mStateSaved = false;
+        moveToState(5, false);
     }
 
     public void dispatchPause() {
-        moveToState(4, HONEYCOMB);
+        moveToState(4, false);
     }
 
     public void dispatchStop() {
         this.mStateSaved = true;
-        moveToState(3, HONEYCOMB);
+        moveToState(3, false);
     }
 
     public void dispatchReallyStop() {
-        moveToState(2, HONEYCOMB);
+        moveToState(2, false);
     }
 
     public void dispatchDestroyView() {
-        moveToState(1, HONEYCOMB);
+        moveToState(1, false);
     }
 
     public void dispatchDestroy() {
         this.mDestroyed = true;
         execPendingActions();
-        moveToState(0, HONEYCOMB);
+        moveToState(0, false);
         this.mHost = null;
         this.mContainer = null;
         this.mParent = null;
@@ -2369,7 +2374,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     public boolean dispatchCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         int i;
         Fragment f;
-        boolean show = HONEYCOMB;
+        boolean show = false;
         ArrayList arrayList = null;
         if (this.mAdded != null) {
             for (i = 0; i < this.mAdded.size(); i++) {
@@ -2396,7 +2401,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
     }
 
     public boolean dispatchPrepareOptionsMenu(Menu menu) {
-        boolean show = HONEYCOMB;
+        boolean show = false;
         if (this.mAdded != null) {
             for (int i = 0; i < this.mAdded.size(); i++) {
                 Fragment f = (Fragment) this.mAdded.get(i);
@@ -2417,7 +2422,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 }
             }
         }
-        return HONEYCOMB;
+        return false;
     }
 
     public boolean dispatchContextItemSelected(MenuItem item) {
@@ -2429,7 +2434,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
                 }
             }
         }
-        return HONEYCOMB;
+        return false;
     }
 
     public void dispatchOptionsMenuClosed(Menu menu) {
@@ -2520,7 +2525,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             }
         }
         if (this.mCurState < 1 && fragment.mFromLayout) {
-            moveToState(fragment, 1, 0, 0, HONEYCOMB);
+            moveToState(fragment, 1, 0, 0, false);
         } else {
             moveToState(fragment);
         }

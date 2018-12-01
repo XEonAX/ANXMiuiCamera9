@@ -55,7 +55,7 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
         }
 
         public void run() {
-            this.waiting = AsyncTaskLoader.DEBUG;
+            this.waiting = false;
             AsyncTaskLoader.this.executePendingTask();
         }
 
@@ -95,22 +95,22 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
 
     protected boolean onCancelLoad() {
         if (this.mTask == null) {
-            return DEBUG;
+            return false;
         }
         if (this.mCancellingTask != null) {
             if (this.mTask.waiting) {
-                this.mTask.waiting = DEBUG;
+                this.mTask.waiting = false;
                 this.mHandler.removeCallbacks(this.mTask);
             }
             this.mTask = null;
-            return DEBUG;
+            return false;
         } else if (this.mTask.waiting) {
-            this.mTask.waiting = DEBUG;
+            this.mTask.waiting = false;
             this.mHandler.removeCallbacks(this.mTask);
             this.mTask = null;
-            return DEBUG;
+            return false;
         } else {
-            boolean cancelled = this.mTask.cancel(DEBUG);
+            boolean cancelled = this.mTask.cancel(false);
             if (cancelled) {
                 this.mCancellingTask = this.mTask;
                 cancelLoadInBackground();
@@ -124,13 +124,19 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
     }
 
     void executePendingTask() {
-        boolean z = DEBUG;
+        boolean z = false;
         if (this.mCancellingTask == null && this.mTask != null) {
+            boolean z2;
             if (this.mTask.waiting) {
-                this.mTask.waiting = DEBUG;
+                this.mTask.waiting = false;
                 this.mHandler.removeCallbacks(this.mTask);
             }
-            if (!(this.mUpdateThrottle <= 0 ? true : DEBUG)) {
+            if (this.mUpdateThrottle <= 0) {
+                z2 = true;
+            } else {
+                z2 = false;
+            }
+            if (!z2) {
                 if (SystemClock.uptimeMillis() >= this.mLastLoadCompleteTime + this.mUpdateThrottle) {
                     z = true;
                 }
@@ -176,7 +182,7 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
     }
 
     public boolean isLoadInBackgroundCanceled() {
-        return this.mCancellingTask == null ? DEBUG : true;
+        return this.mCancellingTask != null;
     }
 
     public void waitForLoader() {

@@ -25,7 +25,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
     static final int OP_REMOVE = 3;
     static final int OP_REPLACE = 2;
     static final int OP_SHOW = 5;
-    static final boolean SUPPORTS_TRANSITIONS = (VERSION.SDK_INT < 21 ? SUPPORTS_TRANSITIONS : true);
+    static final boolean SUPPORTS_TRANSITIONS = (VERSION.SDK_INT >= 21);
     static final String TAG = "FragmentManager";
     boolean mAddToBackStack;
     boolean mAllowAddToBackStack = true;
@@ -411,7 +411,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
         if (this.mAddToBackStack) {
             throw new IllegalStateException("This transaction is already being added to the back stack");
         }
-        this.mAllowAddToBackStack = SUPPORTS_TRANSITIONS;
+        this.mAllowAddToBackStack = false;
         return this;
     }
 
@@ -466,7 +466,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
     }
 
     public int commit() {
-        return commitInternal(SUPPORTS_TRANSITIONS);
+        return commitInternal(false);
     }
 
     public int commitAllowingStateLoss() {
@@ -504,7 +504,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
             SparseArray<Fragment> firstOutFragments = new SparseArray();
             SparseArray<Fragment> lastInFragments = new SparseArray();
             calculateFragments(firstOutFragments, lastInFragments);
-            state = beginTransition(firstOutFragments, lastInFragments, SUPPORTS_TRANSITIONS);
+            state = beginTransition(firstOutFragments, lastInFragments, false);
         }
         int transitionStyle = state == null ? this.mTransitionStyle : 0;
         int transition = state == null ? this.mTransition : 0;
@@ -517,7 +517,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
                 case 1:
                     f = op.fragment;
                     f.mNextAnim = enterAnim;
-                    this.mManager.addFragment(f, SUPPORTS_TRANSITIONS);
+                    this.mManager.addFragment(f, false);
                     break;
                 case 2:
                     f = op.fragment;
@@ -553,7 +553,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
                         break;
                     }
                     f.mNextAnim = enterAnim;
-                    this.mManager.addFragment(f, SUPPORTS_TRANSITIONS);
+                    this.mManager.addFragment(f, false);
                     break;
                 case 3:
                     f = op.fragment;
@@ -731,13 +731,13 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
                     for (int i = 0; i < op.removed.size(); i++) {
                         Fragment old = (Fragment) op.removed.get(i);
                         old.mNextAnim = popEnterAnim;
-                        this.mManager.addFragment(old, SUPPORTS_TRANSITIONS);
+                        this.mManager.addFragment(old, false);
                     }
                     break;
                 case 3:
                     f = op.fragment;
                     f.mNextAnim = popEnterAnim;
-                    this.mManager.addFragment(f, SUPPORTS_TRANSITIONS);
+                    this.mManager.addFragment(f, false);
                     break;
                 case 4:
                     f = op.fragment;
@@ -788,14 +788,14 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
     }
 
     public boolean isEmpty() {
-        return this.mNumOp != 0 ? SUPPORTS_TRANSITIONS : true;
+        return this.mNumOp == 0;
     }
 
     private TransitionState beginTransition(SparseArray<Fragment> firstOutFragments, SparseArray<Fragment> lastInFragments, boolean isBack) {
         int i;
         TransitionState state = new TransitionState();
         state.nonExistentView = new View(this.mManager.mHost.getContext());
-        boolean anyTransitionStarted = SUPPORTS_TRANSITIONS;
+        boolean anyTransitionStarted = false;
         for (i = 0; i < firstOutFragments.size(); i++) {
             if (configureTransitions(firstOutFragments.keyAt(i), state, isBack, firstOutFragments, lastInFragments)) {
                 anyTransitionStarted = true;
@@ -855,12 +855,12 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
             if (outFragment.mEnterTransitionCallback != null) {
                 outFragment.mEnterTransitionCallback.onMapSharedElements(this.mSharedElementTargetNames, namedViews);
             }
-            setBackNameOverrides(state, namedViews, SUPPORTS_TRANSITIONS);
+            setBackNameOverrides(state, namedViews, false);
         } else {
             if (outFragment.mExitTransitionCallback != null) {
                 outFragment.mExitTransitionCallback.onMapSharedElements(this.mSharedElementTargetNames, namedViews);
             }
-            setNameOverrides(state, namedViews, (boolean) SUPPORTS_TRANSITIONS);
+            setNameOverrides(state, namedViews, false);
         }
         return namedViews;
     }
@@ -868,7 +868,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
     private boolean configureTransitions(int containerId, TransitionState state, boolean isBack, SparseArray<Fragment> firstOutFragments, SparseArray<Fragment> lastInFragments) {
         View sceneRoot = (ViewGroup) this.mManager.mContainer.onFindViewById(containerId);
         if (sceneRoot == null) {
-            return SUPPORTS_TRANSITIONS;
+            return false;
         }
         final Fragment inFragment = (Fragment) lastInFragments.get(containerId);
         Fragment outFragment = (Fragment) firstOutFragments.get(containerId);
@@ -891,7 +891,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
             }
         }
         if (enterTransition == null && sharedElementTransition == null && exitTransition == null) {
-            return SUPPORTS_TRANSITIONS;
+            return false;
         }
         boolean z;
         ArrayList<View> exitingViews = new ArrayList();
@@ -928,7 +928,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
             FragmentTransitionCompat21.cleanupTransitions(sceneRoot, state.nonExistentView, enterTransition, enteringViews, exitTransition, exitingViews, sharedElementTransition, sharedElementTargets, transition, state.hiddenFragmentViews, renamedViews);
         }
         if (transition == null) {
-            z = SUPPORTS_TRANSITIONS;
+            z = false;
         } else {
             z = true;
         }
@@ -1040,7 +1040,7 @@ final class BackStackRecord extends FragmentTransaction implements BackStackEntr
                 Fragment fragment = (Fragment) this.mManager.mAdded.get(i);
                 if (!(fragment.mView == null || fragment.mContainer == null || fragment.mContainerId != containerId)) {
                     if (!fragment.mHidden) {
-                        FragmentTransitionCompat21.excludeTarget(transition, fragment.mView, SUPPORTS_TRANSITIONS);
+                        FragmentTransitionCompat21.excludeTarget(transition, fragment.mView, false);
                         state.hiddenFragmentViews.remove(fragment.mView);
                     } else if (!state.hiddenFragmentViews.contains(fragment.mView)) {
                         FragmentTransitionCompat21.excludeTarget(transition, fragment.mView, true);

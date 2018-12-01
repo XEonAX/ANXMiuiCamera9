@@ -130,7 +130,7 @@ public class LocalBroadcastManager {
     }
 
     /* JADX WARNING: Missing block: B:11:0x0040, code:
-            return DEBUG;
+            return false;
      */
     /* JADX WARNING: Missing block: B:30:0x00aa, code:
             return true;
