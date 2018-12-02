@@ -32,10 +32,12 @@ Jadx
 
 Install
 adb install -g .\out\ANXCamera.apk
+adb shell pm grant com.android.camera android.permission.PACKAGE_USAGE_STATS
 
 Reinstall
-adb uninstall com.aeonax.camera && adb install -g .\out\ANXCamera.apk
-
+adb uninstall com.aeonax.camera
+adb install -g .\out\ANXCamera.apk
+adb shell pm grant com.android.camera android.permission.PACKAGE_USAGE_STATS
 
 Logcat
 adb logcat -s System.err
