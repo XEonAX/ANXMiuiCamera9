@@ -52,8 +52,8 @@ public class CameraHardwareFace {
         cameraface.id = face.getId();
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:6:0x0036 A:{ExcHandler: java.lang.IllegalArgumentException (r0_0 'e' java.lang.Exception), Splitter: B:3:0x0020} */
-    /* JADX WARNING: Removed duplicated region for block: B:6:0x0036 A:{ExcHandler: java.lang.IllegalArgumentException (r0_0 'e' java.lang.Exception), Splitter: B:3:0x0020} */
+    /* JADX WARNING: Removed duplicated region for block: B:6:0x0036 A:{Splitter: B:3:0x0020, ExcHandler: java.lang.IllegalArgumentException (r0_0 'e' java.lang.Exception)} */
+    /* JADX WARNING: Removed duplicated region for block: B:6:0x0036 A:{Splitter: B:3:0x0020, ExcHandler: java.lang.IllegalArgumentException (r0_0 'e' java.lang.Exception)} */
     /* JADX WARNING: Missing block: B:6:0x0036, code:
             r0 = move-exception;
      */

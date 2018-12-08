@@ -17,9 +17,9 @@ import java.util.Map.Entry;
 
 public class BeautyParameters {
     /* renamed from: -com-android-camera-effect-BeautyParameters$TypeSwitchesValues */
-    private static final /* synthetic */ int[] f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = null;
     /* renamed from: -com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
-    private static final /* synthetic */ int[] f5-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
+    private static final /* synthetic */ int[] f4-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = null;
     private static final String TAG = BeautyParameters.class.getSimpleName();
     private static final BeautyParameterType[] sAdjustableParamTypes = new BeautyParameterType[]{BeautyParameterType.WHITEN_STRENGTH, BeautyParameterType.SHRINK_FACE_RATIO, BeautyParameterType.ENLARGE_EYE_RATIO, BeautyParameterType.SMOOTH_STRENGTH};
     private static final Type[] sAdjustableTypes = (Device.isSupportNewFaceBeauty() ? new Type[]{Type.SHRINK_FACE_RATIO, Type.ENLARGE_EYE_RATIO, Type.NOSE_RATIO, Type.RISORIUS_RATIO, Type.LIPS_RATIO, Type.CHIN_RATIO, Type.NECK_RATIO, Type.SMILE_RATIO, Type.SLIM_NOSE_RATIO} : new Type[]{Type.WHITEN_STRENGTH, Type.SHRINK_FACE_RATIO, Type.ENLARGE_EYE_RATIO, Type.SMOOTH_STRENGTH});
@@ -55,9 +55,9 @@ public class BeautyParameters {
     }
 
     /* renamed from: -getcom-android-camera-effect-BeautyParameters$TypeSwitchesValues */
-    private static /* synthetic */ int[] m4xed999735() {
-        if (f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
-            return f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
+    private static /* synthetic */ int[] m3xed999735() {
+        if (f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues != null) {
+            return f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues;
         }
         int[] iArr = new int[Type.values().length];
         try {
@@ -104,14 +104,14 @@ public class BeautyParameters {
             iArr[Type.WHITEN_STRENGTH.ordinal()] = 11;
         } catch (NoSuchFieldError e11) {
         }
-        f4-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
+        f3-com-android-camera-effect-BeautyParameters$TypeSwitchesValues = iArr;
         return iArr;
     }
 
     /* renamed from: -getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues */
-    private static /* synthetic */ int[] m5-getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues() {
-        if (f5-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues != null) {
-            return f5-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues;
+    private static /* synthetic */ int[] m4-getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues() {
+        if (f4-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues != null) {
+            return f4-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues;
         }
         int[] iArr = new int[BeautyParameterType.values().length];
         try {
@@ -170,7 +170,7 @@ public class BeautyParameters {
             iArr[BeautyParameterType.WHITEN_STRENGTH.ordinal()] = 4;
         } catch (NoSuchFieldError e14) {
         }
-        f5-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = iArr;
+        f4-com-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues = iArr;
         return iArr;
     }
 
@@ -201,7 +201,7 @@ public class BeautyParameters {
     }
 
     private static String getFaceBeautyRatioKey(Type type) {
-        switch (m4xed999735()[type.ordinal()]) {
+        switch (m3xed999735()[type.ordinal()]) {
             case 1:
                 return "pref_beautify_chin_ratio_key";
             case 2:
@@ -284,7 +284,7 @@ public class BeautyParameters {
     }
 
     private static Type convert(BeautyParameterType type) {
-        switch (m5-getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues()[type.ordinal()]) {
+        switch (m4-getcom-miui-filtersdk-beauty-BeautyParameterTypeSwitchesValues()[type.ordinal()]) {
             case 1:
                 return Type.ENLARGE_EYE_RATIO;
             case 2:

@@ -1,0 +1,7 @@
+id=ANXCamera
+name=ANXCamera
+version=v1
+versionCode=1
+author=AEonAX
+description=ANXCamera Magisk Module for Libs
+minMagisk=17000
